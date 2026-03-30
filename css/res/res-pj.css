@@ -1,0 +1,55 @@
+.pj-container {
+    font-size: 14px;
+    color: #283043;
+    line-height: 1.8;
+    margin: 24.4px 30px 5.6px;
+}
+
+@media (max-width: 768px) {
+    .pj-container {
+        font-size: 12px;
+        margin: 15.2px 20px 4.8px;
+    }
+}
+
+.pj-container p {
+    margin-bottom: 18.8px;
+}
+
+@media (max-width: 768px) {
+    .pj-container p {
+        margin-bottom: 10.4px;
+    }
+}
+
+.pj-container ul {
+    margin: -18.8px 0 18.8px 25px;
+}
+
+@media (max-width: 768px) {
+    .pj-container ul {
+        margin: -10.4px 0 10.4px 20px;
+    }
+}
+
+.pj-container li {
+    color: #7d7d7d;
+}
+
+/* 适用：顶部无文字，横屏截图 */
+.pj-container .img1 {
+    width: calc((100vw - 60px)*0.5);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5.6px;
+    margin-bottom: 24.4px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .pj-container .img1 {
+        width: calc((100vw - 40px)*0.75);
+        padding-top: 4.8px;
+        margin-bottom: 15.2px;
+    }
+}

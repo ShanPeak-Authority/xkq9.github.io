@@ -1,0 +1,72 @@
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: -3.2px;
+    /* 隐藏滚动条 */
+    /* Firefox */
+    scrollbar-width: none;
+    /* Internet Explorer 和 Edge */
+    -ms-overflow-style: none;
+
+    /* 移动端Webkit浏览器 */
+    &::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-container {
+        margin-top: -0.6px;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border: 0.5px solid #283043;
+    width: 100%;
+    min-width: 100%;
+    margin-bottom: 14.4px;
+    background: rgba(22, 120, 255, 0.07);
+}
+
+@media (max-width: 768px) {
+    table {
+        margin-bottom: 10.2px;
+    }
+}
+
+thead th {
+    background: rgba(22, 120, 255, 0.14);
+    color: #283043;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: 0.5px solid #283043;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    thead th {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}
+
+tbody td {
+    font-size: 14px;
+    padding: 10px;
+    border: 0.5px solid #283043;
+    color: #283043;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    tbody td {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}

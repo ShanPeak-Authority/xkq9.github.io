@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏详情</title>
+    <link rel="stylesheet" href="/css/res/res.css">
+    <link rel="stylesheet" href="/css/res/res-banner.css">
+    <link rel="stylesheet" href="/css/res/res-app.css">
+    <link rel="stylesheet" href="/css/res/res-category.css">
+    <link rel="stylesheet" href="/css/res/res-screenshot.css">
+    <link rel="stylesheet" href="/css/res/res-pj.css">
+    <link rel="stylesheet" href="/css/res/res-activity.css">
+    <link rel="stylesheet" href="/css/res/res-download.css">
+    <link rel="stylesheet" href="/css/func/func-mask.css">
+    <link rel="stylesheet" href="/css/func/func-table.css">
+    <link rel="stylesheet" href="/css/func/func-text.css">
+</head>
+
+<body>
+    <!-- 顶部Banner -->
+    <header class="banner">
+        <!-- 左侧：返回键 -->
+        <div class="banner-left">
+            <button class="banner-left-back" id="backBtn">
+                <div class="mask-fill banner-left-back-icon" style="--icon-url: url('/res/icon/back.png')">
+                </div>
+            </button>
+        </div>
+        <!-- 中间：标题 -->
+        <div class="banner-title">游戏详情</div>
+        <!-- 右侧：空白占位 -->
+        <div class="banner-right"></div>
+    </header>
+
+    <!-- 游戏详情 -->
+    <div class="game-container">
+        <!-- 游戏信息 -->
+        <div class="app">
+            <h2 class="app-title">
+                <img class="app-title-icon" src="/res/games/Shuang-Wan-2/Bai-Lian-Ying-Xiong/blyx.png" alt="游戏图标">
+                <div class="app-text">
+                    百炼英雄
+                    <div class="app-subtitle">
+                        <p>开通包站权限更快达标</p>
+                    </div>
+                </div>
+            </h2>
+        </div>
+        <!-- 水平导航栏 -->
+        <div class="category-nav" id="tabNav">
+            <div class="category-nav-item active" data-target="yxjs">游戏介绍</div>
+            <div class="category-nav-item" data-target="dbhd">达标活动</div>
+        </div>
+
+        <div class="module-container">
+            <!-- 游戏介绍 -->
+            <div class="module-content active" id="module-yxjs">
+                <div class="pj-container">
+                    <p><strong>游戏来源：</strong></p>
+                    <ul>
+                        <li>本游戏来自于平台：<span class="text-blue">http://sslt.93gongy.xyz:88/</span></li>
+                    </ul>
+                    <p><strong>快速达标：</strong></p>
+                    <ul>
+                        <li>开通GM包站权限（普通）可享受以下特权：<br>-- 无条件开通平台上所有带有“包站免费”标签的游戏后台，充值和道具随便发<br>-- 更快完成本板块的游戏达标活动</li>
+                        <li>GM包站权限（普通）购买：20元/永久，联系群主开通</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 达标活动 -->
+            <div class="module-content" id="module-dbhd">
+                <div class="activity-section">
+                    <!-- 要求及奖励 -->
+                    <div class="activity-card">
+                        <h2 class="activity-card-title">要求及奖励</h2>
+                        <div class="activity-card-content">
+                            <p><strong>说明：</strong></p>
+                            <ul>
+                                <li>长期有效，不定期重置领奖状态</li>
+                                <li>每人在每个活动周期内最多可领取1次达标奖励，请联系群主进行领奖</li>
+                                <li>若游戏停止运营，本活动将自动终止</li>
+                            </ul>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>要求</th>
+                                        <th>奖励</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>VIP达到15级</td>
+                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 已参与用户 -->
+                    <div class="activity-card">
+                        <h2 class="activity-card-title">已参与用户</h2>
+                        <div class="activity-card-content">
+                            <p><strong>说明：</strong></p>
+                            <ul>
+                                <li>用户数据实时更新</li>
+                            </ul>
+                        </div>
+                        <div class="table-container">
+                            <table id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>用户名</th>
+                                        <th>QQ号</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏下载-->
+    <div class="download">
+        <div class="download-btn-container">
+            <button class="download-btn-blue">在线玩</button>
+            <button class="download-btn-green">复制链接</button>
+        </div>
+        <p class="download-note">直达包站平台游戏详情页</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 定义游戏下载链接变量
+            const gameDownloadLink = 'http://sslt.93gongy.xyz:88/detail.html?id=496&type=1';
+
+            // 返回按钮功能
+            const backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function () {
+                    window.history.back();
+                });
+            }
+
+            // 获取两个功能按钮
+            const downloadBtn = document.querySelector('.download-btn-blue');
+            const copyLinkBtn = document.querySelector('.download-btn-green');
+
+            // 实现“游戏下载”按钮点击跳转功能
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function () {
+                    window.open(gameDownloadLink, '_blank');
+                });
+            }
+
+            // 实现“复制链接”按钮点击复制功能
+            if (copyLinkBtn) {
+                copyLinkBtn.addEventListener('click', function () {
+                    // 使用现代 Clipboard API
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(gameDownloadLink)
+                            .then(() => {
+                                showCopySuccessHint('链接已复制到剪贴板', 'success');
+                            })
+                            .catch(err => {
+                                console.error('复制失败: ', err);
+                                // 降级方案：使用较旧的 document.execCommand 方法
+                                fallbackCopyText(gameDownloadLink);
+                            });
+                    } else {
+                        // 在不支持新API或非安全上下文中使用降级方案
+                        fallbackCopyText(gameDownloadLink);
+                    }
+                });
+            }
+            function showCopySuccessHint(message, type = 'success') {
+                const existingHint = document.querySelector('.copy-hint');
+                if (existingHint) {
+                    existingHint.remove();
+                }
+
+                const hint = document.createElement('div');
+                hint.className = 'copy-hint';
+                hint.textContent = message;
+
+                // 根据类型（成功/失败）设置不同的样式
+                const bgColor = type === 'success' ? '#4CAF50' : '#ff9800';
+
+                hint.style.cssText = `
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: ${bgColor};
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        z-index: 1000;
+        font-size: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: fadeInOut 2.5s ease forwards;
+        text-align: center;
+        max-width: 80%;
+        word-break: break-all;
+      `;
+
+                document.body.appendChild(hint);
+
+                setTimeout(() => {
+                    if (hint.parentNode) {
+                        hint.parentNode.removeChild(hint);
+                    }
+                }, 2500);
+            }
+            // 降级复制方案（兼容旧浏览器）
+            function fallbackCopyText(text) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    const msg = successful ? '链接已复制' : '链接复制失败';
+                    showCopySuccessHint(msg, successful ? 'success' : 'warning');
+                } catch (err) {
+                    console.error('降级复制方案也失败了: ', err);
+                    showCopySuccessHint('链接复制失败', 'warning');
+                }
+
+                document.body.removeChild(textArea);
+            }
+            // 为提示动画添加CSS关键帧
+            if (!document.querySelector('style#hint-animation')) {
+                const style = document.createElement('style');
+                style.id = 'hint-animation';
+                style.textContent = `
+        @keyframes fadeInOut {
+          0% { opacity: 0; top: 15%; }
+          15% { opacity: 1; top: 20%; }
+          85% { opacity: 1; top: 20%; }
+          100% { opacity: 0; top: 25%; }
+        }
+      `;
+                document.head.appendChild(style);
+            }
+
+            // 水平分类选项卡切换功能
+            const tabNav = document.getElementById('tabNav');
+            const tabItems = tabNav.querySelectorAll('.category-nav-item');
+            const tabContents = document.querySelectorAll('.module-content');
+            tabItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-target');
+                    tabItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    const fullTargetId = 'module-' + targetId;
+                    const targetContent = document.getElementById(fullTargetId);
+                    if (targetContent) {
+                        setTimeout(() => {
+                            targetContent.classList.add('active');
+                        }, 10);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

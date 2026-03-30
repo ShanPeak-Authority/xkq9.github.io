@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 游戏详情 */
+.game-container {
+    width: 100%;
+    background: #ffffff;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-bottom: 89.5px;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding-bottom: 77.5px;
+    }
+}
+
+/* 内容分区 */
+.module-container {
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.module-content {
+    display: none;
+}
+
+.module-content.active {
+    display: block;
+}

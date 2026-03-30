@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #ffffff;
+    color: #283043;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #283043;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+/* 页面：公告 */
+.notice-container {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    padding: 30px 30px 69.5px;
+    overflow-y: auto;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .notice-container {
+        padding: 20px 20px 55px;
+    }
+}
+
+.notice-container.active {
+    display: flex;
+}
+
+.notice-container.hidden {
+    display: none;
+}
+
+/* 页面：推荐 */
+.recommend-container {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    margin: 0 0 69.5px;
+    overflow-y: hidden;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .recommend-container {
+        margin: 0 0 55px;
+    }
+}
+
+.recommend-container.active {
+    display: flex;
+}
+
+.recommend-container.hidden {
+    display: none;
+}
+
+/* 页面：兑换 */
+.exchange-container {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    padding: 30px 30px 69.5px;
+    overflow-y: auto;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .exchange-container {
+        padding: 20px 20px 55px;
+    }
+}
+
+.exchange-container.active {
+    display: flex;
+}
+
+.exchange-container.hidden {
+    display: none;
+}
+
+/* 页面：我的 */
+.mine-container {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    padding: 30px 30px 69.5px;
+    overflow-y: auto;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mine-container {
+        padding: 20px 20px 55px;
+    }
+}
+
+.mine-container.active {
+    display: flex;
+}
+
+.mine-container.hidden {
+    display: none;
+}
+
+/* 页面：我的-铜钱表头 */
+#sort-copper:hover {
+    background: rgba(22, 120, 255, 0.28);
+    cursor: pointer;
+}

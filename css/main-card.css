@@ -1,0 +1,92 @@
+.card {
+    background: rgba(22, 120, 255, 0.07);
+    padding: 20px 20px 5.6px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 15px 15px 4.8px;
+        margin-bottom: 20px;
+    }
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* 10px间距 + 5px边框宽度 */
+    padding-left: 15px;
+    padding-bottom: 20px;
+    color: #283043;
+    border-bottom: 0.5px solid #dddddd;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 16px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.card-title::before {
+    width: 5px;
+    /* 关键：总高度减去底部内边距，使高度等于文字内容区 */
+    height: calc(100% - 20px);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1678ff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .card-title::before {
+        /* 关键：总高度减去底部内边距，使高度等于文字内容区 */
+        height: calc(100% - 15px);
+    }
+}
+
+.card-content {
+    font-size: 14px;
+    color: #283043;
+    line-height: 1.8;
+    margin-top: -5.6px;
+}
+
+@media (max-width: 768px) {
+    .card-content {
+        font-size: 12px;
+        margin-top: -4.8px;
+    }
+}
+
+.card-content p {
+    margin-bottom: 8.8px;
+}
+
+@media (max-width: 768px) {
+    .card-content p {
+        margin-bottom: 5.4px;
+    }
+}
+
+.card-content ul {
+    margin: -8.8px 0 8.8px 25px;
+}
+
+@media (max-width: 768px) {
+    .card-content ul {
+        margin: -6.2px 0 5.4px 20px;
+    }
+}
+
+.card-content li {
+    color: #7d7d7d;
+}

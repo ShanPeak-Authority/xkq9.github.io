@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小氪奇9群福利中心</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main-banner.css">
+    <link rel="stylesheet" href="/css/main-search.css">
+    <link rel="stylesheet" href="/css/main-card.css">
+    <link rel="stylesheet" href="/css/main-recommend.css">
+    <link rel="stylesheet" href="/css/main-nav.css">
+    <link rel="stylesheet" href="/css/func/func-mask.css">
+    <link rel="stylesheet" href="/css/func/func-table.css">
+    <link rel="stylesheet" href="/css/func/func-text.css">
+</head>
+
+<body>
+    <!-- 顶部Banner -->
+    <header class="banner">
+        <div class="banner-slogan">
+            <div class="banner-slogan-text">小氪奇9群<span>福利中心</span></div>
+        </div>
+        <div class="banner-search">
+            <div class="search-box" id="searchBox">
+                <input type="text" id="searchInput" placeholder="搜游戏，找软件">
+                <button id="searchButton" aria-label="搜索">
+                    <div class="mask-fill search-icon" style="--icon-url: url('/res/icon/search.png')"></div>
+                </button>
+            </div>
+            <div class="search-suggestion" id="searchSuggestions">
+                <div class="search-suggestion-title">热门搜索</div>
+                <div class="search-suggestion-game" data-search="逆战：未来">
+                    <img class="search-suggestion-game-icon" src="/res/games/Guan-Fu/Ni-Zhan-Wei-Lai/nzwl.png"
+                        alt="应用图标">
+                    <div class="search-suggestion-game-text">
+                        <div class="search-suggestion-game-title">逆战：未来</div>
+                        <div class="search-suggestion-game-desc">官服专区</div>
+                    </div>
+                </div>
+                <div class="search-suggestion-game" data-search="三角洲行动">
+                    <img class="search-suggestion-game-icon" src="/res/games/Guan-Fu/San-Jiao-Zhou-Xing-Dong/sjzxd.png"
+                        alt="应用图标">
+                    <div class="search-suggestion-game-text">
+                        <div class="search-suggestion-game-title">三角洲行动</div>
+                        <div class="search-suggestion-game-desc">官服专区</div>
+                    </div>
+                </div>
+                <div class="search-suggestion-game" data-search="奥奇传说：手游">
+                    <img class="search-suggestion-game-icon"
+                        src="/res/games/Guan-Fu/Ao-Qi-Chuan-Shuo-Shou-You/aqcssy.png" alt="应用图标">
+                    <div class="search-suggestion-game-text">
+                        <div class="search-suggestion-game-title">奥奇传说：手游</div>
+                        <div class="search-suggestion-game-desc">官服专区</div>
+                    </div>
+                </div>
+                <div class="search-history">
+                    <div class="search-history-title">
+                        <span><strong>搜索历史</strong></span>
+                        <span class="search-history-clear" id="clearHistory">清空</span>
+                    </div>
+                    <div class="search-history-items" id="historyItems">
+                        <!-- 历史记录会通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面：公告 -->
+    <div class="notice-container" id="noticeContent">
+        <h1 class="section-title">欢迎回来！</h1>
+        <!-- 玩法简介 -->
+        <div class="card">
+            <h2 class="card-title">玩法简介</h2>
+            <div class="card-content">
+                <p>1、本福利玩法仅对小氪奇9群的群成员开放</p>
+                <p>2、群成员通过参与各种活动就有机会获得以下三种虚拟道具的奖励，还能赢取额外的<span class="text-red">红包</span>大奖：</p>
+                <ul>
+                    <li><span class="text-bronze">铜钱</span>：普通货币，可用于官服活动、限时活动及兑换商城等场景中的消费</li>
+                    <li><span class="text-gold">黄金</span>：稀有货币，暂无固定使用途径</li>
+                    <li><span class="text-diamond">钻石</span>：高级货币，暂无固定使用途径</li>
+                </ul>
+                <p>3、关于虚拟道具有效期的说明：</p>
+                <ul>
+                    <li><span class="text-bronze">铜钱</span>：当年有效，次年1月1日00:00自动清空</li>
+                    <li><span class="text-gold">黄金</span>：永久有效</li>
+                    <li><span class="text-diamond">钻石</span>：永久有效</li>
+                </ul>
+                <p>4、兑换商城将不定期进行商品更新，敬请留意群内公告</p>
+            </div>
+        </div>
+        <!-- 近期更新 -->
+        <div class="card">
+            <h2 class="card-title">近期更新</h2>
+            <div class="card-content">
+                <p>敬请关注群内公告</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面：推荐 -->
+    <div class="recommend-container" id="recommendContent">
+        <!-- 顶部：搜索统计 -->
+        <div class="search-results-header" id="searchResultsHeader" style="display: none;">
+            <div class="search-results-count">与"<strong id="searchKeyword"></strong>"相关：<span
+                    id="resultsCount">0</span>个</div>
+            <button class="search-clear" id="clearSearch">重置</button>
+        </div>
+        <!-- 内容 -->
+        <div class="category-container">
+            <!-- 左侧：纵向分类 -->
+            <div class="category-sidebar">
+                <div class="category-item active" data-category="Guan-Fu">官服活动</div>
+                <div class="category-item" data-category="Xian-Shi">限时活动</div>
+                <div class="category-item" data-category="Shuang-Wan-1">爽玩一区</div>
+                <div class="category-item" data-category="Shuang-Wan-2">爽玩二区</div>
+                <div class="category-item" data-category="Ruan-Jian">软件分享</div>
+            </div>
+            <!-- 右侧：正文 -->
+            <div class="category-content">
+                <!-- 官服活动 -->
+                <div class="category-panel" id="Guan-FuPanel">
+                    <section class="games-list" id="Guan-FuGames">
+                        <div class="game-item" data-searchable="奥奇传说：手游" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Ao-Qi-Chuan-Shuo-Shou-You/aqcssy.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">奥奇传说：手游</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="奥奇传说：页游" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Ao-Qi-Chuan-Shuo-Ye-You/aqcsyy.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">奥奇传说：页游</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="穿越火线：枪战王者 CFM" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/CFM/cfm.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">穿越火线：CFM</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="大富豪捕鱼" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Da-Fu-Hao-Bu-Yu/dfhby.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">大富豪捕鱼</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="极品飞车：集结" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Ji-Pin-Fei-Che-Ji-Jie/jpfcjj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">极品飞车：集结</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="洛克王国：页游" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Luo-Ke-Wang-Guo-Ye-You/lkwgyy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">洛克王国：页游</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="逆战：未来" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Ni-Zhan-Wei-Lai/nzwl.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">逆战：未来</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="赛尔号：页游" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Seer/seer.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">赛尔号：页游</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="三国杀：一将成名" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/San-Guo-Sha-Yi-Jiang-Cheng-Ming/sgsyjcm.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">三国杀：一将成名</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="三角洲行动" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/San-Jiao-Zhou-Xing-Dong/sjzxd.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">三角洲行动</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="我的世界：移动版 MC MINECRAFT" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/MC/mc.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">我的世界：移动版</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="无畏契约：端游" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Wu-Wei-Qi-Yue-Duan-You/wwqydy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">无畏契约：端游</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="王者荣耀" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Wang-Zhe-Rong-Yao/wzry.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">王者荣耀</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="Warframe warframe 星际战甲" data-filter="Guan-Fu">
+                            <img class="game-img" src="/res/games/Guan-Fu/Warframe/warframe.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">Warframe</div>
+                                <div class="game-description">官服专区</div>
+                            </div>
+                        </div>
+                        <!-- 无匹配结果提示 -->
+                        <div class="no-results" id="noResultsGuan-Fu">
+                            <div class="mask-fill no-results-icon" style="--icon-url: url('/res/icon/search.png')">
+                            </div>
+                            <h3>没有找到相关游戏</h3>
+                            <p>请更换关键词或浏览其他板块</p>
+                        </div>
+                    </section>
+                </div>
+                <!-- 限时活动 -->
+                <div class="category-panel" id="Xian-ShiPanel">
+                    <section class="games-list" id="Xian-ShiGames">
+                        <div class="game-item" data-searchable="NoActivity" data-filter="Xian-Shi">
+                            <img class="game-img" src="/res/QQ.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">暂无活动</div>
+                                <div class="game-description">敬请关注群内公告</div>
+                            </div>
+                        </div>
+                        <!-- 无匹配结果提示 -->
+                        <div class="no-results" id="noResultsXian-Shi">
+                            <div class="mask-fill no-results-icon" style="--icon-url: url('/res/icon/search.png')">
+                            </div>
+                            <h3>没有找到相关游戏</h3>
+                            <p>请更换关键词或浏览其他板块</p>
+                        </div>
+                    </section>
+                </div>
+                <!-- 爽玩一区 -->
+                <div class="category-panel" id="Shuang-Wan-1Panel">
+                    <!-- 板块介绍 -->
+                    <div class="category-card">
+                        <div class="category-card-content">
+                            <p><strong>板块介绍：</strong></p>
+                            <ul>
+                                <li>本板块分享的所有游戏均已免费破解，但运营稳定性无法保证，若游戏停止运营，其相关活动将自动终止</li>
+                                <li>本板块分享的所有游戏仅供个人学习使用，严禁商业用途，版权归原始开发者所有，建议通过官方渠道下载正版以获得完整服务与保障</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 横向分类 -->
+                    <div class="sub-tabs-section">
+                        <div class="sub-tabs-container">
+                            <div class="sub-tag active" data-subfilter="1-Gua-Ji">挂机</div>
+                            <div class="sub-tag" data-subfilter="1-Jing-Ying">经营</div>
+                            <div class="sub-tag" data-subfilter="1-Mao-Xian">冒险</div>
+                            <div class="sub-tag" data-subfilter="1-Pao-Ku">跑酷</div>
+                            <div class="sub-tag" data-subfilter="1-Qi-Pai">棋牌</div>
+                            <div class="sub-tag" data-subfilter="1-Shua-Zi">刷子</div>
+                            <div class="sub-tag" data-subfilter="1-Ta-Fang">塔防</div>
+                            <div class="sub-tag" data-subfilter="1-Yin-You">音游</div>
+                        </div>
+                    </div>
+                    <!-- 游戏列表 -->
+                    <section class="games-list" id="Shuang-Wan-1Games">
+                        <!-- 挂机 -->
+                        <div class="game-item" data-searchable="时空战场" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Gua-Ji">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/skzc.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">时空战场</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <!-- 经营 -->
+                        <div class="game-item" data-searchable="没有中间商赚差价" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Jing-Ying">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Mei-You-Zhong-Jian-Shang-Zhuan-Cha-Jia/myzjszcj.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">没有中间商赚差价</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="熊出没之熊大农场" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Jing-Ying">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Xiong-Chu-Mo-Zhi-Xiong-Da-Nong-Chang/xcmzxdnc.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">熊出没之熊大农场</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <!-- 冒险 -->
+                        <div class="game-item" data-searchable="果宝三国" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Mao-Xian">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Guo-Bao-San-Guo/gbsg.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">果宝三国</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="铠甲勇士格斗无双" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Mao-Xian">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Kai-Jia-Yong-Shi-Ge-Dou-Wu-Shuang/kjysgdws.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">铠甲勇士格斗无双</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="铠甲勇士之拿瓦怒火" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Mao-Xian">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Kai-Jia-Yong-Shi-Zhi-Na-Wa-Nu-Huo/kjysznwnh.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">铠甲勇士之拿瓦怒火</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="熊出没之机甲熊大" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Mao-Xian">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Xiong-Chu-Mo-Zhi-Ji-Jia-Xiong-Da/xcmzjjxd.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">熊出没之机甲熊大</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <!-- 棋牌 -->
+                        <div class="game-item" data-searchable="指尖疯狂斗地主" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Qi-Pai">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Zhi-Jian-Feng-Kuang-Dou-Di-Zhu/zjfkddz.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">指尖疯狂斗地主</div>
+                                <div class="game-description">破解大量货币</div>
+                            </div>
+                        </div>
+                        <!-- 跑酷 -->
+                        <div class="game-item" data-searchable="滑雪大冒险" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Hua-Xue-Da-Mao-Xian/hxdmx.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">滑雪大冒险</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="滑雪大冒险2" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Hua-Xue-Da-Mao-Xian-2/hxdmx2.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">滑雪大冒险2</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="铠甲勇士战神联盟" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Kai-Jia-Yong-Shi-Zhan-Shen-Lian-Meng/kjyszslm.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">铠甲勇士战神联盟</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="铠甲勇士之英雄传说" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Kai-Jia-Yong-Shi-Zhi-Ying-Xiong-Chuan-Shuo/kjyszyxcs.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">铠甲勇士之英雄传说</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="汤姆猫跑酷" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Tang-Mu-Mao-Pao-Ku/tmmpk.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">汤姆猫跑酷</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="汤姆猫英雄跑酷" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Tang-Mu-Mao-Ying-Xiong-Pao-Ku/tmmyxpk.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">汤姆猫英雄跑酷</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="熊出没之熊大快跑" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Pao-Ku">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Xiong-Chu-Mo-Zhi-Xiong-Da-Kuai-Pao/xcmzxdkp.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">熊出没之熊大快跑</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <!-- 刷子 -->
+                        <div class="game-item" data-searchable="Warframe：端游 warframe：端游 星际战甲：端游"
+                            data-filter="Shuang-Wan-1" data-subfilter="1-Shua-Zi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Warframe/warframe.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">Warframe：端游</div>
+                                <div class="game-description">旧日和平版本，网页后台</div>
+                            </div>
+                        </div>
+                        <!-- 塔防 -->
+                        <div class="game-item" data-searchable="部落冲突" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Ta-Fang">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu/blct.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">部落冲突</div>
+                                <div class="game-description">官服同步，内置后台</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="部落冲突：皇室战争" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Ta-Fang">
+                            <img class="game-img"
+                                src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/blcthszz.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">部落冲突：皇室战争</div>
+                                <div class="game-description">官服同步，内置后台</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="保卫萝卜2" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Ta-Fang">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Bao-Wei-Luo-Bo-2/bwlb2.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">保卫萝卜2</div>
+                                <div class="game-description">内购破解</div>
+                            </div>
+                        </div>
+                        <!-- 音游 -->
+                        <div class="game-item" data-searchable="Duet" data-filter="Shuang-Wan-1"
+                            data-subfilter="1-Yin-You">
+                            <img class="game-img" src="/res/games/Shuang-Wan-1/Duet/duet.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">Duet</div>
+                                <div class="game-description">解锁付费内容</div>
+                            </div>
+                        </div>
+                        <!-- 无匹配结果提示 -->
+                        <div class="no-results" id="noResultsShuang-Wan-1">
+                            <div class="mask-fill no-results-icon" style="--icon-url: url('/res/icon/search.png')">
+                            </div>
+                            <h3>没有找到相关游戏</h3>
+                            <p>请更换关键词或浏览其他板块</p>
+                        </div>
+                    </section>
+                </div>
+                <!-- 爽玩二区 -->
+                <div class="category-panel" id="Shuang-Wan-2Panel">
+                    <!-- 板块介绍 -->
+                    <div class="category-card">
+                        <div class="category-card-content">
+                            <p><strong>板块介绍：</strong></p>
+                            <ul>
+                                <li>本板块分享的所有游戏均来自于平台：<span class="text-blue">http://sslt.93gongy.xyz:88/</span></li>
+                                <li>本板块分享的所有游戏，其运营稳定性无法保证，若游戏停止运营，其相关活动将自动终止</li>
+                            </ul>
+                            <p><strong>GM包站权限（普通）说明：</strong></p>
+                            <ul>
+                                <li>开通GM包站权限（普通）可享受以下特权：<br>-- 无条件开通平台上所有带有“包站免费”标签的游戏后台，充值和道具随便发<br>-- 更快完成本板块的游戏达标活动
+                                </li>
+                                <li>GM包站权限（普通）购买：20元/永久，联系群主开通</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 横向分类 -->
+                    <div class="sub-tabs-section">
+                        <div class="sub-tabs-container">
+                            <div class="sub-tag active" data-subfilter="2-H5">在线玩</div>
+                            <div class="sub-tag" data-subfilter="2-Chuan-Qi">传奇</div>
+                            <div class="sub-tag" data-subfilter="2-Ge-Dou">格斗</div>
+                            <div class="sub-tag" data-subfilter="2-Hui-He">回合</div>
+                            <div class="sub-tag" data-subfilter="2-Ka-Pai">卡牌</div>
+                            <div class="sub-tag" data-subfilter="2-Xian-Xia">仙侠</div>
+                        </div>
+                    </div>
+                    <!-- 游戏列表 -->
+                    <section class="games-list" id="Shuang-Wan-2Games">
+                        <!-- 在线玩 -->
+                        <div class="game-item" data-searchable="百炼英雄" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Bai-Lian-Ying-Xiong/blyx.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">百炼英雄</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="宠物超进化" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Chong-Wu-Chao-Jin-Hua/cwcjh.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">宠物超进化</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="锤子开箱" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Chui-Zi-Kai-Xiang/czkx.gif" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">锤子开箱</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="封神问道" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Feng-Shen-Wen-Dao/fswd.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">封神问道</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="荒古封神录" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Huang-Gu-Feng-Shen-Lu/hgfsl.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">荒古封神录</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="江湖大侠" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jiang-Hu-Da-Xia/jhdx.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">江湖大侠</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="剑与盾" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jian-Yu-Dun/jyd.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">剑与盾</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="九州飞凰录" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jiu-Zhou-Fei-Huang-Lu/jzfhl.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">九州飞凰录</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="九州神皇录" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jiu-Zhou-Shen-Huang-Lu/jzshl.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">九州神皇录</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="九州谕" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jiu-Zhou-Yu/jzy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">九州谕</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="乱世之君" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Luan-Shi-Zhi-Jun/lszj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">乱世之君</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="猫三国" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Mao-San-Guo/msg.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">猫三国</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="魔娃西游" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Mo-Wa-Xi-You/mwxy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">魔娃西游</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="飘渺儒仙" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Piao-Miao-Ru-Xian/pmrx.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">飘渺儒仙</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="全民突击" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Quan-Min-Tu-Ji/qmtj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">全民突击</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="商业人生" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Shang-Ye-Ren-Sheng/syrs.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">商业人生</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="摄政王" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/She-Zheng-Wang/szw.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">摄政王</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="无限贝拉" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Wu-Xian-Bei-La/wxbl.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">无限贝拉</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="新魂环雷霆" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Xin-Hun-Huan-Lei-Ting/xhhlt.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">新魂环雷霆</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="新莽荒纪" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Xin-Mang-Huang-Ji/xmhj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">新莽荒纪</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="像素小精灵" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Xiang-Su-Xiao-Jing-Ling/xsxjl.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">像素小精灵</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="亿游十三道" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Yi-You-Shi-San-Dao/yyssd.gif" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">亿游十三道</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="真龙天子" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Zhen-Long-Tian-Zi/zltz.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">真龙天子</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="卓越之境" data-filter="Shuang-Wan-2" data-subfilter="2-H5">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Zhuo-Yue-Zhi-Jing/zyzj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">卓越之境</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 传奇 -->
+                        <div class="game-item" data-searchable="重置九州" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Chong-Zhi-Jiu-Zhou/czjz.gif" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">重置九州</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="龙岭迷窟" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Long-Ling-Mi-Ku/llmk.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">龙岭迷窟</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="灭霸传奇" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Mie-Ba-Chuan-Qi/mbcq.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">灭霸传奇</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="盘龙三大陆" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Pan-Long-San-Da-Lu/plsdl.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">盘龙三大陆</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="荣耀冰雪" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Rong-Yao-Bing-Xue/rybx.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">荣耀冰雪</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="天罡大陆" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Chuan-Qi">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Tian-Gang-Da-Lu/tgdl.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">天罡大陆</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 格斗 -->
+                        <div class="game-item" data-searchable="剑魂之刃" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Ge-Dou">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Jian-Hun-Zhi-Ren/jhzr.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">剑魂之刃</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 回合 -->
+                        <div class="game-item" data-searchable="赛尔号：精灵大作战" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Hui-He">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Seer-Jing-Ling-Da-Zuo-Zhan/seerjldzz.png"
+                                alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">赛尔号：精灵大作战</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 卡牌 -->
+                        <div class="game-item" data-searchable="大战国" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Ka-Pai">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Da-Zhan-Guo/dzg.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">大战国</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 仙侠 -->
+                        <div class="game-item" data-searchable="荒古剑侠" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Xian-Xia">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Huang-Gu-Jian-Xia/hgjx.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">荒古剑侠</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="梦回大秦" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Xian-Xia">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Meng-Hui-Da-Qin/mhdq.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">梦回大秦</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="天地决" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Xian-Xia">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Tian-Di-Jue/tdj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">天地决</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="新荣耀奇迹" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Xian-Xia">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Xin-Rong-Yao-Qi-Ji/xryqj.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">新荣耀奇迹</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="永恒仙域" data-filter="Shuang-Wan-2"
+                            data-subfilter="2-Xian-Xia">
+                            <img class="game-img" src="/res/games/Shuang-Wan-2/Yong-Heng-Xian-Yu/yhxy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">永恒仙域</div>
+                                <div class="game-description">开通包站权限更快达标</div>
+                            </div>
+                        </div>
+                        <!-- 无匹配结果提示 -->
+                        <div class="no-results" id="noResultsShuang-Wan-2">
+                            <div class="mask-fill no-results-icon" style="--icon-url: url('/res/icon/search.png')">
+                            </div>
+                            <h3>没有找到相关游戏</h3>
+                            <p>请更换关键词或浏览其他板块</p>
+                        </div>
+                    </section>
+                </div>
+                <!-- 软件分享 -->
+                <div class="category-panel" id="Ruan-JianPanel">
+                    <!-- 板块介绍 -->
+                    <div class="category-card">
+                        <div class="category-card-content">
+                            <p><strong>板块介绍：</strong></p>
+                            <ul>
+                                <li>本板块分享的所有软件均已免费破解</li>
+                                <li>本板块分享的所有软件仅供个人学习使用，严禁商业用途，版权归原始开发者所有，建议通过官方渠道下载正版以获得完整服务与保障</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 横向分类 -->
+                    <div class="sub-tabs-section">
+                        <div class="sub-tabs-container">
+                            <div class="sub-tag active" data-subfilter="SoftWare-Tool">实用工具</div>
+                            <div class="sub-tag" data-subfilter="SoftWare-Video">影视动漫</div>
+                        </div>
+                    </div>
+                    <!-- 软件列表 -->
+                    <section class="games-list" id="Ruan-JianGames">
+                        <!-- 实用工具 -->
+                        <div class="game-item" data-searchable="AdGuard" data-filter="Ruan-Jian"
+                            data-subfilter="SoftWare-Tool">
+                            <img class="game-img" src="/res/software/AdGuard/adguard.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">AdGuard</div>
+                                <div class="game-description">免登录即是永久会员</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="VMOS Pro" data-filter="Ruan-Jian"
+                            data-subfilter="SoftWare-Tool">
+                            <img class="game-img" src="/res/software/VMOS-Pro/vmospro.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">VMOS Pro</div>
+                                <div class="game-description">免登录即是永久会员</div>
+                            </div>
+                        </div>
+                        <!-- 影视动漫 -->
+                        <div class="game-item" data-searchable="囧次元" data-filter="Ruan-Jian"
+                            data-subfilter="SoftWare-Video">
+                            <img class="game-img" src="/res/software/Jiong-Ci-Yuan/jcy.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">囧次元</div>
+                                <div class="game-description">登录即是永久会员</div>
+                            </div>
+                        </div>
+                        <div class="game-item" data-searchable="凌云视频" data-filter="Ruan-Jian"
+                            data-subfilter="SoftWare-Video">
+                            <img class="game-img" src="/res/software/Ling-Yun-Shi-Pin/lysp.png" alt="应用图标">
+                            <div class="game-info">
+                                <div class="game-title">凌云视频</div>
+                                <div class="game-description">终身免广告</div>
+                            </div>
+                        </div>
+                        <!-- 无匹配结果提示 -->
+                        <div class="no-results" id="noResultsRuan-Jian">
+                            <div class="mask-fill no-results-icon" style="--icon-url: url('/res/icon/search.png')">
+                            </div>
+                            <h3>没有找到相关软件</h3>
+                            <p>请更换关键词或浏览其他板块</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面：兑换 -->
+    <div class="exchange-container" id="exchangeContent">
+        <h1 class="section-title">兑换商城</h1>
+        <!-- 复仇女神(定制版) -->
+        <div class="card">
+            <h2 class="card-title">复仇女神(定制版)</h2>
+            <div class="card-content">
+                <p><strong>兑换时间：</strong>2026年1月1日00:00至2026年12月31日23:59</p>
+                <p><strong>兑换价格：</strong><span class="text-bronze">铜钱*1688万</span>+<span
+                        class="text-diamond">钻石*1</span>/件</p>
+                <p><strong>兑换方式：</strong>联系群主进行兑换</p>
+                <p><strong>兑换须知：</strong>免费包邮</p>
+                <p><strong>单人限兑：</strong>1件</p>
+                <p><strong>库存剩余：</strong>1件</p>
+                <p><strong>商品介绍：</strong>本商品包含以下全部内容：</p>
+                <ul>
+                    <li>无限新星-复仇女神本体</li>
+                    <li>定制合金地台：含合金支架，占地面积约为50cm*50cm，5种发光模式可调节，极致细节</li>
+                    <li>合金零件替换包：可替换整套超过90%的塑料零件，帝皇侠配色</li>
+                    <li>外甲金色合金零件全部升级为镀金合金零件(含金量约为5mg)</li>
+                    <li>外甲白色合金零件全部升级为镀银合金零件(含银量约为1g)</li>
+                    <li>荧光零件替换包：高锐度，可替换所有原厂特效件</li>
+                    <li>定制化机甲内置灯组，3种发光模式可调节</li>
+                    <li>镀金喷口*6(含金量约为5mg)</li>
+                    <li>"元灵黄帝"套内"应龙"*1：含上述第3条至第6条全部内容，可完美架设在定制合金地台上</li>
+                    <li>"摩动核-赵云"套内"玉兰白龙驹"*1：含上述第3条至第6条全部内容，可完美架设在定制合金地台上</li>
+                    <li>定制亚克力防尘展示盒：正面可开门</li>
+                    <li>定制小型木质展柜：完美适配定制亚克力防尘展示盒</li>
+                    <li>定制模型海绵收纳箱：可收纳全部模型和零件</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 天幕(定制版) -->
+        <div class="card">
+            <h2 class="card-title">天幕(定制版)</h2>
+            <div class="card-content">
+                <p><strong>兑换时间：</strong>2026年1月1日00:00至2026年12月31日23:59</p>
+                <p><strong>兑换价格：</strong><span class="text-bronze">铜钱*1688万</span>+<span
+                        class="text-diamond">钻石*1</span>/件</p>
+                <p><strong>兑换方式：</strong>联系群主进行兑换</p>
+                <p><strong>兑换须知：</strong>免费包邮</p>
+                <p><strong>单人限兑：</strong>1件</p>
+                <p><strong>库存剩余：</strong>1件</p>
+                <p><strong>商品介绍：</strong>本商品包含以下全部内容：</p>
+                <ul>
+                    <li>爱因塔-天幕本体</li>
+                    <li>定制合金地台：含合金支架，占地面积约为50cm*50cm，5种发光模式可调节，极致细节</li>
+                    <li>合金零件替换包：可替换整套超过90%的塑料零件，帝皇侠配色</li>
+                    <li>外甲金色合金零件全部升级为镀金合金零件(含金量约为5mg)</li>
+                    <li>外甲白色合金零件全部升级为镀银合金零件(含银量约为1g)</li>
+                    <li>荧光零件替换包：高锐度，可替换所有原厂特效件</li>
+                    <li>定制化机甲内置灯组，3种发光模式可调节</li>
+                    <li>镀金喷口*6(含金量约为5mg)</li>
+                    <li>"元灵黄帝"套内"应龙"*1：含上述第3条至第6条全部内容，可完美架设在定制合金地台上</li>
+                    <li>"摩动核-赵云"套内"玉兰白龙驹"*1：含上述第3条至第6条全部内容，可完美架设在定制合金地台上</li>
+                    <li>定制亚克力防尘展示盒：正面可开门</li>
+                    <li>定制小型木质展柜：完美适配定制亚克力防尘展示盒</li>
+                    <li>定制模型海绵收纳箱：可收纳全部模型和零件</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 豪华电竞套装 -->
+        <div class="card">
+            <h2 class="card-title">豪华电竞套装</h2>
+            <div class="card-content">
+                <p><strong>兑换时间：</strong>2026年1月1日00:00至2026年12月31日23:59</p>
+                <p><strong>兑换价格：</strong><span class="text-bronze">铜钱*4688万</span>+<span
+                        class="text-diamond">钻石*1</span>/件</p>
+                <p><strong>兑换方式：</strong>联系群主进行兑换</p>
+                <p><strong>兑换须知：</strong>免费包邮</p>
+                <p><strong>单人限兑：</strong>1件</p>
+                <p><strong>库存剩余：</strong>1件</p>
+                <p><strong>商品介绍：</strong>本商品包含以下全部内容：</p>
+                <ul>
+                    <li>CPU：锐龙7 9800X3D</li>
+                    <li>主板：X870E AORUS PRO X3D ICE</li>
+                    <li>显卡：RTX 5080 AERO OC 16G 雪鹰</li>
+                    <li>电源：850W 雪鹰金牌</li>
+                    <li>内存：32GB DDR5 6000</li>
+                    <li>存储：1TB NVMe</li>
+                    <li>显示器：技嘉 FO27Q3</li>
+                    <li>键鼠：竞技键鼠</li>
+                    <li>拓际TGIF电竞椅</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 许愿神龙 -->
+        <div class="card">
+            <h2 class="card-title">许愿神龙</h2>
+            <div class="card-content">
+                <p><strong>兑换时间：</strong>2026年1月1日00:00至2026年12月31日23:59</p>
+                <p><strong>兑换价格：</strong><span class="text-bronze">铜钱*8888万</span>+<span
+                        class="text-gold">黄金*8</span>+<span class="text-diamond">钻石*8</span>/件</p>
+                <p><strong>兑换方式：</strong>联系群主进行兑换</p>
+                <p><strong>兑换须知：</strong>本商品为高度个性化定制商品</p>
+                <p><strong>单人限兑：</strong>1件</p>
+                <p><strong>库存剩余：</strong>1件</p>
+                <p><strong>商品介绍：</strong>获得与神龙沟通的能力：许下一个愿望，神龙会竭尽所能地满足你</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面：我的 -->
+    <div class="mine-container" id="mineContent">
+        <h1 class="section-title">个人道具查询</h1>
+        <div class="card">
+            <h2 class="card-title">数据表</h2>
+            <div class="card-content">
+                <p><strong>说明：</strong></p>
+                <ul>
+                    <li>点击"铜钱"表头可切换排序方式</li>
+                    <li>用户数据实时更新</li>
+                </ul>
+            </div>
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>QQ号</th>
+                            <th id="sort-copper" class="sort-header">铜钱 ▼</th>
+                            <th>黄金</th>
+                            <th>钻石</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>青丝</td>
+                            <td>2904323275</td>
+                            <td>4130000</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>清秋团月</td>
+                            <td>762786652</td>
+                            <td>22580</td>
+                            <td>1</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td>3484760686</td>
+                            <td>369890</td>
+                            <td>-</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>无痕</td>
+                            <td>1679835461</td>
+                            <td>1090</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>果农</td>
+                            <td>2236099138</td>
+                            <td>21000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>氪金就好了</td>
+                            <td>3615617459</td>
+                            <td>1600</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>北凉</td>
+                            <td>1914308849</td>
+                            <td>1220</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>奕许</td>
+                            <td>3440914298</td>
+                            <td>1108000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>curtain</td>
+                            <td>3500274928</td>
+                            <td>11500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>望纾</td>
+                            <td>3548921724</td>
+                            <td>5058000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>雾雨</td>
+                            <td>3536804341</td>
+                            <td>63000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>句号</td>
+                            <td>649313558</td>
+                            <td>60000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>CR</td>
+                            <td>2282065753</td>
+                            <td>20000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>问号</td>
+                            <td>1537016380</td>
+                            <td>25000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>诰春</td>
+                            <td>2127968971</td>
+                            <td>15000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>YYZ</td>
+                            <td>2483953638</td>
+                            <td>10000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>雾里</td>
+                            <td>1029724523</td>
+                            <td>45000</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>马嘉祺</td>
+                            <td>1590202553</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>春节</td>
+                            <td>1771388279</td>
+                            <td>6242152</td>
+                            <td>1</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>YOLO</td>
+                            <td>1219760389</td>
+                            <td>3257713</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部导航栏 -->
+    <nav class="nav-bottom">
+        <div class="nav-bottom-item active" data-target="notice">
+            <div class="mask-fill nav-bottom-icon" style="--icon-url: url('/res/icon/main/nav/001.png')"></div>
+            公告
+        </div>
+        <div class="nav-bottom-item" data-target="recommend">
+            <div class="mask-fill nav-bottom-icon" style="--icon-url: url('/res/icon/main/nav/002.png')"></div>
+            推荐
+        </div>
+        <div class="nav-bottom-item" data-target="exchange">
+            <div class="mask-fill nav-bottom-icon" style="--icon-url: url('/res/icon/main/nav/003.png')"></div>
+            兑换
+        </div>
+        <div class="nav-bottom-item" data-target="mine">
+            <div class="mask-fill nav-bottom-icon" style="--icon-url: url('/res/icon/main/nav/004.png')"></div>
+            我的
+        </div>
+    </nav>
+
+    <!-- 无搜索结果弹窗 -->
+    <div class="modal" id="noResultModal" style="display: none;">
+        <div class="modal-content">
+            <p>没有找到与“<span id="noResultKeyword"></span>”相关的游戏或软件，请尝试其他关键词</p>
+            <button id="noResultConfirm">确定</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

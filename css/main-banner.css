@@ -1,0 +1,46 @@
+.banner {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        padding: 15px;
+    }
+}
+
+.banner-slogan {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .banner-slogan {
+        padding-bottom: 15px;
+    }
+}
+
+.banner-slogan-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1678ff;
+}
+
+@media (max-width: 768px) {
+    .banner-slogan-text {
+        font-size: 20px;
+    }
+}
+
+.banner-slogan-text span {
+    color: #283043;
+}
