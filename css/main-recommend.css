@@ -325,7 +325,9 @@
 .game-title {
     font-weight: bold;
     font-size: 16px;
-    padding-bottom: 10.2px;
+    padding-bottom: 2px;
+    border-bottom: 0.5px solid #dddddd;
+    margin-bottom: 10.2px;
     color: #283043;
 }
 
