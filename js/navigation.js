@@ -21,9 +21,6 @@ export function initializeNavigation() {
         window.scrollTo(0, 0);
     };
 
-    // 设置默认显示"公告"
-    showContent('notice');
-
     navItems.forEach(item => {
         item.addEventListener('click', function () {
             const target = this.getAttribute('data-target');
