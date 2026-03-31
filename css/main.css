@@ -26,30 +26,6 @@ body {
     }
 }
 
-/* 页面：公告 */
-.notice-container {
-    flex: 1;
-    flex-direction: column;
-    min-height: 0;
-    padding: 30px 30px 69.5px;
-    overflow-y: auto;
-    display: flex;
-}
-
-@media (max-width: 768px) {
-    .notice-container {
-        padding: 20px 20px 55px;
-    }
-}
-
-.notice-container.active {
-    display: flex;
-}
-
-.notice-container.hidden {
-    display: none;
-}
-
 /* 页面：推荐 */
 .recommend-container {
     flex: 1;
@@ -57,7 +33,7 @@ body {
     min-height: 0;
     margin: 0 0 69.5px;
     overflow-y: hidden;
-    display: none;
+    display: flex;
 }
 
 @media (max-width: 768px) {
@@ -95,6 +71,30 @@ body {
 }
 
 .exchange-container.hidden {
+    display: none;
+}
+
+/* 页面：公告 */
+.notice-container {
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    padding: 30px 30px 69.5px;
+    overflow-y: auto;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .notice-container {
+        padding: 20px 20px 55px;
+    }
+}
+
+.notice-container.active {
+    display: flex;
+}
+
+.notice-container.hidden {
     display: none;
 }
 
