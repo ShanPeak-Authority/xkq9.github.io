@@ -15,27 +15,3 @@
         padding: 15px;
     }
 }
-
-.banner-slogan {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .banner-slogan {
-        display: none;
-    }
-}
-
-.banner-slogan-text {
-    font-size: 25px;
-    font-weight: bold;
-    color: #1678ff;
-}
-
-.banner-slogan-text span {
-    color: #283043;
-}
