@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeGameItemClick();
 
     // 设置默认显示公告区域
-    const defaultContent = document.getElementById('noticeContent');
+    const defaultContent = document.getElementById('recommendContent');
     if (defaultContent) {
         defaultContent.style.display = 'block';
     }
