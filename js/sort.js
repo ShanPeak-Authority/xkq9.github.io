@@ -7,7 +7,13 @@ export function initializeSort() {
     const sortRows = (desc) => {
         const rows = [...tbody.rows];
         header.textContent = `铜钱 ${desc ? '▼' : '▲'}`;
-        rows.sort((a, b) => (desc ? -1 : 1) * ((+b.cells[2]?.textContent || 0) - (+a.cells[2]?.textContent || 0)));
+
+        rows.sort((a, b) => {
+            const valA = +a.cells[2]?.textContent || 0;
+            const valB = +b.cells[2]?.textContent || 0;
+            return desc ? valB - valA : valA - valB;
+        });
+
         tbody.append(...rows);
     };
 
