@@ -17,7 +17,7 @@
 
 @media (max-width: 768px) {
     .nav-bottom {
-        height: 55px;
+        height: 53px;
     }
 }
 
@@ -36,7 +36,7 @@
 
 @media (max-width: 768px) {
     .nav-bottom-item {
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 
