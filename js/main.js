@@ -7,56 +7,34 @@ import { initializeCategory } from './category.js';
 import { initializeSearch } from './search.js';
 import { initializeSort } from './sort.js';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     initializeCategory();
     initializeSearch();
     initializeSort();
-    initializeGameItemClick();
-
-    const defaultContent = document.getElementById('recommendContent');
-    if (defaultContent) {
-        defaultContent.style.display = 'block';
-    }
-
-    const greetingElement = document.querySelector('#noticeContent .section-title');
-    if (greetingElement) {
-        const hour = new Date().getHours();
-        let greeting = '夜深了，该休息了~';
-        if (hour >= 4 && hour < 6) {
-            greeting = 'Hi，今天起得真早！';
-        } else if (hour >= 6 && hour < 11) {
-            greeting = 'Hi，早上好！';
-        } else if (hour >= 11 && hour < 14) {
-            greeting = 'Hi，中午好！';
-        } else if (hour >= 14 && hour < 17) {
-            greeting = 'Hi，下午好！';
-        } else if (hour >= 17 && hour < 23) {
-            greeting = 'Hi，晚上好！';
-        }
-        greetingElement.textContent = greeting;
-    }
-});
-
-function initializeGameItemClick() {
-    const recommendContent = document.getElementById('recommendContent');
-    if (!recommendContent) return;
-
-    recommendContent.addEventListener('click', function (event) {
-        const gameItem = event.target.closest('.game-item');
-        if (!gameItem) return;
-
-        const searchableValue = gameItem.getAttribute('data-searchable');
-        if (searchableValue === 'NoActivity') return;
-
-        const gameImg = gameItem.querySelector('.game-img');
-        if (!gameImg || !gameImg.src) return;
-
-        const imgSrc = gameImg.src;
-        const targetHtmlPath = imgSrc.replace(/\.(png|gif)$/i, '.html');
-
-        if (imgSrc === targetHtmlPath) return;
-
-        window.location.href = targetHtmlPath;
+    
+    // 设置默认显示页面
+    document.getElementById('recommendContent').style.display = 'block';
+    
+    // 设置时间问候语
+    const greetings = [
+        [23, 4, '夜深了，该休息了~'],
+        [4, 6, 'Hi，今天起得真早！'],
+        [6, 11, 'Hi，早上好！'],
+        [11, 14, 'Hi，中午好！'],
+        [14, 17, 'Hi，下午好！'],
+        [17, 23, 'Hi，晚上好！']
+    ];
+    const hour = new Date().getHours();
+    const greeting = greetings.find(([start, end]) => hour >= start && hour < end)?.[2] || '欢迎回来！';
+    document.querySelector('#noticeContent .section-title').textContent = greeting;
+    
+    // 游戏项点击事件
+    document.getElementById('recommendContent')?.addEventListener('click', (e) => {
+        const gameItem = e.target.closest('.game-item');
+        if (!gameItem || gameItem.dataset.searchable === 'NoActivity') return;
+        const imgSrc = gameItem.querySelector('.game-img')?.src;
+        const targetPath = imgSrc?.replace(/\.(png|gif)$/i, '.html');
+        targetPath && imgSrc !== targetPath && (window.location.href = targetPath);
     });
-}
+});
