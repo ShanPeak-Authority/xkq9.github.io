@@ -285,7 +285,7 @@
 }
 
 .game-item {
-    height: 90px;
+    height: auto;
     background: #f1f1f1;
     border-radius: 10px;
     display: flex;
