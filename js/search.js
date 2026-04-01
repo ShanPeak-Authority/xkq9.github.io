@@ -22,7 +22,7 @@ export function initializeSearch() {
     searchButton.addEventListener('click', performSearch);
     searchInput.addEventListener('keypress', (e) => e.key === 'Enter' && performSearch());
 
-    document.getElementById('clearSearch')?.addEventListener('click', performSearch);
+    document.getElementById('clearSearch')?.addEventListener('click', clearSearch);
     document.getElementById('clearHistory')?.addEventListener('click', clearSearchHistory);
 
     suggestions.addEventListener('click', (e) => {
@@ -40,24 +40,7 @@ export function initializeSearch() {
 export function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const keyword = searchInput?.value.trim() || '';
-
     if (!keyword) {
-        const searchResultsHeader = document.getElementById('searchResultsHeader');
-        searchResultsHeader && (searchResultsHeader.style.display = 'none');
-
-        document.querySelectorAll('#recommendContent .game-item:not(.no-results)').forEach(item => {
-            item.classList.remove('hidden');
-            removeTextHighlight(item);
-        });
-
-        document.querySelectorAll('.no-results').forEach(noResult => {
-            noResult.style.display = 'none';
-        });
-
-        const activePanel = document.querySelector('.category-panel.active');
-        if (activePanel && window.categoryModule?.applySubFilter) {
-            window.categoryModule.applySubFilter(activePanel);
-        }
         return;
     }
 
@@ -170,6 +153,28 @@ function showNoResultAlert(keyword) {
     confirmBtn.replaceWith(confirmBtn.cloneNode(true));
     document.getElementById('noResultConfirm').addEventListener('click', closeModal);
     modal.onclick = (event) => event.target === modal && closeModal();
+}
+
+export function clearSearch() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput && (searchInput.value = '');
+
+    document.getElementById('searchResultsHeader') && (document.getElementById('searchResultsHeader').style.display = 'none');
+
+    document.querySelectorAll('.category-panel').forEach(panel => {
+        panel.querySelectorAll('.game-item:not(.no-results)').forEach(item => {
+            item.classList.remove('hidden');
+            removeTextHighlight(item);
+        });
+        const noResults = panel.querySelector('.no-results');
+        const visibleCount = panel.querySelectorAll('.game-item:not(.hidden):not(.no-results)').length;
+        noResults && (noResults.style.display = (!window.categoryModule?.activeSubFilter && visibleCount === 0) ? 'block' : 'none');
+    });
+
+    document.getElementById('searchSuggestions') && document.getElementById('searchSuggestions').classList.remove('active');
+
+    const activePanel = document.querySelector('.category-panel.active');
+    activePanel && window.categoryModule?.applySubFilter(activePanel);
 }
 
 function addToSearchHistory(keyword) {
