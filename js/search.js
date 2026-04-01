@@ -41,7 +41,6 @@ export function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const keyword = searchInput?.value.trim() || '';
     if (!keyword) {
-        clearSearch();
         return;
     }
 
