@@ -10,7 +10,7 @@
 }
 
 .input-box {
-    padding: 10px;
+    padding: 15px;
     background: #f1f1f1;
     border-radius: 10px;
     align-items: center;
@@ -28,7 +28,7 @@
     background: transparent;
     flex: 1;
     outline: none;
-    font-size: 14px;
+    font-size: 16px;
     color: #283043;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .login-btn {
-    width: 33%;
+    width: 50%;
     background: #1678ff;
     color: #ffffff;
     border: none;
