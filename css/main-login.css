@@ -4,12 +4,14 @@
 }
 
 .login-card {
+    width: 100%;
     background: #ffffff;
     border-radius: 10px;
     padding: 20px;
 }
 
 .input-group {
+    width: 100%;
     margin-bottom: 20px;
     text-align: left;
 }
@@ -22,13 +24,13 @@
 }
 
 .input-group input {
-    width: auto;
+    width: 100%;
     height: auto;
     font-size: 14px;
     padding: 10px;
     background: #f1f1f1;
     border-radius: 10px;
-    border: 0 solid #f1f1f1;
+    border: 2px solid #1678ff;
     align-items: center;
     overflow: hidden;
 }
