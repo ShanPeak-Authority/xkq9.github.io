@@ -16,7 +16,6 @@
     border: 2px solid transparent;
     align-items: center;
     overflow: hidden;
-    display: flex;
 }
 
 .input-box.focused {
