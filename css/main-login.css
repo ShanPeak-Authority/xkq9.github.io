@@ -251,16 +251,10 @@
 }
 
 .data-description {
-    font-size: 14px;
+    font-size: 12px;
     color: #7d7d7d;
     padding: 0;
     margin: 0;
-}
-
-@media (max-width: 768px) {
-    .data-description {
-        font-size: 12px;
-    }
 }
 
 /* 更新时间 */
