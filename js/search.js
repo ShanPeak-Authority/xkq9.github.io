@@ -2,22 +2,22 @@ let searchHistory = JSON.parse(localStorage.getItem('gameSearchHistory')) || [];
 
 // 计算并设置底部内边距的函数
 function setSearchBottomPadding() {
-    const categoryContainer = document.querySelector('.category-container');
-    if (!categoryContainer) return;
+    const categoryContent = document.querySelector('.category-content');
+    if (!categoryContent) return;
 
     // 根据窗口宽度决定底边距大小
     const isMobile = window.innerWidth <= 768;
     const paddingValue = isMobile ? '49px' : '61px';
 
     // 直接设置内联样式
-    categoryContainer.style.paddingBottom = paddingValue;
+    categoryContent.style.paddingBottom = paddingValue;
 }
 
 // 移除底部内边距的函数
 function removeSearchBottomPadding() {
-    const categoryContainer = document.querySelector('.category-container');
-    if (categoryContainer) {
-        categoryContainer.style.paddingBottom = '';
+    const categoryContent = document.querySelector('.category-content');
+    if (categoryContent) {
+        categoryContent.style.paddingBottom = '';
     }
 }
 
