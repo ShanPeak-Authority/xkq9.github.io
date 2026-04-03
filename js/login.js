@@ -1,6 +1,3 @@
-// mine.js - 我的页面功能模块（从HTML文件读取数据）
-
-// 用户数据（将从HTML文件动态加载）
 let userData = [];
 let isDataLoaded = false;
 

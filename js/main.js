@@ -10,14 +10,34 @@ import { initializeSort } from './sort.js';
 import { initializeMinePage } from './login.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 隐藏所有页面容器，避免同时显示多个页面
+    const pageContainers = ['recommendContent', 'exchangeContent', 'noticeContent', 'mineContent'];
+    pageContainers.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+
     initializeNavigation();
     initializeCategory();
     initializeSearch();
     initializeSort();
     initializeMinePage();
 
-    // 设置默认显示页面
-    document.getElementById('recommendContent').style.display = 'block';
+    // 设置默认显示页面为推荐页
+    const recommendContent = document.getElementById('recommendContent');
+    if (recommendContent) {
+        recommendContent.style.display = 'block';
+    }
+
+    // 确保导航栏状态正确
+    const navItems = document.querySelectorAll('.nav-bottom-item');
+    navItems.forEach(nav => nav.classList.remove('active'));
+    const recommendNav = document.querySelector('.nav-bottom-item[data-target="recommend"]');
+    if (recommendNav) {
+        recommendNav.classList.add('active');
+    }
 
     // 设置时间问候语
     const greetings = [
