@@ -192,7 +192,7 @@
 
 /* 数据卡片 */
 .data-card {
-    background: #f1f1f1;
+    background: #ffffff;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -202,15 +202,18 @@
 }
 
 .data-card.bronze {
-    border-left-color: #B87333;
+    border-left-color: #b87333;
+    border-top: 1px solid #b87333;
 }
 
 .data-card.gold {
-    border-left-color: #D4AF37;
+    border-left-color: #d4af37;
+    border-top: 1px solid #d4af37;
 }
 
 .data-card.diamond {
-    border-left-color: #3399FF;
+    border-left-color: #3399ff;
+    border-top: 1px solid #3399ff;
 }
 
 .data-content {
