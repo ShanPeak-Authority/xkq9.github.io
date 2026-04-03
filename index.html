@@ -1431,7 +1431,7 @@
 
     <!-- 页面：我的 -->
     <div class="mine-container" id="mineContent">
-        <!-- 登录（默认显示） -->
+        <!-- 登录界面（默认显示） -->
         <div class="login-container" id="loginContainer">
             <h1 class="section-title">用户登录</h1>
             <div class="login-card">
@@ -1442,9 +1442,8 @@
                 <button class="login-btn" id="loginBtn">登录</button>
             </div>
         </div>
-        <!-- 用户数据（登录后显示） -->
+        <!-- 用户数据界面（登录后显示） -->
         <div class="user-container" id="userContainer" style="display: none;">
-            <!-- 个人信息 -->
             <h1 class="section-title">个人信息</h1>
             <div class="user-card">
                 <!-- 用户头像和昵称 -->
@@ -1488,38 +1487,6 @@
                 <!-- 数据更新时间 -->
                 <div class="update-time">
                     <p>数据更新时间：<span id="lastUpdateTime">-</span></p>
-                </div>
-            </div>
-            <!-- 用户排行榜 -->
-            <h1 class="section-title">用户排行榜</h1>
-            <!-- 统一排行榜卡片 -->
-            <div class="unified-ranking-card" id="unifiedRankingContainer" style="display: none;">
-                <!-- 标签页切换按钮 -->
-                <div class="ranking-tabs">
-                    <button class="ranking-tab-btn active" data-tab="copperRanking">
-                        <span class="text-bronze">铜钱排行榜</span>
-                    </button>
-                    <button class="ranking-tab-btn" data-tab="goldRanking">
-                        <span class="text-gold">黄金排行榜</span>
-                    </button>
-                    <button class="ranking-tab-btn" data-tab="diamondRanking">
-                        <span class="text-diamond">钻石排行榜</span>
-                    </button>
-                </div>
-
-                <!-- 铜钱排行榜内容 -->
-                <div class="ranking-tab-content active" id="copperRankingContent">
-                    <!-- 铜钱排行榜内容会通过JS动态生成 -->
-                </div>
-
-                <!-- 黄金排行榜内容 -->
-                <div class="ranking-tab-content" id="goldRankingContent">
-                    <!-- 黄金排行榜内容会通过JS动态生成 -->
-                </div>
-
-                <!-- 钻石排行榜内容 -->
-                <div class="ranking-tab-content" id="diamondRankingContent">
-                    <!-- 钻石排行榜内容会通过JS动态生成 -->
                 </div>
             </div>
         </div>
