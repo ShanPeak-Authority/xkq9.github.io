@@ -538,6 +538,7 @@
     text-align: center;
     font-size: 14px;
     color: #7d7d7d;
+    margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid #eeeeee;
 }
@@ -545,6 +546,7 @@
 @media (max-width: 768px) {
     .ranking-limit-text {
         font-size: 12px;
+        margin-top: 20px;
         padding-top: 20px;
     }
 }
