@@ -598,3 +598,23 @@
         font-size: 14px;
     }
 }
+
+/* 排行榜数量限制提示文字 */
+.ranking-limit-text {
+    text-align: center;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+    .ranking-limit-text {
+        font-size: 11px;
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+}

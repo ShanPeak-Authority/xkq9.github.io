@@ -451,4 +451,10 @@ function updateRankingTable(type, colorClass) {
         valueLabel.textContent = typeNames[type] || '';
         valueContainer.appendChild(valueLabel);
     });
+
+    // 添加提示文字
+    const limitText = document.createElement('div');
+    limitText.className = 'ranking-limit-text';
+    limitText.textContent = '仅显示前20名用户';
+    rankingTableContainer.appendChild(limitText);
 }
