@@ -381,6 +381,13 @@ function updateRankingTable(type, colorClass) {
     rankingList.className = 'ranking-list';
     rankingTableContainer.appendChild(rankingList);
 
+    // 货币类型名称映射
+    const typeNames = {
+        copper: '铜钱',
+        gold: '黄金',
+        diamond: '钻石'
+    };
+
     // 填充数据行
     rankedUsers.forEach((user, index) => {
         const rankingItem = document.createElement('div');
@@ -394,7 +401,7 @@ function updateRankingTable(type, colorClass) {
         if (index < 3) {
             rankBadge.className = `ranking-rank rank-${index + 1}`;
         }
-        rankBadge.textContent = `#${index + 1}`;
+        rankBadge.textContent = `${index + 1}`;
         rankingItem.appendChild(rankBadge);
 
         // 左侧：用户头像
@@ -434,9 +441,14 @@ function updateRankingTable(type, colorClass) {
         valueContainer.className = 'ranking-value-container';
         rankingItem.appendChild(valueContainer);
 
-        const valueBadge = document.createElement('div');
-        valueBadge.className = `ranking-value-badge ${colorClass}`;
-        valueBadge.textContent = formatNumber(user[type]);
-        valueContainer.appendChild(valueBadge);
+        const valueText = document.createElement('div');
+        valueText.className = `ranking-value-text ${colorClass}`;
+        valueText.textContent = formatNumber(user[type]);
+        valueContainer.appendChild(valueText);
+
+        const valueLabel = document.createElement('div');
+        valueLabel.className = 'ranking-value-label';
+        valueLabel.textContent = typeNames[type] || '';
+        valueContainer.appendChild(valueLabel);
     });
 }
