@@ -185,7 +185,7 @@
 @media (max-width: 768px) {
     .data-grid {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 20px;
         margin-bottom: 20px;
     }
 }
