@@ -533,22 +533,18 @@
     }
 }
 
-/* 排行榜数量限制提示文字 */
+/* 排行榜：底部提示文字 */
 .ranking-limit-text {
     text-align: center;
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid #f1f5f9;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-size: 14px;
+    color: #7d7d7d;
+    padding-top: 30px;
+    border-top: 1px solid #eeeeee;
 }
 
 @media (max-width: 768px) {
     .ranking-limit-text {
-        font-size: 11px;
-        margin-top: 12px;
-        padding-top: 12px;
+        font-size: 12px;
+        padding-top: 20px;
     }
 }
