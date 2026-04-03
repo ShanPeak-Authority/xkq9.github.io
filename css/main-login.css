@@ -416,6 +416,15 @@
     flex-shrink: 0;
 }
 
+@media (max-width: 768px) {
+    .ranking-rank {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+}
+
 /* 排行榜：列表List-序号（前三名） */
 .ranking-rank.rank-1 {
     background: #fff8e1;
@@ -441,6 +450,13 @@
     height: 45px;
     margin-right: 5px;
     flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .ranking-avatar {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 .ranking-avatar-img {
