@@ -181,7 +181,7 @@ async function handleLogin() {
 
     // 支持游客登录：用户不存在时创建临时游客用户
     if (!user) {
-        // 用户不存在，创建临时游客游客用户
+        // 用户不存在，创建临时游客用户
         user = {
             name: `用户${qq}`,  // 直接显示"用户+QQ号"
             qq: qq,
@@ -273,9 +273,10 @@ function showUserData(user) {
         const now = new Date();
         document.getElementById('lastUpdateTime').textContent =
             `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+        // 创建排行榜区域
+        createRankingSection(userContainer);
     }
-    // 初始化排行榜
-    initRanking();
 }
 
 // 格式化数字显示（添加万分位）
@@ -283,202 +284,151 @@ function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ',');
 }
 
-// ============ 新增：排行榜功能 ============
-function initRanking() {
-    const userContainer = document.getElementById('userContainer');
-    if (!userContainer) return;
-
-    // 检查是否已存在排行榜容器，避免重复添加
-    let rankingContainer = document.getElementById('rankingContainer');
-    if (rankingContainer) {
-        rankingContainer.remove();
+// 在用户数据区域下创建排行榜模块
+function createRankingSection(userContainer) {
+    // 检查是否已存在排行榜，如果存在则先移除（防止重复添加）
+    const existingRanking = document.getElementById('rankingContainer');
+    if (existingRanking) {
+        existingRanking.remove();
     }
 
-    // 创建排行榜外层容器
-    rankingContainer = document.createElement('div');
+    // 创建排行榜主容器
+    const rankingContainer = document.createElement('div');
     rankingContainer.id = 'rankingContainer';
-    rankingContainer.style.cssText = 'margin-top: 30px; width: 100%;';
+    rankingContainer.className = 'ranking-container';
+
+    // 创建排行榜标题
+    const rankingTitle = document.createElement('div');
+    rankingTitle.className = 'ranking-title';
+    rankingTitle.textContent = '排行榜';
+    rankingContainer.appendChild(rankingTitle);
 
     // 创建切换按钮容器
-    const switchContainer = document.createElement('div');
-    switchContainer.style.cssText = 'display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;';
+    const rankingTabs = document.createElement('div');
+    rankingTabs.className = 'ranking-tabs';
+    rankingContainer.appendChild(rankingTabs);
 
-    // 创建切换按钮
-    const types = [
-        { key: 'copper', name: '铜钱榜', color: '#B87333' },
-        { key: 'gold', name: '黄金榜', color: '#D4AF37' },
-        { key: 'diamond', name: '钻石榜', color: '#3399FF' }
+    // 定义货币类型
+    const currencyTypes = [
+        { type: 'copper', name: '铜钱', colorClass: 'bronze' },
+        { type: 'gold', name: '黄金', colorClass: 'gold' },
+        { type: 'diamond', name: '钻石', colorClass: 'diamond' }
     ];
 
-    types.forEach((type, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.textContent = type.name;
-        button.dataset.type = type.key;
-        button.style.cssText = `
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            color: #283043;
-            transition: all 0.2s ease;
-        `;
-        // 第一个按钮默认激活
-        if (index === 0) {
-            button.style.backgroundColor = type.color;
-            button.style.color = '#ffffff';
-        }
-        button.addEventListener('click', (e) => {
-            // 切换按钮激活状态
-            switchContainer.querySelectorAll('button').forEach(btn => {
-                const btnType = btn.dataset.type;
-                const matchedType = types.find(t => t.key === btnType);
-                btn.style.backgroundColor = '#f1f1f1';
-                btn.style.color = '#283043';
-            });
-            e.target.style.backgroundColor = type.color;
-            e.target.style.color = '#ffffff';
-            // 渲染对应类型的排行榜
-            renderRanking(type.key);
-        });
-        switchContainer.appendChild(button);
+    // 创建切换按钮
+    currencyTypes.forEach((currency, index) => {
+        const tab = document.createElement('div');
+        tab.className = `ranking-tab ${index === 0 ? 'active' : ''}`; // 默认激活第一个
+        tab.dataset.type = currency.type;
+        tab.dataset.colorClass = currency.colorClass;
+        tab.textContent = currency.name;
+        rankingTabs.appendChild(tab);
     });
 
-    // 创建表格容器
-    const tableWrapper = document.createElement('div');
-    tableWrapper.id = 'rankingTableWrapper';
-    tableWrapper.style.cssText = `
-        background: rgba(22, 120, 255, 0.07);
-        border-radius: 10px;
-        padding: 20px;
-        overflow: hidden;
-    `;
+    // 创建排行榜表格容器
+    const rankingTableContainer = document.createElement('div');
+    rankingTableContainer.className = 'ranking-table-container';
+    rankingContainer.appendChild(rankingTableContainer);
 
-    const tableTitle = document.createElement('h3');
-    tableTitle.id = 'rankingTableTitle';
-    tableTitle.textContent = '铜钱排行榜';
-    tableTitle.style.cssText = `
-        font-size: 18px;
-        font-weight: bold;
-        color: #283043;
-        margin-bottom: 15px;
-        padding-left: 10px;
-        border-left: 4px solid #B87333;
-    `;
-
-    const tableContainer = document.createElement('div');
-    tableContainer.style.cssText = `
-        overflow-x: auto;
-        width: 100%;
-        max-width: 100%;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-    `;
-
-    const table = document.createElement('table');
-    table.id = 'rankingTable';
-    table.style.cssText = `
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 100%;
-    `;
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
-        <tr>
-            <th style="padding: 12px 15px; text-align: center; background-color: #f8f9fa; color: #283043; border-bottom: 2px solid #1678ff;">排名</th>
-            <th style="padding: 12px 15px; text-align: left; background-color: #f8f9fa; color: #283043; border-bottom: 2px solid #1678ff;">用户</th>
-            <th style="padding: 12px 15px; text-align: right; background-color: #f8f9fa; color: #283043; border-bottom: 2px solid #1678ff;">数量</th>
-        </tr>
-    `;
-    table.appendChild(thead);
-    const tbody = document.createElement('tbody');
-    tbody.id = 'rankingTableBody';
-    table.appendChild(tbody);
-    tableContainer.appendChild(table);
-    tableWrapper.appendChild(tableTitle);
-    tableWrapper.appendChild(tableContainer);
-
-    // 组装容器
-    rankingContainer.appendChild(switchContainer);
-    rankingContainer.appendChild(tableWrapper);
-
-    // 插入到更新时间之前
-    const updateTimeElement = document.querySelector('.update-time');
-    if (updateTimeElement && updateTimeElement.parentNode) {
-        updateTimeElement.parentNode.insertBefore(rankingContainer, updateTimeElement);
+    // 将排行榜容器添加到用户信息卡片之后
+    const userCard = userContainer.querySelector('.user-card');
+    if (userCard) {
+        userCard.parentNode.insertBefore(rankingContainer, userCard.nextSibling);
     } else {
-        // 备用方案：插入到 userContainer 末尾
+        // 如果找不到user-card，则添加到用户容器末尾
         userContainer.appendChild(rankingContainer);
     }
 
-    // 初始渲染铜钱榜
-    renderRanking('copper');
+    // 初始化默认显示铜钱排行榜
+    updateRankingTable('copper', 'bronze');
+
+    // 为切换按钮添加点击事件
+    rankingTabs.addEventListener('click', (event) => {
+        const clickedTab = event.target.closest('.ranking-tab');
+        if (!clickedTab) return;
+
+        // 更新按钮激活状态
+        document.querySelectorAll('.ranking-tab').forEach(tab => tab.classList.remove('active'));
+        clickedTab.classList.add('active');
+
+        // 更新排行榜表格
+        const type = clickedTab.dataset.type;
+        const colorClass = clickedTab.dataset.colorClass;
+        updateRankingTable(type, colorClass);
+    });
 }
 
-function renderRanking(type = 'copper') {
-    if (!userData.length) return;
+// 更新排行榜表格内容
+function updateRankingTable(type, colorClass) {
+    const rankingTableContainer = document.querySelector('.ranking-table-container');
+    if (!rankingTableContainer) return;
 
-    const typeConfig = {
-        copper: { name: '铜钱', color: '#B87333', unit: '' },
-        gold: { name: '黄金', color: '#D4AF37', unit: '' },
-        diamond: { name: '钻石', color: '#3399FF', unit: '' }
-    };
-    const config = typeConfig[type];
-    if (!config) return;
+    // 清空现有表格
+    rankingTableContainer.innerHTML = '';
 
-    // 更新标题
-    const titleElement = document.getElementById('rankingTableTitle');
-    if (titleElement) {
-        titleElement.textContent = `${config.name}排行榜`;
-        titleElement.style.borderLeftColor = config.color;
-    }
-
-    // 排序数据
-    const sortedData = [...userData]
-        .filter(user => user[type] > 0) // 只显示有数量的用户
-        .sort((a, b) => b[type] - a[type])
+    // 根据类型生成对应排行榜数据
+    const rankedUsers = [...userData]
+        .filter(user => user[type] > 0) // 只包含有该货币数量的用户
+        .sort((a, b) => b[type] - a[type]) // 降序排列
         .slice(0, 10); // 取前10名
 
-    const tbody = document.getElementById('rankingTableBody');
-    if (!tbody) return;
-    tbody.innerHTML = '';
-
-    if (sortedData.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="3" style="padding: 20px; text-align: center; color: #7d7d7d;">暂无数据</td>`;
-        tbody.appendChild(row);
+    if (rankedUsers.length === 0) {
+        const noData = document.createElement('div');
+        noData.className = 'no-ranking-data';
+        noData.textContent = '暂无数据';
+        rankingTableContainer.appendChild(noData);
         return;
     }
 
-    sortedData.forEach((user, index) => {
-        const row = document.createElement('tr');
-        // 为前三名设置特殊背景色
-        let rankCellStyle = 'font-weight: bold;';
-        let bgColor = '';
-        if (index === 0) {
-            rankCellStyle += ' color: #FFD700;'; // 金牌
-            bgColor = '#FFF8E1';
-        } else if (index === 1) {
-            rankCellStyle += ' color: #C0C0C0;'; // 银牌
-            bgColor = '#F5F5F5';
-        } else if (index === 2) {
-            rankCellStyle += ' color: #CD7F32;'; // 铜牌
-            bgColor = '#FEF8E7';
-        }
+    // 创建表格
+    const table = document.createElement('table');
+    rankingTableContainer.appendChild(table);
 
-        row.style.backgroundColor = bgColor;
-        row.innerHTML = `
-            <td style="padding: 12px 15px; text-align: center; border-bottom: 1px solid #eee; ${rankCellStyle}">${index + 1}</td>
-            <td style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; color: #283043;">
-                ${user.name || `用户${user.qq}`} (${user.qq})
-            </td>
-            <td style="padding: 12px 15px; text-align: right; border-bottom: 1px solid #eee; font-weight: bold; color: ${config.color};">
-                ${formatNumber(user[type])}${config.unit}
-            </td>
-        `;
+    // 创建表头
+    const thead = document.createElement('thead');
+    table.appendChild(thead);
+    const headerRow = document.createElement('tr');
+    thead.appendChild(headerRow);
+
+    const headers = ['排名', '用户', 'QQ', '数量'];
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+    });
+
+    // 创建表体
+    const tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+
+    // 填充数据行
+    rankedUsers.forEach((user, index) => {
+        const row = document.createElement('tr');
         tbody.appendChild(row);
+
+        // 排名
+        const rankCell = document.createElement('td');
+        rankCell.textContent = `#${index + 1}`;
+        // 为前三名添加特殊样式
+        if (index < 3) {
+            rankCell.className = `rank-${index + 1}`;
+        }
+        row.appendChild(rankCell);
+
+        // 用户名称
+        const nameCell = document.createElement('td');
+        nameCell.textContent = user.name;
+        row.appendChild(nameCell);
+
+        // QQ号
+        const qqCell = document.createElement('td');
+        qqCell.textContent = user.qq;
+        row.appendChild(qqCell);
+
+        // 货币数量
+        const valueCell = document.createElement('td');
+        valueCell.textContent = formatNumber(user[type]);
+        valueCell.className = `text-${colorClass}`; // 使用对应的颜色
+        row.appendChild(valueCell);
     });
 }
