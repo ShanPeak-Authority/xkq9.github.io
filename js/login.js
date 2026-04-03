@@ -183,7 +183,7 @@ async function handleLogin() {
     if (!user) {
         // 用户不存在，创建临时游客用户
         user = {
-            name: `用户${qq}`,  // 直接显示"用户+QQ号"
+            name: `用户${qq}`,
             qq: qq,
             copper: 0,
             gold: 0,
@@ -248,24 +248,20 @@ function showUserData(user) {
         userContainer.style.display = 'block';
 
         // 更新用户信息
-        // 如果userdata里有用户名称则显示用户名称，无用户名称则显示"用户+登录的QQ号"
-        // 注意：临时用户的name已经是"用户+QQ号"，正式用户使用表格中的name
         document.getElementById('userName').textContent = user.name;
         document.getElementById('userQQ').textContent = `QQ: ${user.qq}`;
         document.getElementById('copperValue').textContent = formatNumber(user.copper);
         document.getElementById('goldValue').textContent = formatNumber(user.gold);
         document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
 
-        // 设置QQ头像（仅在登录成功后展示）
+        // 设置QQ头像
         if (avatarElement) {
-            // 使用QQ官方头像接口
             const avatarUrl = `https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=3`;
             avatarElement.src = avatarUrl;
             avatarElement.alt = `${user.name}的头像`;
             avatarElement.onerror = function () {
-                // 如果头像加载失败，使用默认头像
                 this.src = '/res/default-avatar.png';
-                this.onerror = null; // 防止循环错误
+                this.onerror = null;
             };
         }
 
@@ -274,21 +270,31 @@ function showUserData(user) {
         document.getElementById('lastUpdateTime').textContent =
             `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
-        // 显示铜钱排行榜
-        showCopperRanking(user.qq);
+        // 显示排行榜
+        showAllRankings(user.qq);
+
+        // 初始化标签页切换功能
+        initRankingTabs();
     }
+}
+
+// 显示所有排行榜
+function showAllRankings(currentUserQQ) {
+    showCopperRanking(currentUserQQ);
+    showGoldRanking(currentUserQQ);
+    showDiamondRanking(currentUserQQ);
 }
 
 // 显示铜钱排行榜
 function showCopperRanking(currentUserQQ) {
-    const rankingContainer = document.getElementById('copperRankingContainer');
+    const rankingContainer = document.getElementById('copperRankingContent');
     if (!rankingContainer) return;
 
     // 筛选出铜钱大于0的用户
     const qualifiedUsers = userData.filter(user => user.copper > 0);
 
     if (qualifiedUsers.length === 0) {
-        rankingContainer.style.display = 'none';
+        rankingContainer.innerHTML = '<div class="no-ranking-data">暂无铜钱数据</div>';
         return;
     }
 
@@ -296,13 +302,7 @@ function showCopperRanking(currentUserQQ) {
     qualifiedUsers.sort((a, b) => b.copper - a.copper);
 
     // 生成排行榜HTML
-    let rankingHTML = `
-        <div class="ranking-header">
-            <h3><span class="text-bronze">🏆 铜钱排行榜</span></h3>
-            <div class="ranking-subtitle">共 ${qualifiedUsers.length} 位用户上榜</div>
-        </div>
-        <div class="ranking-list">
-    `;
+    let rankingHTML = `<div class="ranking-list">`;
 
     qualifiedUsers.forEach((user, index) => {
         const rank = index + 1;
@@ -321,7 +321,7 @@ function showCopperRanking(currentUserQQ) {
                     <div class="user-qq-small">QQ: ${user.qq}</div>
                 </div>
                 <div class="copper-amount ${isCurrentUser ? 'text-bronze' : ''}">
-                    ${formatNumber(user.copper)} <span class="copper-unit">铜钱</span>
+                    ${formatNumber(user.copper)}
                 </div>
             </div>
         `;
@@ -329,7 +329,123 @@ function showCopperRanking(currentUserQQ) {
 
     rankingHTML += `</div>`;
     rankingContainer.innerHTML = rankingHTML;
-    rankingContainer.style.display = 'block';
+}
+
+// 显示黄金排行榜
+function showGoldRanking(currentUserQQ) {
+    const rankingContainer = document.getElementById('goldRankingContent');
+    if (!rankingContainer) return;
+
+    // 筛选出黄金大于0的用户
+    const qualifiedUsers = userData.filter(user => user.gold > 0);
+
+    if (qualifiedUsers.length === 0) {
+        rankingContainer.innerHTML = '<div class="no-ranking-data">暂无黄金数据</div>';
+        return;
+    }
+
+    // 按黄金数量从高到低排序
+    qualifiedUsers.sort((a, b) => b.gold - a.gold);
+
+    // 生成排行榜HTML
+    let rankingHTML = `<div class="ranking-list">`;
+
+    qualifiedUsers.forEach((user, index) => {
+        const rank = index + 1;
+        const isCurrentUser = user.qq === currentUserQQ;
+        const rankClass = getRankClass(rank);
+        const userClass = isCurrentUser ? 'current-user' : '';
+
+        rankingHTML += `
+            <div class="ranking-item ${userClass}">
+                <div class="rank-badge ${rankClass}">${rank}</div>
+                <div class="user-avatar-small">
+                    <img src="https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=2" alt="${user.name}的头像" onerror="this.src='/res/default-avatar.png'">
+                </div>
+                <div class="user-info-small">
+                    <div class="user-name-small">${user.name}</div>
+                    <div class="user-qq-small">QQ: ${user.qq}</div>
+                </div>
+                <div class="gold-amount ${isCurrentUser ? 'text-gold' : ''}">
+                    ${formatNumber(user.gold)}
+                </div>
+            </div>
+        `;
+    });
+
+    rankingHTML += `</div>`;
+    rankingContainer.innerHTML = rankingHTML;
+}
+
+// 显示钻石排行榜
+function showDiamondRanking(currentUserQQ) {
+    const rankingContainer = document.getElementById('diamondRankingContent');
+    if (!rankingContainer) return;
+
+    // 筛选出钻石大于0的用户
+    const qualifiedUsers = userData.filter(user => user.diamond > 0);
+
+    if (qualifiedUsers.length === 0) {
+        rankingContainer.innerHTML = '<div class="no-ranking-data">暂无钻石数据</div>';
+        return;
+    }
+
+    // 按钻石数量从高到低排序
+    qualifiedUsers.sort((a, b) => b.diamond - a.diamond);
+
+    // 生成排行榜HTML
+    let rankingHTML = `<div class="ranking-list">`;
+
+    qualifiedUsers.forEach((user, index) => {
+        const rank = index + 1;
+        const isCurrentUser = user.qq === currentUserQQ;
+        const rankClass = getRankClass(rank);
+        const userClass = isCurrentUser ? 'current-user' : '';
+
+        rankingHTML += `
+            <div class="ranking-item ${userClass}">
+                <div class="rank-badge ${rankClass}">${rank}</div>
+                <div class="user-avatar-small">
+                    <img src="https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=2" alt="${user.name}的头像" onerror="this.src='/res/default-avatar.png'">
+                </div>
+                <div class="user-info-small">
+                    <div class="user-name-small">${user.name}</div>
+                    <div class="user-qq-small">QQ: ${user.qq}</div>
+                </div>
+                <div class="diamond-amount ${isCurrentUser ? 'text-diamond' : ''}">
+                    ${formatNumber(user.diamond)}
+                </div>
+            </div>
+        `;
+    });
+
+    rankingHTML += `</div>`;
+    rankingContainer.innerHTML = rankingHTML;
+}
+
+// 初始化标签页切换功能
+function initRankingTabs() {
+    const tabButtons = document.querySelectorAll('.ranking-tab-btn');
+    const tabContents = document.querySelectorAll('.ranking-tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+
+            // 移除所有按钮的active类
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            // 隐藏所有内容
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // 添加当前按钮的active类
+            button.classList.add('active');
+            // 显示对应的内容
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+        });
+    });
 }
 
 // 获取排名样式类
@@ -340,7 +456,31 @@ function getRankClass(rank) {
     return 'rank-other';
 }
 
-// 格式化数字显示（添加千分位）
+// 格式化数字显示（添加万分位分隔符）
 function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    // 将数字转换为字符串
+    let strNum = num.toString();
+
+    // 分割整数部分和小数部分
+    let parts = strNum.split('.');
+    let integerPart = parts[0];
+    let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+
+    // 对整数部分添加万分位分隔符
+    // 从右向左每4位添加一个逗号
+    let formattedInteger = '';
+    let count = 0;
+
+    for (let i = integerPart.length - 1; i >= 0; i--) {
+        formattedInteger = integerPart[i] + formattedInteger;
+        count++;
+
+        // 每4位添加一个逗号，但不要在开头添加
+        if (count % 4 === 0 && i > 0) {
+            formattedInteger = ',' + formattedInteger;
+        }
+    }
+
+    // 返回格式化后的数字
+    return formattedInteger + decimalPart;
 }
