@@ -98,6 +98,11 @@ export function performSearch() {
     document.getElementById('resultsCount') && (document.getElementById('resultsCount').textContent = globalMatchCount);
     document.getElementById('searchResultsHeader') && (document.getElementById('searchResultsHeader').style.display = 'flex');
 
+    const categoryContainer = document.querySelector('.category-container');
+    if (categoryContainer) {
+        categoryContainer.classList.add('search-active');
+    }
+
     const searchSuggestions = document.getElementById('searchSuggestions');
     searchSuggestions && searchSuggestions.classList.remove('active');
 
@@ -160,6 +165,11 @@ export function clearSearch() {
     searchInput && (searchInput.value = '');
 
     document.getElementById('searchResultsHeader') && (document.getElementById('searchResultsHeader').style.display = 'none');
+
+    const categoryContainer = document.querySelector('.category-container');
+    if (categoryContainer) {
+        categoryContainer.classList.remove('search-active');
+    }
 
     document.querySelectorAll('.category-panel').forEach(panel => {
         panel.querySelectorAll('.game-item:not(.no-results)').forEach(item => {
