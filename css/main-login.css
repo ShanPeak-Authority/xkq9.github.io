@@ -367,7 +367,7 @@
     }
 }
 
-/* 排行榜：列表-容器 */
+/* 排行榜：列表容器 */
 .ranking-list {
     display: flex;
     flex-direction: column;
@@ -381,7 +381,7 @@
     }
 }
 
-/* 排行榜：列表-List */
+/* 排行榜：列表List */
 .ranking-item {
     display: flex;
     align-items: center;
@@ -399,7 +399,7 @@
     }
 }
 
-/* 排行榜：列表-List-序号 */
+/* 排行榜：列表List-序号 */
 .ranking-rank {
     width: 30px;
     height: 30px;
@@ -416,7 +416,7 @@
     flex-shrink: 0;
 }
 
-/* 排行榜：列表-List-序号（前三名） */
+/* 排行榜：列表List-序号（前三名） */
 .ranking-rank.rank-1 {
     background: #fff8e1;
     border-color: #ffd54f;
@@ -435,7 +435,7 @@
     color: #e65100;
 }
 
-/* 用户头像 */
+/* 排行榜：列表List-用户头像 */
 .ranking-avatar {
     width: 45px;
     height: 45px;
@@ -450,7 +450,7 @@
     object-fit: cover;
 }
 
-/* 用户信息 */
+/* 排行榜：列表List-用户信息 */
 .ranking-user-info {
     flex: 1;
     display: flex;
@@ -488,13 +488,12 @@
     }
 }
 
-/* 货币数量 - 极简文本设计 */
+/* 排行榜：列表List-货币 */
 .ranking-value-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     margin-left: auto;
-    padding-left: 16px;
     flex-shrink: 0;
 }
 
@@ -507,22 +506,20 @@
     letter-spacing: -0.01em;
 }
 
-/* 货币颜色主题 - 仅用颜色区分 */
 .ranking-value-text.bronze {
-    color: #b45309;
+    color: #b87333;
 }
 
 .ranking-value-text.gold {
-    color: #ca8a04;
+    color: #d4af37;
 }
 
 .ranking-value-text.diamond {
-    color: #0ea5e9;
+    color: #3399ff;
 }
 
-/* 货币单位标签 */
 .ranking-value-label {
-    font-size: 11px;
+    font-size: 12px;
     color: #94a3b8;
     text-align: right;
     margin-top: 2px;
