@@ -203,17 +203,17 @@
 
 .data-card.bronze {
     border-left-color: #b87333;
-    border-top: 1px solid #b87333;
+    border-top: 0.5px solid #b87333;
 }
 
 .data-card.gold {
     border-left-color: #d4af37;
-    border-top: 1px solid #d4af37;
+    border-top: 0.5px solid #d4af37;
 }
 
 .data-card.diamond {
     border-left-color: #3399ff;
-    border-top: 1px solid #3399ff;
+    border-top: 0.5px solid #3399ff;
 }
 
 .data-content {
