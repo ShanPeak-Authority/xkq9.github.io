@@ -251,10 +251,16 @@
 }
 
 .data-description {
-    font-size: 12px;
+    font-size: 14px;
     color: #7d7d7d;
     padding: 0;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .data-description {
+        font-size: 12px;
+    }
 }
 
 /* 更新时间 */
@@ -262,13 +268,14 @@
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid #eeeeee;
-    font-size: 12px;
+    font-size: 14px;
     color: #7d7d7d;
 }
 
 @media (max-width: 768px) {
     .update-time {
         padding-top: 20px;
+        font-size: 12px;
     }
 }
 
