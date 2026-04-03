@@ -251,7 +251,7 @@ function showUserData(user) {
         // 如果userdata里有用户名称则显示用户名称，无用户名称则显示"用户+登录的QQ号"
         // 注意：临时用户的name已经是"用户+QQ号"，正式用户使用表格中的name
         document.getElementById('userName').textContent = user.name;
-        document.getElementById('userQQ').textContent = `QQ: ${user.qq}`;
+        document.getElementById('userQQ').textContent = `QQ：${user.qq}`;
         document.getElementById('copperValue').textContent = formatNumber(user.copper);
         document.getElementById('goldValue').textContent = formatNumber(user.gold);
         document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
