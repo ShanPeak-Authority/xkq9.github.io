@@ -9,12 +9,8 @@
     padding: 20px;
 }
 
-.login-form {
-    margin-top: 20px;
-}
-
 .input-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -22,8 +18,8 @@
     display: block;
     font-size: 14px;
     color: #283043;
-    margin-bottom: 8px;
-    font-weight: 500;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .input-group input {
