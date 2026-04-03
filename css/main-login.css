@@ -13,7 +13,6 @@
     padding: 10px;
     background: #f1f1f1;
     border-radius: 10px;
-    border: 2px solid transparent;
     align-items: center;
     overflow: hidden;
 }
@@ -37,10 +36,8 @@
 }
 
 .error-message {
-    color: #E63946;
     font-size: 12px;
     margin-top: 5px;
-    min-height: 18px;
     text-align: left;
 }
 
