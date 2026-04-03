@@ -97,7 +97,6 @@ export async function initializeMinePage() {
     }
 
     if (qqInput) {
-        // 删除头像预览功能，不再监听输入变化
         qqInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 handleLogin();
@@ -133,7 +132,7 @@ function checkLoginStatus() {
 function createAndShowGuestUser(qq) {
     // 创建临时游客用户
     const guestUser = {
-        name: `用户${qq}`,  // 直接显示"用户+QQ号"
+        name: `用户${qq}`,
         qq: qq,
         copper: 0,
         gold: 0,
@@ -183,7 +182,7 @@ async function handleLogin() {
     if (!user) {
         // 用户不存在，创建临时游客用户
         user = {
-            name: `用户${qq}`,  // 直接显示"用户+QQ号"
+            name: `用户${qq}`,
             qq: qq,
             copper: 0,
             gold: 0,
@@ -251,7 +250,7 @@ function showUserData(user) {
         // 如果userdata里有用户名称则显示用户名称，无用户名称则显示"用户+登录的QQ号"
         // 注意：临时用户的name已经是"用户+QQ号"，正式用户使用表格中的name
         document.getElementById('userName').textContent = user.name;
-        document.getElementById('userQQ').textContent = `QQ：${user.qq}`;
+        document.getElementById('userQQ').textContent = `${user.qq}`;
         document.getElementById('copperValue').textContent = formatNumber(user.copper);
         document.getElementById('goldValue').textContent = formatNumber(user.gold);
         document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
@@ -265,7 +264,7 @@ function showUserData(user) {
             avatarElement.onerror = function () {
                 // 如果头像加载失败，使用默认头像
                 this.src = '/res/default-avatar.png';
-                this.onerror = null; // 防止循环错误
+                this.onerror = null;
             };
         }
 
@@ -312,7 +311,7 @@ function createRankingSection(userContainer) {
     // 创建切换按钮
     currencyTypes.forEach((currency, index) => {
         const tab = document.createElement('div');
-        tab.className = `ranking-tab ${index === 0 ? 'active' : ''}`; // 默认激活第一个
+        tab.className = `ranking-tab ${index === 0 ? 'active' : ''}`;
         tab.dataset.type = currency.type;
         tab.dataset.colorClass = currency.colorClass;
         tab.textContent = currency.name;
@@ -364,9 +363,9 @@ function updateRankingTable(type, colorClass) {
 
     // 根据类型生成对应排行榜数据
     const rankedUsers = [...userData]
-        .filter(user => user[type] > 0) // 只包含有该货币数量的用户
-        .sort((a, b) => b[type] - a[type]) // 降序排列
-        .slice(0, 20); // 取前20名
+        .filter(user => user[type] > 0)
+        .sort((a, b) => b[type] - a[type])
+        .slice(0, 20);
 
     // 创建排行榜列表
     const rankingList = document.createElement('div');
@@ -386,7 +385,7 @@ function updateRankingTable(type, colorClass) {
         rankingItem.className = 'ranking-item';
         rankingList.appendChild(rankingItem);
 
-        // 左侧：排名徽章
+        // 左侧：序号
         const rankBadge = document.createElement('div');
         rankBadge.className = 'ranking-rank';
         // 为前三名添加特殊样式
@@ -409,7 +408,7 @@ function updateRankingTable(type, colorClass) {
         avatar.onerror = function () {
             // 如果头像加载失败，使用默认头像
             this.src = '/res/default-avatar.png';
-            this.onerror = null; // 防止循环错误
+            this.onerror = null;
         };
         avatarWrapper.appendChild(avatar);
 
@@ -425,7 +424,7 @@ function updateRankingTable(type, colorClass) {
 
         const userQQ = document.createElement('div');
         userQQ.className = 'ranking-user-qq';
-        userQQ.textContent = `QQ：${user.qq}`;
+        userQQ.textContent = `${user.qq}`;
         userInfo.appendChild(userQQ);
 
         // 右侧：货币数量
