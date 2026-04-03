@@ -324,11 +324,11 @@ function createRankingSection(userContainer) {
     rankingTableContainer.className = 'ranking-table-container';
     rankingContainer.appendChild(rankingTableContainer);
 
-    // 找到“用户排行”标题元素
+    // 找到"用户排行"标题元素
     const userRankingTitle = document.querySelector('#userContainer h1.section-title:last-of-type');
 
     if (userRankingTitle && userRankingTitle.nextSibling) {
-        // 将排行榜容器插入到“用户排行”标题之后
+        // 将排行榜容器插入到"用户排行"标题之后
         userRankingTitle.parentNode.insertBefore(rankingContainer, userRankingTitle.nextSibling);
     } else {
         // 如果找不到标题或其后无兄弟元素，则作为后备方案添加到用户容器末尾
@@ -376,55 +376,67 @@ function updateRankingTable(type, colorClass) {
         return;
     }
 
-    // 创建表格
-    const table = document.createElement('table');
-    rankingTableContainer.appendChild(table);
-
-    // 创建表头
-    const thead = document.createElement('thead');
-    table.appendChild(thead);
-    const headerRow = document.createElement('tr');
-    thead.appendChild(headerRow);
-
-    const headers = ['排名', '用户', 'QQ', '数量'];
-    headers.forEach(headerText => {
-        const th = document.createElement('th');
-        th.textContent = headerText;
-        headerRow.appendChild(th);
-    });
-
-    // 创建表体
-    const tbody = document.createElement('tbody');
-    table.appendChild(tbody);
+    // 创建排行榜列表
+    const rankingList = document.createElement('div');
+    rankingList.className = 'ranking-list';
+    rankingTableContainer.appendChild(rankingList);
 
     // 填充数据行
     rankedUsers.forEach((user, index) => {
-        const row = document.createElement('tr');
-        tbody.appendChild(row);
+        const rankingItem = document.createElement('div');
+        rankingItem.className = 'ranking-item';
+        rankingList.appendChild(rankingItem);
 
-        // 排名
-        const rankCell = document.createElement('td');
-        rankCell.textContent = `#${index + 1}`;
+        // 左侧：排名徽章
+        const rankBadge = document.createElement('div');
+        rankBadge.className = 'ranking-rank';
         // 为前三名添加特殊样式
         if (index < 3) {
-            rankCell.className = `rank-${index + 1}`;
+            rankBadge.className = `ranking-rank rank-${index + 1}`;
         }
-        row.appendChild(rankCell);
+        rankBadge.textContent = `#${index + 1}`;
+        rankingItem.appendChild(rankBadge);
 
-        // 用户名称
-        const nameCell = document.createElement('td');
-        nameCell.textContent = user.name;
-        row.appendChild(nameCell);
+        // 左侧：用户头像
+        const avatarWrapper = document.createElement('div');
+        avatarWrapper.className = 'ranking-avatar';
+        rankingItem.appendChild(avatarWrapper);
 
-        // QQ号
-        const qqCell = document.createElement('td');
-        qqCell.textContent = user.qq;
-        row.appendChild(qqCell);
+        const avatar = document.createElement('img');
+        avatar.className = 'ranking-avatar-img';
+        // 使用QQ官方头像接口
+        avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=3`;
+        avatar.alt = `${user.name}的头像`;
+        avatar.onerror = function () {
+            // 如果头像加载失败，使用默认头像
+            this.src = '/res/default-avatar.png';
+            this.onerror = null; // 防止循环错误
+        };
+        avatarWrapper.appendChild(avatar);
 
-        // 货币数量
-        const valueCell = document.createElement('td');
-        valueCell.textContent = formatNumber(user[type]);
-        valueCell.className = `text-${colorClass}`; // 使用对应的颜色
-        row.appendChild(valueCell);
+        // 中间：用户信息
+        const userInfo = document.createElement('div');
+        userInfo.className = 'ranking-user-info';
+        rankingItem.appendChild(userInfo);
+
+        const userName = document.createElement('div');
+        userName.className = 'ranking-user-name';
+        userName.textContent = user.name;
+        userInfo.appendChild(userName);
+
+        const userQQ = document.createElement('div');
+        userQQ.className = 'ranking-user-qq';
+        userQQ.textContent = `QQ: ${user.qq}`;
+        userInfo.appendChild(userQQ);
+
+        // 右侧：货币数量
+        const valueContainer = document.createElement('div');
+        valueContainer.className = 'ranking-value-container';
+        rankingItem.appendChild(valueContainer);
+
+        const valueBadge = document.createElement('div');
+        valueBadge.className = `ranking-value-badge ${colorClass}`;
+        valueBadge.textContent = formatNumber(user[type]);
+        valueContainer.appendChild(valueBadge);
     });
 }
