@@ -198,22 +198,22 @@
     display: flex;
     align-items: center;
     border-left: 5px solid;
-    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .data-card.bronze {
     border-left-color: #B87333;
-    border-top: 1.5px solid rgba(184, 115, 51, 0.1);
+    border-top: 2px solid rgba(184, 115, 51, 0.1);
 }
 
 .data-card.gold {
     border-left-color: #D4AF37;
-    border-top: 1.5px solid rgba(212, 175, 55, 0.1);
+    border-top: 2px solid rgba(212, 175, 55, 0.1);
 }
 
 .data-card.diamond {
     border-left-color: #3399FF;
-    border-top: 1.5px solid rgba(51, 153, 255, 0.1);
+    border-top: 2px solid rgba(51, 153, 255, 0.1);
 }
 
 .data-content {
