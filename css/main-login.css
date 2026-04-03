@@ -22,13 +22,13 @@
 }
 
 .input-group input {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    border-radius: 10px;
     font-size: 14px;
-    color: #283043;
+    padding: 10px;
     background: #f1f1f1;
+    border-radius: 10px;
+    border: 0 solid transparent;
+    align-items: center;
+    overflow: hidden;
 }
 
 .input-group input::placeholder {
