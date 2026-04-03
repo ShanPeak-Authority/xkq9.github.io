@@ -370,7 +370,7 @@ function updateRankingTable(type, colorClass) {
     const rankedUsers = [...userData]
         .filter(user => user[type] > 0) // 只包含有该货币数量的用户
         .sort((a, b) => b[type] - a[type]) // 降序排列
-        .slice(0, 10); // 取前10名
+        .slice(0, 20); // 取前20名
 
     if (rankedUsers.length === 0) {
         const noData = document.createElement('div');
