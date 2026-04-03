@@ -59,37 +59,39 @@
     background-color: #0d5bbf;
 }
 
-/* 用户数据容器 */
+/* 用户数据 */
 .user-container {
     width: 100%;
-    max-width: 800px;
-    padding: 0 20px;
 }
 
 .user-card {
     background: #ffffff;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .user-card {
+        padding: 15px;
+    }
 }
 
 /* 用户头部信息 */
 .user-header {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e1e5eb;
+    border-bottom: 0.5px solid #7d7d7d;
     position: relative;
 }
 
 .user-avatar {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid #1678ff;
+    border: 2px solid #1678ff;
     margin-right: 20px;
     flex-shrink: 0;
 }
