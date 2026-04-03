@@ -158,7 +158,7 @@
     border-radius: 30px;
     font-size: 14px;
     font-weight: bold;
-    align-self: flex-start;
+    align-self: center;
 }
 
 @media (max-width: 768px) {
