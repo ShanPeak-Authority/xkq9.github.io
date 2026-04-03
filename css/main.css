@@ -105,6 +105,7 @@ body {
     min-height: 0;
     padding: 30px 30px 69px;
     overflow-y: auto;
+    background: #eeeeee;
     display: none;
 }
 

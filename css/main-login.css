@@ -1,30 +1,3 @@
-/* 我的页面通用样式 */
-.mine-container {
-    flex: 1;
-    flex-direction: column;
-    min-height: 0;
-    padding: 30px 30px 69px;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f5f7fa;
-}
-
-@media (max-width: 768px) {
-    .mine-container {
-        padding: 20px 20px 53.5px;
-    }
-}
-
-.mine-container.active {
-    display: flex;
-}
-
-.mine-container.hidden {
-    display: none;
-}
-
 /* 登录容器 */
 .login-container {
     width: 100%;
