@@ -1431,7 +1431,7 @@
 
     <!-- 页面：我的 -->
     <div class="mine-container" id="mineContent">
-        <!-- 登录界面（默认显示） -->
+        <!-- 登录（默认显示） -->
         <div class="login-container" id="loginContainer">
             <h1 class="section-title">用户登录</h1>
             <div class="login-card">
@@ -1442,8 +1442,9 @@
                 <button class="login-btn" id="loginBtn">登录</button>
             </div>
         </div>
-        <!-- 用户数据界面（登录后显示） -->
+        <!-- 用户数据（登录后显示） -->
         <div class="user-container" id="userContainer" style="display: none;">
+            <!-- 个人信息 -->
             <h1 class="section-title">个人信息</h1>
             <div class="user-card">
                 <!-- 用户头像和昵称 -->
@@ -1488,6 +1489,11 @@
                 <div class="update-time">
                     <p>数据更新时间：<span id="lastUpdateTime">-</span></p>
                 </div>
+            </div>
+            <!-- 铜钱排行榜 -->
+            <h1 class="section-title">铜钱排行榜</h1>
+            <div class="copper-ranking-card" id="copperRankingContainer" style="display: none;">
+                <!-- 排行榜内容会通过JS动态生成 -->
             </div>
         </div>
     </div>

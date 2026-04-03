@@ -277,3 +277,199 @@
     padding: 0;
     margin: 0;
 }
+
+/* 铜钱排行榜 */
+.copper-ranking-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #B87333;
+    border-top: 1px solid rgba(184, 115, 51, 0.1);
+}
+
+@media (max-width: 768px) {
+    .copper-ranking-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.ranking-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e1e5eb;
+}
+
+.ranking-header h3 {
+    font-size: 20px;
+    color: #283043;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .ranking-header h3 {
+        font-size: 18px;
+    }
+}
+
+.ranking-subtitle {
+    font-size: 14px;
+    color: #7d7d7d;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .ranking-subtitle {
+        font-size: 12px;
+    }
+}
+
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e1e5eb;
+}
+
+.ranking-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-item.current-user {
+    background: rgba(184, 115, 51, 0.1);
+    border-left: 3px solid #B87333;
+}
+
+.rank-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.rank-1 {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #ffffff;
+    box-shadow: 0 3px 6px rgba(255, 215, 0, 0.3);
+}
+
+.rank-2 {
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    color: #ffffff;
+    box-shadow: 0 3px 6px rgba(192, 192, 192, 0.3);
+}
+
+.rank-3 {
+    background: linear-gradient(135deg, #CD7F32, #A0522D);
+    color: #ffffff;
+    box-shadow: 0 3px 6px rgba(205, 127, 50, 0.3);
+}
+
+.rank-other {
+    background: #e1e5eb;
+    color: #283043;
+}
+
+.user-avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #1678ff;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.user-avatar-small img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info-small {
+    flex: 1;
+    text-align: left;
+}
+
+.user-name-small {
+    font-size: 16px;
+    font-weight: 600;
+    color: #283043;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-qq-small {
+    font-size: 12px;
+    color: #7d7d7d;
+    margin: 0;
+}
+
+.copper-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #283043;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.copper-unit {
+    font-size: 12px;
+    color: #7d7d7d;
+    font-weight: normal;
+    margin-left: 3px;
+}
+
+@media (max-width: 768px) {
+    .rank-badge {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+    
+    .user-avatar-small {
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+    }
+    
+    .user-name-small {
+        font-size: 14px;
+    }
+    
+    .user-qq-small {
+        font-size: 11px;
+    }
+    
+    .copper-amount {
+        font-size: 16px;
+    }
+    
+    .copper-unit {
+        font-size: 11px;
+    }
+}

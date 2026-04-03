@@ -251,7 +251,7 @@ function showUserData(user) {
         // 如果userdata里有用户名称则显示用户名称，无用户名称则显示"用户+登录的QQ号"
         // 注意：临时用户的name已经是"用户+QQ号"，正式用户使用表格中的name
         document.getElementById('userName').textContent = user.name;
-        document.getElementById('userQQ').textContent = `QQ：${user.qq}`;
+        document.getElementById('userQQ').textContent = `QQ: ${user.qq}`;
         document.getElementById('copperValue').textContent = formatNumber(user.copper);
         document.getElementById('goldValue').textContent = formatNumber(user.gold);
         document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
@@ -273,7 +273,71 @@ function showUserData(user) {
         const now = new Date();
         document.getElementById('lastUpdateTime').textContent =
             `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+        // 显示铜钱排行榜
+        showCopperRanking(user.qq);
     }
+}
+
+// 显示铜钱排行榜
+function showCopperRanking(currentUserQQ) {
+    const rankingContainer = document.getElementById('copperRankingContainer');
+    if (!rankingContainer) return;
+
+    // 筛选出铜钱大于0的用户
+    const qualifiedUsers = userData.filter(user => user.copper > 0);
+
+    if (qualifiedUsers.length === 0) {
+        rankingContainer.style.display = 'none';
+        return;
+    }
+
+    // 按铜钱数量从高到低排序
+    qualifiedUsers.sort((a, b) => b.copper - a.copper);
+
+    // 生成排行榜HTML
+    let rankingHTML = `
+        <div class="ranking-header">
+            <h3><span class="text-bronze">🏆 铜钱排行榜</span></h3>
+            <div class="ranking-subtitle">共 ${qualifiedUsers.length} 位用户上榜</div>
+        </div>
+        <div class="ranking-list">
+    `;
+
+    qualifiedUsers.forEach((user, index) => {
+        const rank = index + 1;
+        const isCurrentUser = user.qq === currentUserQQ;
+        const rankClass = getRankClass(rank);
+        const userClass = isCurrentUser ? 'current-user' : '';
+
+        rankingHTML += `
+            <div class="ranking-item ${userClass}">
+                <div class="rank-badge ${rankClass}">${rank}</div>
+                <div class="user-avatar-small">
+                    <img src="https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=2" alt="${user.name}的头像" onerror="this.src='/res/default-avatar.png'">
+                </div>
+                <div class="user-info-small">
+                    <div class="user-name-small">${user.name}</div>
+                    <div class="user-qq-small">QQ: ${user.qq}</div>
+                </div>
+                <div class="copper-amount ${isCurrentUser ? 'text-bronze' : ''}">
+                    ${formatNumber(user.copper)} <span class="copper-unit">铜钱</span>
+                </div>
+            </div>
+        `;
+    });
+
+    rankingHTML += `</div>`;
+    rankingContainer.innerHTML = rankingHTML;
+    rankingContainer.style.display = 'block';
+}
+
+// 获取排名样式类
+function getRankClass(rank) {
+    if (rank === 1) return 'rank-1';
+    if (rank === 2) return 'rank-2';
+    if (rank === 3) return 'rank-3';
+    return 'rank-other';
 }
 
 // 格式化数字显示（添加千分位）
