@@ -14,6 +14,11 @@ export function initializeCategory() {
         categoryPanels.forEach(panel => panel.classList.remove('active'));
         targetPanel?.classList.add('active');
 
+        const contentContainer = document.querySelector('.category-content');
+        if (contentContainer) {
+            contentContainer.scrollTop = 0;
+        }
+
         activeCategory = category;
         activeSubFilter = targetPanel?.querySelector('.sub-tag.active')?.dataset.subfilter || null;
         applySubFilter(targetPanel);
