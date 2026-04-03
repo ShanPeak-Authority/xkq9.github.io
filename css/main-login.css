@@ -123,10 +123,10 @@
 }
 
 .user-name {
-    font-size: 24px;
+    font-size: 25px;
+    font-weight: bold;
     color: #283043;
     margin-bottom: 5px;
-    font-weight: 600;
 }
 
 .user-qq {
