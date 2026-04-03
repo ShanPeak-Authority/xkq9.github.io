@@ -276,7 +276,7 @@ function showUserData(user) {
     }
 }
 
-// 格式化数字显示（添加千分位）
+// 格式化数字显示（添加万分位）
 function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return num.toString().replace(/\B(?=(\d{4})+(?!\d))/g, ',');
 }
