@@ -294,23 +294,6 @@
     }
 }
 
-/* 排行榜标题 */
-.ranking-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #283043;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eeeeee;
-}
-
-@media (max-width: 768px) {
-    .ranking-title {
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
-}
-
 /* 排行榜切换按钮 */
 .ranking-tabs {
     display: flex;

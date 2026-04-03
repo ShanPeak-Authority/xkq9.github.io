@@ -297,12 +297,6 @@ function createRankingSection(userContainer) {
     rankingContainer.id = 'rankingContainer';
     rankingContainer.className = 'ranking-container';
 
-    // 创建排行榜标题
-    const rankingTitle = document.createElement('div');
-    rankingTitle.className = 'ranking-title';
-    rankingTitle.textContent = '排行榜';
-    rankingContainer.appendChild(rankingTitle);
-
     // 创建切换按钮容器
     const rankingTabs = document.createElement('div');
     rankingTabs.className = 'ranking-tabs';
@@ -330,12 +324,14 @@ function createRankingSection(userContainer) {
     rankingTableContainer.className = 'ranking-table-container';
     rankingContainer.appendChild(rankingTableContainer);
 
-    // 将排行榜容器添加到用户信息卡片之后
-    const userCard = userContainer.querySelector('.user-card');
-    if (userCard) {
-        userCard.parentNode.insertBefore(rankingContainer, userCard.nextSibling);
+    // 找到“用户排行”标题元素
+    const userRankingTitle = document.querySelector('#userContainer h1.section-title:last-of-type');
+
+    if (userRankingTitle && userRankingTitle.nextSibling) {
+        // 将排行榜容器插入到“用户排行”标题之后
+        userRankingTitle.parentNode.insertBefore(rankingContainer, userRankingTitle.nextSibling);
     } else {
-        // 如果找不到user-card，则添加到用户容器末尾
+        // 如果找不到标题或其后无兄弟元素，则作为后备方案添加到用户容器末尾
         userContainer.appendChild(rankingContainer);
     }
 
