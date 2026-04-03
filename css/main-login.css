@@ -347,7 +347,6 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     border-radius: 5px;
-    border: 1px solid #eeeeee;
 }
 
 /* 隐藏滚动条 (WebKit) */
@@ -355,78 +354,6 @@
     display: none;
     width: 0;
     height: 0;
-}
-
-/* 排行榜表格 */
-.ranking-table-container table {
-    width: 100%;
-    min-width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 0;
-    background: #ffffff;
-    border: none;
-}
-
-.ranking-table-container thead th {
-    background: rgba(22, 120, 255, 0.07);
-    color: #283043;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    padding: 12px 8px;
-    border-bottom: 2px solid #1678ff;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-    .ranking-table-container thead th {
-        font-size: 12px;
-        padding: 8px 6px;
-    }
-}
-
-.ranking-table-container tbody td {
-    font-size: 14px;
-    padding: 10px 8px;
-    border: none;
-    border-bottom: 1px solid #eeeeee;
-    color: #283043;
-    text-align: center;
-    white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-    .ranking-table-container tbody td {
-        font-size: 12px;
-        padding: 8px 6px;
-    }
-}
-
-/* 表格行样式（移除hover效果，改为斑马纹） */
-.ranking-table-container tbody tr:nth-child(even) {
-    background-color: rgba(22, 120, 255, 0.02);
-}
-
-/* 排名单元格样式 */
-.ranking-table-container .rank-1 {
-    color: #D4AF37;
-    /* 金色 */
-    font-weight: bold;
-}
-
-.ranking-table-container .rank-2 {
-    color: #C0C0C0;
-    /* 银色 */
-    font-weight: bold;
-}
-
-.ranking-table-container .rank-3 {
-    color: #CD7F32;
-    /* 铜色 */
-    font-weight: bold;
 }
 
 /* 无数据提示 */
