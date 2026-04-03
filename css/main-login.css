@@ -4,39 +4,37 @@
 }
 
 .login-card {
-    width: calc(100% - 60px);
     background: #ffffff;
     border-radius: 10px;
     padding: 20px;
 }
 
-.input-group {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.input-group p {
-    font-size: 14px;
-    font-weight: bold;
-    color: #283043;
-    margin-bottom: 20px;
-}
-
-.input-group input {
-    width: 100%;
-    height: auto;
-    font-size: 14px;
+.input-box {
     padding: 10px;
     background: #f1f1f1;
     border-radius: 10px;
-    border: 2px solid #1678ff;
+    border: 2px solid transparent;
     align-items: center;
     overflow: hidden;
+    display: flex;
 }
 
-.input-group input::placeholder {
-    color: #b0b2bf;
+.input-box.focused {
+    border-color: #1678ff;
+    background: #ffffff;
+}
+
+.input-box input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    outline: none;
+    font-size: 14px;
+    color: #283043;
+}
+
+.input-box input::placeholder {
+    color: #7d7d7d;
 }
 
 .error-message {
