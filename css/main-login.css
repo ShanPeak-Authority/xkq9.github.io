@@ -39,7 +39,7 @@
 .error-message {
     color: #E63946;
     font-size: 12px;
-    margin-top: 5px;
+    padding-top: 5px;
     text-align: left;
 }
 
