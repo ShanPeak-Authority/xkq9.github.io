@@ -126,6 +126,8 @@
 }
 
 .user-name {
+    padding: 0;
+    margin: 0;
     font-size: 25px;
     font-weight: bold;
     color: #283043;
@@ -138,9 +140,10 @@
 }
 
 .user-qq {
+    padding: 0;
+    margin: 0;
     font-size: 16px;
     color: #7d7d7d;
-    margin: 0;
 }
 
 @media (max-width: 768px) {
