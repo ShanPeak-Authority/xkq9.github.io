@@ -425,7 +425,7 @@ function updateRankingTable(type, colorClass) {
 
         const userQQ = document.createElement('div');
         userQQ.className = 'ranking-user-qq';
-        userQQ.textContent = `QQ: ${user.qq}`;
+        userQQ.textContent = `QQ：${user.qq}`;
         userInfo.appendChild(userQQ);
 
         // 右侧：货币数量
