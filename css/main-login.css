@@ -437,23 +437,20 @@
 
 /* 用户头像 */
 .ranking-avatar {
-    width: 48px;
-    height: 48px;
-    margin-right: 16px;
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
     flex-shrink: 0;
 }
 
 .ranking-avatar-img {
     width: 100%;
     height: 100%;
-    border-radius: 12px;
+    border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    background: linear-gradient(45deg, #f8fafc, #f1f5f9);
 }
 
-/* 用户信息 - 精致排版 */
+/* 用户信息 */
 .ranking-user-info {
     flex: 1;
     display: flex;
@@ -463,25 +460,32 @@
 }
 
 .ranking-user-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 4px;
-    line-height: 1.4;
+    font-size: 16px;
+    font-weight: bold;
+    color: #283043;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+    .ranking-user-name {
+        font-size: 14px;
+    }
 }
 
 .ranking-user-qq {
     font-size: 12px;
-    color: #64748b;
-    line-height: 1.4;
+    color: #7d7d7d;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family: 'Monaco', 'Consolas', monospace;
+}
+
+@media (max-width: 768px) {
+    .ranking-user-qq {
+        font-size: 10px;
+    }
 }
 
 /* 货币数量 - 极简文本设计 */
