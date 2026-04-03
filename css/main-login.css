@@ -12,7 +12,7 @@
 
 @media (max-width: 768px) {
     .login-card {
-    width: calc(50% - 60px);
+        width: calc(50% - 60px);
         padding: 20px;
     }
 }
@@ -61,7 +61,13 @@
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .login-btn {
+        margin-top: 20px;
+    }
 }
 
 .login-btn:hover {
