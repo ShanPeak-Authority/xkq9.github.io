@@ -65,7 +65,6 @@ export async function initializeMinePage() {
     const loginBtn = document.getElementById('loginBtn');
     const logoutBtn = document.getElementById('logoutBtn');
     const qqInput = document.getElementById('qqInput');
-    const avatarPreview = document.getElementById('avatarPreview');
 
     // 先加载用户数据
     const loadingElement = document.createElement('div');
@@ -97,7 +96,6 @@ export async function initializeMinePage() {
     }
 
     if (qqInput) {
-        // 删除头像预览功能，不再监听输入变化
         qqInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 handleLogin();
@@ -183,7 +181,7 @@ async function handleLogin() {
     if (!user) {
         // 用户不存在，创建临时游客用户
         user = {
-            name: `用户${qq}`,  // 直接显示"用户+QQ号"
+            name: `用户${qq}`,
             qq: qq,
             copper: 0,
             gold: 0,
@@ -241,38 +239,48 @@ function showLoginForm() {
 function showUserData(user) {
     const loginContainer = document.getElementById('loginContainer');
     const userContainer = document.getElementById('userContainer');
-    const avatarElement = document.getElementById('userAvatar');
 
     if (loginContainer && userContainer) {
         loginContainer.style.display = 'none';
         userContainer.style.display = 'block';
 
         // 更新用户信息
-        // 如果userdata里有用户名称则显示用户名称，无用户名称则显示"用户+登录的QQ号"
-        // 注意：临时用户的name已经是"用户+QQ号"，正式用户使用表格中的name
         document.getElementById('userName').textContent = user.name;
-        document.getElementById('userQQ').textContent = `QQ：${user.qq}`;
-        document.getElementById('copperValue').textContent = formatNumber(user.copper);
-        document.getElementById('goldValue').textContent = formatNumber(user.gold);
-        document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
+        document.getElementById('userQQ').textContent = `QQ: ${user.qq}`;
+        document.getElementById('copperValue').textContent = user.copper.toLocaleString();
+        document.getElementById('goldValue').textContent = user.gold.toLocaleString();
+        document.getElementById('diamondValue').textContent = user.diamond.toLocaleString();
 
-        // 设置QQ头像（仅在登录成功后展示）
-        if (avatarElement) {
-            // 使用QQ官方头像接口
-            const avatarUrl = `https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=3`;
-            avatarElement.src = avatarUrl;
-            avatarElement.alt = `${user.name}的头像`;
-            avatarElement.onerror = function () {
-                // 如果头像加载失败，使用默认头像
-                this.src = '/res/default-avatar.png';
-                this.onerror = null; // 防止循环错误
-            };
+        // 设置头像（如果没有头像，使用默认头像）
+        const avatarImg = document.getElementById('userAvatar');
+        if (avatarImg) {
+            const avatarUrl = `/res/avatars/${user.qq}.png`;
+            // 先尝试加载用户头像
+            fetch(avatarUrl, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        avatarImg.src = avatarUrl;
+                    } else {
+                        // 如果头像不存在，使用默认QQ头像
+                        avatarImg.src = '/res/QQ.png';
+                    }
+                })
+                .catch(() => {
+                    // 如果加载失败，使用默认QQ头像
+                    avatarImg.src = '/res/QQ.png';
+                });
         }
 
-        // 设置更新时间
+        // 设置数据更新时间
         const now = new Date();
-        document.getElementById('lastUpdateTime').textContent =
-            `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        const updateTimeElement = document.getElementById('updateTime');
+        if (updateTimeElement) {
+            updateTimeElement.textContent = `数据更新时间: ${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        }
+
+        // 修复：新增排行榜数据加载和渲染
+        renderRankings(userData, user.qq); // 传入已加载的全部用户数据和当前用户的QQ
+        setupRankingTabSwitcher(); // 设置排行榜标签页的切换功能
     }
 }
 
