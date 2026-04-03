@@ -22,11 +22,13 @@
 }
 
 .input-group input {
+    width: auto;
+    height: auto;
     font-size: 14px;
     padding: 10px;
     background: #f1f1f1;
     border-radius: 10px;
-    border: 0 solid transparent;
+    border: 0 solid #f1f1f1;
     align-items: center;
     overflow: hidden;
 }
