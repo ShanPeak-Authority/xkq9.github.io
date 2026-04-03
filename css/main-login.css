@@ -14,28 +14,21 @@
     text-align: left;
 }
 
-.input-group label {
-    display: block;
+.input-group p {
     font-size: 14px;
+    font-weight: bold;
     color: #283043;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
 .input-group input {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e1e5eb;
+    height: auto;
+    padding: 10px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 14px;
     color: #283043;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-    outline: none;
-    border-color: #1678ff;
+    background: #f1f1f1;
 }
 
 .input-group input::placeholder {
