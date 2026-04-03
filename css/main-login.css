@@ -68,12 +68,12 @@
     width: 100%;
     background: #ffffff;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
 }
 
 @media (max-width: 768px) {
     .user-card {
-        padding: 15px;
+        padding: 20px;
     }
 }
 
@@ -81,10 +81,17 @@
 .user-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
     border-bottom: 0.5px solid #7d7d7d;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .user-header {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
 }
 
 .user-avatar {
@@ -95,6 +102,13 @@
     border: 2px solid #1678ff;
     margin-right: 20px;
     flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .user-avatar img {
