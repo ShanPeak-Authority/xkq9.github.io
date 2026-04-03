@@ -203,17 +203,14 @@
 
 .data-card.bronze {
     border-left-color: #B87333;
-    border-top: 2px solid rgba(184, 115, 51, 0.1);
 }
 
 .data-card.gold {
     border-left-color: #D4AF37;
-    border-top: 2px solid rgba(212, 175, 55, 0.1);
 }
 
 .data-card.diamond {
     border-left-color: #3399FF;
-    border-top: 2px solid rgba(51, 153, 255, 0.1);
 }
 
 .data-content {
