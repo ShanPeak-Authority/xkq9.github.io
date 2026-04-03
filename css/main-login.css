@@ -48,21 +48,15 @@
     background: #1678ff;
     color: #ffffff;
     border: none;
-    padding: 15px 20px;
+    padding: 10px;
     border-radius: 10px;
     font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .login-btn:hover {
     background-color: #0d5bbf;
-}
-
-.login-btn:active {
-    transform: translateY(1px);
 }
 
 /* 用户数据容器 */
