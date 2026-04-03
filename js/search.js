@@ -1,5 +1,34 @@
 let searchHistory = JSON.parse(localStorage.getItem('gameSearchHistory')) || [];
 
+// 计算并设置底部内边距的函数
+function setSearchBottomPadding() {
+    const categoryContainer = document.querySelector('.category-container');
+    if (!categoryContainer) return;
+
+    // 根据窗口宽度决定底边距大小
+    const isMobile = window.innerWidth <= 768;
+    const paddingValue = isMobile ? '49px' : '61px';
+
+    // 直接设置内联样式
+    categoryContainer.style.paddingBottom = paddingValue;
+}
+
+// 移除底部内边距的函数
+function removeSearchBottomPadding() {
+    const categoryContainer = document.querySelector('.category-container');
+    if (categoryContainer) {
+        categoryContainer.style.paddingBottom = '';
+    }
+}
+
+// 窗口大小变化时重新计算底边距
+function handleWindowResize() {
+    const searchHeader = document.getElementById('searchResultsHeader');
+    if (searchHeader && searchHeader.style.display === 'flex') {
+        setSearchBottomPadding();
+    }
+}
+
 export function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
@@ -35,6 +64,9 @@ export function initializeSearch() {
             performSearch();
         }
     });
+
+    // 添加窗口大小变化监听
+    window.addEventListener('resize', handleWindowResize);
 }
 
 export function performSearch() {
@@ -98,10 +130,8 @@ export function performSearch() {
     document.getElementById('resultsCount') && (document.getElementById('resultsCount').textContent = globalMatchCount);
     document.getElementById('searchResultsHeader') && (document.getElementById('searchResultsHeader').style.display = 'flex');
 
-    const categoryContainer = document.querySelector('.category-container');
-    if (categoryContainer) {
-        categoryContainer.classList.add('search-active');
-    }
+    // 为分类内容容器添加动态计算的底部边距
+    setSearchBottomPadding();
 
     const searchSuggestions = document.getElementById('searchSuggestions');
     searchSuggestions && searchSuggestions.classList.remove('active');
@@ -166,10 +196,8 @@ export function clearSearch() {
 
     document.getElementById('searchResultsHeader') && (document.getElementById('searchResultsHeader').style.display = 'none');
 
-    const categoryContainer = document.querySelector('.category-container');
-    if (categoryContainer) {
-        categoryContainer.classList.remove('search-active');
-    }
+    // 移除分类内容容器的底部边距
+    removeSearchBottomPadding();
 
     document.querySelectorAll('.category-panel').forEach(panel => {
         panel.querySelectorAll('.game-item:not(.no-results)').forEach(item => {
