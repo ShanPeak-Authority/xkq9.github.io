@@ -71,6 +71,17 @@
     overflow: auto;
 }
 
+.category-container.search-active {
+    padding-bottom: 61px;
+}
+
+
+@media (max-width: 768px) {
+    .category-container.search-active {
+        padding-bottom: 49px;
+    }
+}
+
 /* 左侧：纵向分类 */
 .category-sidebar {
     width: 200px;
@@ -125,17 +136,6 @@
 @media (max-width: 768px) {
     .category-content {
         padding: 15px 15px 0;
-    }
-}
-
-.category-content.search-active {
-    padding-bottom: 61px;
-}
-
-
-@media (max-width: 768px) {
-    .category-content.search-active {
-        padding-bottom: 49px;
     }
 }
 
