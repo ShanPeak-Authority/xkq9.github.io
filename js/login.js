@@ -65,6 +65,7 @@ export async function initializeMinePage() {
     const loginBtn = document.getElementById('loginBtn');
     const logoutBtn = document.getElementById('logoutBtn');
     const qqInput = document.getElementById('qqInput');
+    const avatarPreview = document.getElementById('avatarPreview');
 
     // 先加载用户数据
     const loadingElement = document.createElement('div');
@@ -96,6 +97,8 @@ export async function initializeMinePage() {
     }
 
     if (qqInput) {
+        // 监听QQ号输入变化，实时更新头像预览
+        qqInput.addEventListener('input', updateAvatarPreview);
         qqInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 handleLogin();
@@ -105,11 +108,43 @@ export async function initializeMinePage() {
         // 从localStorage恢复上次登录的QQ号
         if (currentUserQQ) {
             qqInput.value = currentUserQQ;
+            updateAvatarPreview();
         }
     }
 
     // 页面加载时检查登录状态
     checkLoginStatus();
+}
+
+// 更新头像预览
+function updateAvatarPreview() {
+    const qqInput = document.getElementById('qqInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+    const errorMessage = document.getElementById('qqError');
+
+    if (!avatarPreview || !qqInput) return;
+
+    const qq = qqInput.value.trim();
+
+    if (qq && /^\d{5,12}$/.test(qq)) {
+        // 清空可能的错误信息
+        if (errorMessage) {
+            errorMessage.textContent = '';
+        }
+
+        // 更新预览头像
+        const avatarUrl = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=3`;
+        avatarPreview.src = avatarUrl;
+        avatarPreview.style.display = 'block';
+        avatarPreview.onerror = function () {
+            // 头像加载失败时，使用默认头像
+            this.src = '/res/default-avatar.png';
+            this.onerror = null;
+        };
+    } else {
+        // QQ号无效时隐藏预览
+        avatarPreview.style.display = 'none';
+    }
 }
 
 // 检查登录状态
@@ -119,19 +154,52 @@ function checkLoginStatus() {
         if (user) {
             showUserData(user);
         } else {
-            // 如果用户数据不存在，不清除登录状态，创建游客用户显示
-            const guestUser = {
-                name: '未注册用户',
-                qq: currentUserQQ,
-                copper: 0,
-                gold: 0,
-                diamond: 0
-            };
-            showUserData(guestUser);
-            // 注意：localStorage中的登录状态保持不变
+            // 如果用户数据不存在，创建临时用户
+            createAndShowGuestUser(currentUserQQ);
         }
     } else {
         showLoginForm();
+    }
+}
+
+// 创建并显示游客用户
+function createAndShowGuestUser(qq) {
+    // 创建临时游客用户
+    const guestUser = {
+        name: '获取中...',  // 初始显示"获取中..."，等头像加载结果确定
+        qq: qq,
+        copper: 0,
+        gold: 0,
+        diamond: 0,
+        isTempUser: true
+    };
+
+    // 先显示基本数据
+    showUserData(guestUser);
+
+    // 尝试获取QQ昵称
+    fetchQQNickname(qq).then(nickname => {
+        if (nickname) {
+            // 更新用户名为获取到的昵称
+            document.getElementById('userName').textContent = nickname;
+        } else {
+            // 如果头像加载失败，用户名会显示为"未注册用户"
+        }
+    });
+}
+
+// 尝试获取QQ昵称
+async function fetchQQNickname(qq) {
+    // 注意：由于跨域限制，这里可能需要使用代理或后端接口
+    // 这是一个示例接口，实际使用时可能需要替换
+    try {
+        // 方法1：尝试通过头像接口获取（某些接口可能会返回昵称）
+        // 方法2：如果有后端代理，可以通过后端调用QQ接口
+        // 这里我们先不实现具体逻辑，由头像加载失败事件处理
+        return null;
+    } catch (error) {
+        console.error('获取QQ昵称失败:', error);
+        return null;
     }
 }
 
@@ -173,13 +241,13 @@ async function handleLogin() {
     if (!user) {
         // 用户不存在，创建临时游客用户
         user = {
-            name: '未注册用户', // 名称固定为"未注册用户"
-            qq: qq,            // QQ号为输入的值
-            copper: 0,         // 铜钱为0
-            gold: 0,           // 黄金为0
-            diamond: 0         // 钻石为0
+            name: '获取中...',  // 初始显示"获取中..."
+            qq: qq,
+            copper: 0,
+            gold: 0,
+            diamond: 0,
+            isTempUser: true
         };
-        // 注意：此用户不会被加入userData数组，仅用于本次登录会话
     }
 
     // 保存登录状态（无论是正式用户还是游客）
@@ -188,6 +256,16 @@ async function handleLogin() {
 
     // 显示用户数据
     showUserData(user);
+
+    // 如果是临时用户，尝试获取昵称
+    if (user.isTempUser) {
+        fetchQQNickname(qq).then(nickname => {
+            if (nickname) {
+                // 更新用户名为获取到的昵称
+                document.getElementById('userName').textContent = nickname;
+            }
+        });
+    }
 }
 
 // 处理退出登录
@@ -211,6 +289,7 @@ function showLoginForm() {
     const userContainer = document.getElementById('userContainer');
     const qqInput = document.getElementById('qqInput');
     const errorMessage = document.getElementById('qqError');
+    const avatarPreview = document.getElementById('avatarPreview');
 
     if (loginContainer && userContainer) {
         loginContainer.style.display = 'block';
@@ -224,6 +303,12 @@ function showLoginForm() {
         if (errorMessage) {
             errorMessage.textContent = '';
         }
+
+        // 清除头像预览
+        if (avatarPreview) {
+            avatarPreview.src = '';
+            avatarPreview.style.display = 'none';
+        }
     }
 }
 
@@ -231,6 +316,7 @@ function showLoginForm() {
 function showUserData(user) {
     const loginContainer = document.getElementById('loginContainer');
     const userContainer = document.getElementById('userContainer');
+    const avatarElement = document.getElementById('userAvatar');
 
     if (loginContainer && userContainer) {
         loginContainer.style.display = 'none';
@@ -244,18 +330,33 @@ function showUserData(user) {
         document.getElementById('diamondValue').textContent = formatNumber(user.diamond);
 
         // 设置QQ头像
-        const avatarElement = document.getElementById('userAvatar');
         if (avatarElement) {
-            // 使用QQ官方头像接口，qlogo.cn，支持多种尺寸
-            // 参数s表示尺寸：1(40x40), 2(40x40), 3(100x100), 4(140x140), 5(640x640)
-            // 这里使用100x100的尺寸
+            // 使用QQ官方头像接口
             const avatarUrl = `https://q1.qlogo.cn/g?b=qq&nk=${user.qq}&s=3`;
             avatarElement.src = avatarUrl;
             avatarElement.alt = `${user.name}的头像`;
+
+            // 头像加载失败时的处理
             avatarElement.onerror = function () {
-                // 如果头像加载失败（例如QQ号不存在），使用默认头像
-                this.src = '/res/default-avatar.png'; // 需要准备一个默认头像图片
+                // 如果头像加载失败，使用默认头像
+                this.src = '/res/default-avatar.png';
                 this.onerror = null; // 防止循环错误
+
+                // 如果这是临时用户（不在表格中），将用户名改为"未注册用户"
+                if (user.isTempUser && document.getElementById('userName').textContent === '获取中...') {
+                    document.getElementById('userName').textContent = '未注册用户';
+                }
+            };
+
+            // 头像加载成功时的处理
+            avatarElement.onload = function () {
+                // 如果是临时用户且当前显示"获取中..."，检查是否可以获取昵称
+                if (user.isTempUser && document.getElementById('userName').textContent === '获取中...') {
+                    // 头像加载成功，但可能没有昵称信息
+                    // 这里可以尝试通过其他方式获取昵称，如果获取不到，保持为QQ号
+                    // 暂时将QQ号作为昵称显示
+                    document.getElementById('userName').textContent = `用户${user.qq}`;
+                }
             };
         }
 
