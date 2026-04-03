@@ -368,14 +368,6 @@ function updateRankingTable(type, colorClass) {
         .sort((a, b) => b[type] - a[type]) // 降序排列
         .slice(0, 20); // 取前20名
 
-    if (rankedUsers.length === 0) {
-        const noData = document.createElement('div');
-        noData.className = 'no-ranking-data';
-        noData.textContent = '暂无数据';
-        rankingTableContainer.appendChild(noData);
-        return;
-    }
-
     // 创建排行榜列表
     const rankingList = document.createElement('div');
     rankingList.className = 'ranking-list';
