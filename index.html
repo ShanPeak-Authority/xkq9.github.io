@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/main-card.css">
     <link rel="stylesheet" href="/css/main-recommend.css">
     <link rel="stylesheet" href="/css/main-nav.css">
+    <link rel="stylesheet" href="/css/main-login.css">
     <link rel="stylesheet" href="/css/func/func-mask.css">
     <link rel="stylesheet" href="/css/func/func-table.css">
     <link rel="stylesheet" href="/css/func/func-text.css">
@@ -1430,173 +1431,84 @@
 
     <!-- 页面：我的 -->
     <div class="mine-container" id="mineContent">
-        <h1 class="section-title">个人道具查询</h1>
-        <div class="card">
-            <h2 class="card-title">数据表</h2>
-            <div class="card-content">
-                <p><strong>说明：</strong></p>
-                <ul>
-                    <li>点击"铜钱"表头可切换排序方式</li>
-                    <li>用户数据实时更新</li>
-                </ul>
-            </div>
-            <div class="table-container">
-                <table id="data-table">
-                    <thead>
-                        <tr>
-                            <th>用户名</th>
-                            <th>QQ号</th>
-                            <th id="sort-copper" class="sort-header">铜钱 ▼</th>
-                            <th>黄金</th>
-                            <th>钻石</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>青丝</td>
-                            <td>2904323275</td>
-                            <td>4130000</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>清秋团月</td>
-                            <td>762786652</td>
-                            <td>22580</td>
-                            <td>1</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>52</td>
-                            <td>3484760686</td>
-                            <td>369890</td>
-                            <td>-</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>无痕</td>
-                            <td>1679835461</td>
-                            <td>1090</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>果农</td>
-                            <td>2236099138</td>
-                            <td>21000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>氪金就好了</td>
-                            <td>3615617459</td>
-                            <td>1600</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>北凉</td>
-                            <td>1914308849</td>
-                            <td>1220</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>奕许</td>
-                            <td>3440914298</td>
-                            <td>1108000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>curtain</td>
-                            <td>3500274928</td>
-                            <td>11500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>望纾</td>
-                            <td>3548921724</td>
-                            <td>5058000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>雾雨</td>
-                            <td>3536804341</td>
-                            <td>63000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>句号</td>
-                            <td>649313558</td>
-                            <td>60000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>CR</td>
-                            <td>2282065753</td>
-                            <td>20000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>问号</td>
-                            <td>1537016380</td>
-                            <td>25000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>诰春</td>
-                            <td>2127968971</td>
-                            <td>15000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>YYZ</td>
-                            <td>2483953638</td>
-                            <td>10000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>雾里</td>
-                            <td>1029724523</td>
-                            <td>45000</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>马嘉祺</td>
-                            <td>1590202553</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>春节</td>
-                            <td>1771388279</td>
-                            <td>6242152</td>
-                            <td>1</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>YOLO</td>
-                            <td>1219760389</td>
-                            <td>3257713</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- 登录界面（默认显示） -->
+        <div class="login-container" id="loginContainer">
+            <h1 class="section-title">用户登录</h1>
+            <div class="login-card">
+                <div class="login-avatar">
+                    <img src="/res/QQ.png" alt="用户头像" id="loginAvatar">
+                </div>
+                <div class="login-form">
+                    <div class="input-group">
+                        <label for="qqInput">请输入QQ号</label>
+                        <input type="text" id="qqInput" placeholder="例如：123456789" maxlength="12">
+                        <div class="error-message" id="qqError"></div>
+                    </div>
+                    <button class="login-btn" id="loginBtn">登录</button>
+                </div>
             </div>
         </div>
+        <!-- 用户数据界面（登录后显示） -->
+        <div class="user-container" id="userContainer" style="display: none;">
+            <h1 class="section-title">我的信息</h1>
+            <div class="user-card">
+                <!-- 用户头像和昵称区域 -->
+                <div class="user-header">
+                    <div class="user-avatar">
+                        <img src="/res/QQ.png" alt="用户头像" id="userAvatar">
+                    </div>
+                    <div class="user-info">
+                        <h2 class="user-name" id="userName">未设置昵称</h2>
+                        <p class="user-qq" id="userQQ">QQ: 未登录</p>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">退出登录</button>
+                </div>
 
+                <!-- 用户数据卡片 -->
+                <div class="data-grid">
+                    <!-- 铜钱卡片 -->
+                    <div class="data-card bronze">
+                        <div class="data-icon">
+                            <div class="mask-fill" style="--icon-url: url('/res/icon/main/nav/mine.png')"></div>
+                        </div>
+                        <div class="data-content">
+                            <h3 class="data-title">铜钱</h3>
+                            <p class="data-value" id="copperValue">0</p>
+                            <p class="data-description">当年有效，次年清空</p>
+                        </div>
+                    </div>
+
+                    <!-- 黄金卡片 -->
+                    <div class="data-card gold">
+                        <div class="data-icon">
+                            <div class="mask-fill" style="--icon-url: url('/res/icon/main/nav/mine.png')"></div>
+                        </div>
+                        <div class="data-content">
+                            <h3 class="data-title">黄金</h3>
+                            <p class="data-value" id="goldValue">0</p>
+                            <p class="data-description">永久有效</p>
+                        </div>
+                    </div>
+
+                    <!-- 钻石卡片 -->
+                    <div class="data-card diamond">
+                        <div class="data-icon">
+                            <div class="mask-fill" style="--icon-url: url('/res/icon/main/nav/mine.png')"></div>
+                        </div>
+                        <div class="data-content">
+                            <h3 class="data-title">钻石</h3>
+                            <p class="data-value" id="diamondValue">0</p>
+                            <p class="data-description">永久有效</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据更新时间 -->
+                <div class="update-time">
+                    <p>数据更新时间：<span id="lastUpdateTime">-</span></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 底部导航栏 -->
