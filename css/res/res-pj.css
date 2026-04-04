@@ -54,128 +54,201 @@
     }
 }
 
-.pj-container .info-item {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #e0e0e0;
+/* 现代信息模块容器 */
+.info-modern-container {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.pj-container .info-item:last-of-type {
-    border-bottom: none;
+/* 基础卡片样式 */
+.modern-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #eef2f7;
+    box-shadow: 0 2px 12px rgba(22, 120, 255, 0.04);
+    padding: 20px;
+    transition: all 0.3s ease;
 }
 
-.pj-container .info-item-header {
+.modern-card:hover {
+    box-shadow: 0 4px 16px rgba(22, 120, 255, 0.08);
+    border-color: #e0e9ff;
+}
+
+/* 高亮卡片 (注意事项) */
+.modern-card.card-highlight {
+    border-left: 4px solid #ff9800;
+    box-shadow: 0 2px 12px rgba(255, 152, 0, 0.06);
+}
+
+/* 卡片标题区域 */
+.modern-card-header {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
-    color: #283043;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f4f9;
 }
 
-.pj-container .info-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
+.modern-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
     background-color: #1678ff;
+    /* 主色 */
 }
 
-.pj-container .info-item-content {
-    font-size: 14px;
-    color: #283043;
-    line-height: 1.7;
-    margin-left: 26px;
-    /* 与图标+标题对齐 */
-}
-
-.pj-container .info-item-content ul {
-    margin: 0 0 0 20px;
-    padding: 0;
-}
-
-.pj-container .info-item-content li {
-    color: #7d7d7d;
-    margin-bottom: 5px;
-}
-
-/* 卡片式区块 */
-.pj-container .info-card {
-    background: rgba(22, 120, 255, 0.05);
-    border-left: 4px solid #1678ff;
-    border-radius: 6px;
-    padding: 18px 20px;
-    margin-bottom: 25px;
-}
-
-.pj-container .info-card-warn {
-    background: rgba(255, 193, 7, 0.08);
-    border-left-color: #ff9800;
-}
-
-.pj-container .info-card-warn .info-icon {
+.icon-warn {
     background-color: #ff9800;
+    /* 警告色 */
 }
 
-/* 更新日志时间轴样式 */
-.pj-container .changelog {
-    margin-left: 0;
+.modern-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #283043;
+    margin: 0;
 }
 
-.pj-container .changelog-item {
+/* 卡片内容区域 */
+.modern-card-body {
+    color: #4a5568;
+}
+
+/* 键值对行 (版本信息) */
+.info-row {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
-    position: relative;
+    padding: 8px 0;
 }
 
-.pj-container .changelog-item:last-child {
+.info-label {
+    font-size: 14px;
+    color: #7d7d7d;
+}
+
+.info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1678ff;
+    background: rgba(22, 120, 255, 0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* 功能特性列表 */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 12px;
+}
+
+.feature-item:last-child {
     margin-bottom: 0;
 }
 
-.pj-container .changelog-date {
-    width: 120px;
+.feature-icon {
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
-    font-size: 13px;
-    font-weight: 500;
+    margin-right: 10px;
+    margin-top: 2px;
+    background-color: #00cc66;
+    /* 成功色 */
 }
 
-.pj-container .changelog-dot {
-    width: 10px;
-    height: 10px;
+/* 时间轴样式 */
+.timeline {
+    position: relative;
+    padding-left: 10px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(22, 120, 255, 0.2), rgba(22, 120, 255, 0.05));
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-marker {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: #1678ff;
-    margin: 0 12px;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #e0e9ff;
     flex-shrink: 0;
+    margin-right: 16px;
+    margin-top: 4px;
+    z-index: 1;
 }
 
-.pj-container .changelog-desc {
+.timeline-content {
     flex: 1;
+}
+
+.timeline-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.timeline-desc {
     font-size: 14px;
     color: #283043;
 }
 
+/* 响应式调整 */
 @media (max-width: 768px) {
-
-    .pj-container .info-item,
-    .pj-container .info-card {
-        margin-bottom: 20px;
-        padding-bottom: 12px;
+    .info-modern-container {
+        margin: 20px;
+        gap: 16px;
     }
 
-    .pj-container .info-card {
-        padding: 15px;
+    .modern-card {
+        padding: 16px;
     }
 
-    .pj-container .info-icon {
-        width: 16px;
-        height: 16px;
+    .modern-card-header {
+        margin-bottom: 16px;
     }
 
-    .pj-container .info-item-content,
-    .pj-container .changelog-desc {
+    .modern-card-title {
+        font-size: 15px;
+    }
+
+    .info-value {
+        font-size: 14px;
+    }
+
+    .feature-item,
+    .timeline-desc {
         font-size: 13px;
-    }
-
-    .pj-container .changelog-date {
-        width: 110px;
-        font-size: 12px;
     }
 }
