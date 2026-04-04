@@ -53,3 +53,129 @@
         margin-bottom: 15.2px;
     }
 }
+
+.pj-container .info-item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.pj-container .info-item:last-of-type {
+    border-bottom: none;
+}
+
+.pj-container .info-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #283043;
+}
+
+.pj-container .info-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    background-color: #1678ff;
+}
+
+.pj-container .info-item-content {
+    font-size: 14px;
+    color: #283043;
+    line-height: 1.7;
+    margin-left: 26px;
+    /* 与图标+标题对齐 */
+}
+
+.pj-container .info-item-content ul {
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+.pj-container .info-item-content li {
+    color: #7d7d7d;
+    margin-bottom: 5px;
+}
+
+/* 卡片式区块 */
+.pj-container .info-card {
+    background: rgba(22, 120, 255, 0.05);
+    border-left: 4px solid #1678ff;
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 25px;
+}
+
+.pj-container .info-card-warn {
+    background: rgba(255, 193, 7, 0.08);
+    border-left-color: #ff9800;
+}
+
+.pj-container .info-card-warn .info-icon {
+    background-color: #ff9800;
+}
+
+/* 更新日志时间轴样式 */
+.pj-container .changelog {
+    margin-left: 0;
+}
+
+.pj-container .changelog-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.pj-container .changelog-item:last-child {
+    margin-bottom: 0;
+}
+
+.pj-container .changelog-date {
+    width: 120px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.pj-container .changelog-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #1678ff;
+    margin: 0 12px;
+    flex-shrink: 0;
+}
+
+.pj-container .changelog-desc {
+    flex: 1;
+    font-size: 14px;
+    color: #283043;
+}
+
+@media (max-width: 768px) {
+
+    .pj-container .info-item,
+    .pj-container .info-card {
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+
+    .pj-container .info-card {
+        padding: 15px;
+    }
+
+    .pj-container .info-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pj-container .info-item-content,
+    .pj-container .changelog-desc {
+        font-size: 13px;
+    }
+
+    .pj-container .changelog-date {
+        width: 110px;
+        font-size: 12px;
+    }
+}
