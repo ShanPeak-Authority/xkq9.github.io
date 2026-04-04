@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/res/res-screenshot.css">
     <link rel="stylesheet" href="/css/res/res-pj.css">
     <link rel="stylesheet" href="/css/res/res-activity.css">
+    <link rel="stylesheet" href="/css/res/res-participant.css">
     <link rel="stylesheet" href="/css/res/res-download.css">
     <link rel="stylesheet" href="/css/func/func-mask.css">
     <link rel="stylesheet" href="/css/func/func-table.css">
@@ -63,19 +64,19 @@
                 <div class="image-gallery">
                     <img class="img1"
                         src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/SrcS/blcthszz-1.png"
-                        alt="游戏截图1">
+                        alt="游戏截图">
                     <img class="img1"
                         src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/SrcS/blcthszz-2.png"
-                        alt="游戏截图2">
+                        alt="游戏截图">
                     <img class="img1"
                         src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/SrcS/blcthszz-3.png"
-                        alt="游戏截图3">
+                        alt="游戏截图">
                     <img class="img1"
                         src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/SrcS/blcthszz-4.png"
-                        alt="游戏截图4">
+                        alt="游戏截图">
                     <img class="img1"
                         src="/res/games/Shuang-Wan-1/Bu-Luo-Chong-Tu-Huang-Shi-Zhan-Zheng/SrcS/blcthszz-5.png"
-                        alt="游戏截图5">
+                        alt="游戏截图">
                 </div>
             </div>
             <!-- 破解说明 -->
@@ -106,7 +107,7 @@
                 </div>
             </div>
             <!-- 达标活动 -->
-            <div class="module-content" id="module-dbhd">
+            <div class="module-content active" id="module-dbhd">
                 <div class="activity-section">
                     <!-- 要求及奖励 -->
                     <div class="activity-card">
@@ -114,8 +115,7 @@
                         <div class="activity-card-content">
                             <p><strong>说明：</strong></p>
                             <ul>
-                                <li>长期有效，不定期重置领奖状态</li>
-                                <li>每人在每个活动周期内最多可领取1次达标奖励，请联系群主进行领奖</li>
+                                <li>每人在每期达标活动内最多可领取1次达标奖励，请联系群主进行领奖</li>
                                 <li>若游戏停止运营，本活动将自动终止</li>
                             </ul>
                         </div>
@@ -134,19 +134,19 @@
                                     </tr>
                                     <tr>
                                         <td>累计赢得对战5000次</td>
-                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                        <td><span class="text-bronze">铜钱*25W</span></td>
                                     </tr>
                                     <tr>
                                         <td>累计赢得对战3000次</td>
-                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                        <td><span class="text-bronze">铜钱*25W</span></td>
                                     </tr>
                                     <tr>
                                         <td>累计赢得对战1000次</td>
-                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                        <td><span class="text-bronze">铜钱*25W</span></td>
                                     </tr>
                                     <tr>
                                         <td>奖杯数达到5000</td>
-                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                        <td><span class="text-bronze">铜钱*25W</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -155,27 +155,8 @@
                     <!-- 已参与用户 -->
                     <div class="activity-card">
                         <h2 class="activity-card-title">已参与用户</h2>
-                        <div class="activity-card-content">
-                            <p><strong>说明：</strong></p>
-                            <ul>
-                                <li>用户数据实时更新</li>
-                            </ul>
-                        </div>
-                        <div class="table-container">
-                            <table id="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>用户名</th>
-                                        <th>QQ号</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>春节</td>
-                                        <td>1771388279</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="participant-content" id="user-list-container">
+                            <!-- 列表将在此由JavaScript动态生成 -->
                         </div>
                     </div>
                 </div>
@@ -194,8 +175,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 定义游戏下载链接变量
+            // ========== 配置区域：便于维护的变量定义 ==========
+            // 游戏官网下载链接
             const gameDownloadLink = 'https://www.123865.com/s/EFJAjv-mXV5d';
+
+            // 已参与活动的QQ号列表
+            const qqNumberArray = [
+            ];
+            // 对数组进行升序排序
+            qqNumberArray.sort((a, b) => a - b);
+            // ========== 配置区域结束 ==========
 
             // 返回按钮功能
             const backBtn = document.getElementById('backBtn');
@@ -209,7 +198,7 @@
             const downloadBtn = document.querySelector('.download-btn-blue');
             const copyLinkBtn = document.querySelector('.download-btn-green');
 
-            // 实现“游戏下载”按钮点击跳转功能
+            // 实现“游戏官网”按钮点击跳转功能
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', function () {
                     window.open(gameDownloadLink, '_blank');
@@ -236,6 +225,7 @@
                     }
                 });
             }
+
             function showCopySuccessHint(message, type = 'success') {
                 const existingHint = document.querySelector('.copy-hint');
                 if (existingHint) {
@@ -250,22 +240,22 @@
                 const bgColor = type === 'success' ? '#4CAF50' : '#ff9800';
 
                 hint.style.cssText = `
-        position: fixed;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: ${bgColor};
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        z-index: 1000;
-        font-size: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        animation: fadeInOut 2.5s ease forwards;
-        text-align: center;
-        max-width: 80%;
-        word-break: break-all;
-      `;
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: ${bgColor};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                z-index: 1000;
+                font-size: 16px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                animation: fadeInOut 2.5s ease forwards;
+                text-align: center;
+                max-width: 80%;
+                word-break: break-all;
+            `;
 
                 document.body.appendChild(hint);
 
@@ -275,6 +265,7 @@
                     }
                 }, 2500);
             }
+
             // 降级复制方案（兼容旧浏览器）
             function fallbackCopyText(text) {
                 const textArea = document.createElement('textarea');
@@ -296,18 +287,19 @@
 
                 document.body.removeChild(textArea);
             }
+
             // 为提示动画添加CSS关键帧
             if (!document.querySelector('style#hint-animation')) {
                 const style = document.createElement('style');
                 style.id = 'hint-animation';
                 style.textContent = `
-        @keyframes fadeInOut {
-          0% { opacity: 0; top: 15%; }
-          15% { opacity: 1; top: 20%; }
-          85% { opacity: 1; top: 20%; }
-          100% { opacity: 0; top: 25%; }
-        }
-      `;
+                @keyframes fadeInOut {
+                    0% { opacity: 0; top: 15%; }
+                    15% { opacity: 1; top: 20%; }
+                    85% { opacity: 1; top: 20%; }
+                    100% { opacity: 0; top: 25%; }
+                }
+            `;
                 document.head.appendChild(style);
             }
 
@@ -332,6 +324,115 @@
                     }
                 });
             });
+
+            // QQ用户列表动态生成功能
+            const generateUserList = () => {
+                // 1. 从userdata.html中获取用户数据
+                const fetchUserData = async () => {
+                    try {
+                        // 使用fetch获取userdata.html
+                        const response = await fetch('/res/userdata/userdata.html');
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const htmlText = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(htmlText, 'text/html');
+
+                        // 查找表格
+                        const table = doc.querySelector('table');
+                        if (!table) {
+                            throw new Error('未找到表格');
+                        }
+
+                        // 提取表格行数据
+                        const rows = table.querySelectorAll('tr');
+                        const userDataMap = {};
+
+                        // 跳过表头行，从第二行开始
+                        for (let i = 1; i < rows.length; i++) {
+                            const cells = rows[i].querySelectorAll('td');
+                            if (cells.length >= 2) {
+                                const username = cells[0].textContent.trim();
+                                const qq = parseInt(cells[1].textContent.trim());
+                                if (!isNaN(qq)) {
+                                    userDataMap[qq] = username;
+                                }
+                            }
+                        }
+
+                        return userDataMap;
+                    } catch (error) {
+                        console.error('获取用户数据失败:', error);
+                        // 返回一个空对象，以便后续处理
+                        return {};
+                    }
+                };
+
+                // 2. 注意：qqNumberArray 现已定义在外部配置区域，此处直接使用即可
+
+                // 3. 获取列表容器
+                const container = document.getElementById('user-list-container');
+
+                // 4. 异步获取用户数据并生成列表
+                fetchUserData().then(userDataMap => {
+                    // 创建列表元素
+                    const listEl = document.createElement('ul');
+                    listEl.className = 'user-list';
+
+                    // 遍历排序后的数组，动态创建列表项
+                    qqNumberArray.forEach(qq => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'user-list-item';
+
+                        // 创建头像（使用腾讯公有接口）
+                        const avatar = document.createElement('img');
+                        avatar.className = 'user-avatar';
+                        avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`;
+                        avatar.alt = `QQ头像-${qq}`;
+                        avatar.onerror = function () {
+                            this.src = '/res/icon/default-avatar.png';
+                        };
+
+                        // 创建用户信息容器
+                        const userInfo = document.createElement('div');
+                        userInfo.className = 'user-info';
+
+                        // 获取用户昵称（从userDataMap中查找）
+                        const nickname = userDataMap[qq] || `用户${qq}`;
+
+                        // 创建用户昵称显示
+                        const nicknameEl = document.createElement('div');
+                        nicknameEl.className = 'user-nickname';
+                        nicknameEl.textContent = nickname;
+
+                        // 创建QQ号显示
+                        const qqSpan = document.createElement('div');
+                        qqSpan.className = 'user-qq';
+                        qqSpan.textContent = qq;
+
+                        // 组装用户信息
+                        userInfo.appendChild(nicknameEl);
+                        userInfo.appendChild(qqSpan);
+
+                        // 组装列表项
+                        listItem.appendChild(avatar);
+                        listItem.appendChild(userInfo);
+                        listEl.appendChild(listItem);
+                    });
+
+                    // 5. 将列表插入到容器中
+                    container.appendChild(listEl);
+                }).catch(error => {
+                    console.error('生成用户列表失败:', error);
+                    // 如果获取失败，显示错误信息
+                    container.innerHTML = '<p>加载用户数据失败，请稍后重试</p>';
+                });
+            };
+
+            // 调用生成用户列表函数
+            generateUserList();
         });
     </script>
 </body>
