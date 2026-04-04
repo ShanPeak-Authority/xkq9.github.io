@@ -109,8 +109,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 定义游戏下载链接变量
+            // ========== 配置区域：便于维护的变量定义 ==========
+            // 游戏官网下载链接
             const gameDownloadLink = 'https://rocom.qq.com/zlkdatasys/mct/proj_5/index.shtml?media=10252412';
+
+            // 已参与活动的QQ号列表
+            const qqNumberArray = [
+                3536804341,
+                3142520437,
+                3500274928,
+                3615617459,
+                762786652
+            ];
+            // 对数组进行升序排序
+            qqNumberArray.sort((a, b) => a - b);
+            // ========== 配置区域结束 ==========
 
             // 返回按钮功能
             const backBtn = document.getElementById('backBtn');
@@ -124,14 +137,14 @@
             const downloadBtn = document.querySelector('.download-btn-blue');
             const copyLinkBtn = document.querySelector('.download-btn-green');
 
-            // 实现"游戏官网"按钮点击跳转功能
+            // 实现“游戏官网”按钮点击跳转功能
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', function () {
                     window.open(gameDownloadLink, '_blank');
                 });
             }
 
-            // 实现"复制链接"按钮点击复制功能
+            // 实现“复制链接”按钮点击复制功能
             if (copyLinkBtn) {
                 copyLinkBtn.addEventListener('click', function () {
                     // 使用现代 Clipboard API
@@ -251,7 +264,7 @@
                 });
             });
 
-            // 新增：QQ用户列表动态生成功能
+            // QQ用户列表动态生成功能
             const generateUserList = () => {
                 // 1. 从userdata.html中获取用户数据
                 const fetchUserData = async () => {
@@ -296,22 +309,12 @@
                     }
                 };
 
-                // 2. 将QQ号定义为数组，便于后续编辑
-                const qqNumberArray = [
-                    3536804341,
-                    3142520437,
-                    3500274928,
-                    3615617459,
-                    762786652
-                ];
+                // 2. 注意：qqNumberArray 现已定义在外部配置区域，此处直接使用即可
 
-                // 3. 对数组进行升序排序
-                qqNumberArray.sort((a, b) => a - b);
-
-                // 4. 获取列表容器
+                // 3. 获取列表容器
                 const container = document.getElementById('user-list-container');
 
-                // 5. 异步获取用户数据并生成列表
+                // 4. 异步获取用户数据并生成列表
                 fetchUserData().then(userDataMap => {
                     // 创建列表元素
                     const listEl = document.createElement('ul');
@@ -358,7 +361,7 @@
                         listEl.appendChild(listItem);
                     });
 
-                    // 6. 将列表插入到容器中
+                    // 5. 将列表插入到容器中
                     container.appendChild(listEl);
                 }).catch(error => {
                     console.error('生成用户列表失败:', error);
