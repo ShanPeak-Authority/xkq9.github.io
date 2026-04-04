@@ -5,10 +5,11 @@
 
 .login-card {
     width: calc(50% - 60px);
+    margin-left: auto;
+    margin-right: auto;
     background: #ffffff;
     border-radius: 10px;
     padding: 30px;
-    align-items: center;
 }
 
 @media (max-width: 768px) {
