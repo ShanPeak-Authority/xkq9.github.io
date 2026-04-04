@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     initializeCategory();
     initializeSearch();
-    initializeSort();
     initializeMinePage();
 
     // 设置默认显示页面为推荐页
