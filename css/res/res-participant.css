@@ -32,8 +32,15 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 5px;
     flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 .user-info {
@@ -43,13 +50,24 @@
 }
 
 .user-nickname {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #283043;
-    margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+    .user-nickname {
+        font-size: 12px;
+    }
 }
 
 .user-qq {
-    font-size: 14px;
+    font-size: 12px;
     color: #7d7d7d;
+}
+
+@media (max-width: 768px) {
+    .user-qq {
+        font-size: 10px;
+    }
 }
