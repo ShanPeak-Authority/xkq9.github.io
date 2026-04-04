@@ -253,7 +253,34 @@
 
             // 新增：QQ用户列表动态生成功能
             const generateUserList = () => {
-                // 1. 将QQ号定义为数组，便于后续编辑
+                // 1. 从userdata.html中提取的用户数据映射
+                // 根据userdata.html表格数据创建QQ号到用户名的映射
+                const userDataMap = {
+                    649313558: "句号",
+                    762786652: "清秋团月",
+                    1029724523: "雾里",
+                    1219760389: "YOLO",
+                    1537016380: "问号",
+                    1590202553: "马嘉祺",
+                    1612779214: "杉峰",
+                    1679835461: "无痕",
+                    1771388279: "春节",
+                    1914308849: "北凉",
+                    2127968971: "诰春",
+                    2236099138: "果农",
+                    2282065753: "CR",
+                    2483953638: "YYZ",
+                    2904323275: "青丝",
+                    3142520437: "混世魔王鹅宝",
+                    3440914298: "奕许",
+                    3484760686: "52",
+                    3500274928: "不忘初心",
+                    3536804341: "哈基雾雨",
+                    3548921724: "望纾",
+                    3615617459: "氪金就好了"
+                };
+
+                // 2. 将QQ号定义为数组，便于后续编辑
                 const qqNumberArray = [
                     3536804341,
                     3142520437,
@@ -262,17 +289,17 @@
                     762786652
                 ];
 
-                // 2. 对数组进行升序排序
+                // 3. 对数组进行升序排序
                 qqNumberArray.sort((a, b) => a - b);
 
-                // 3. 获取列表容器
+                // 4. 获取列表容器
                 const container = document.getElementById('user-list-container');
 
-                // 4. 创建列表元素
+                // 5. 创建列表元素
                 const listEl = document.createElement('ul');
                 listEl.className = 'user-list';
 
-                // 5. 遍历排序后的数组，动态创建列表项
+                // 6. 遍历排序后的数组，动态创建列表项
                 qqNumberArray.forEach(qq => {
                     const listItem = document.createElement('li');
                     listItem.className = 'user-list-item';
@@ -286,18 +313,34 @@
                         this.src = '/res/icon/default-avatar.png';
                     };
 
-                    // 创建QQ号文本
-                    const qqSpan = document.createElement('span');
+                    // 创建用户信息容器
+                    const userInfo = document.createElement('div');
+                    userInfo.className = 'user-info';
+
+                    // 获取用户昵称（从userDataMap中查找）
+                    const nickname = userDataMap[qq] || `用户${qq}`;
+
+                    // 创建用户昵称显示
+                    const nicknameEl = document.createElement('div');
+                    nicknameEl.className = 'user-nickname';
+                    nicknameEl.textContent = nickname;
+
+                    // 创建QQ号显示
+                    const qqSpan = document.createElement('div');
                     qqSpan.className = 'user-qq';
                     qqSpan.textContent = qq;
 
-                    // 组装
+                    // 组装用户信息
+                    userInfo.appendChild(nicknameEl);
+                    userInfo.appendChild(qqSpan);
+
+                    // 组装列表项
                     listItem.appendChild(avatar);
-                    listItem.appendChild(qqSpan);
+                    listItem.appendChild(userInfo);
                     listEl.appendChild(listItem);
                 });
 
-                // 6. 将列表插入到容器中
+                // 7. 将列表插入到容器中
                 container.appendChild(listEl);
             };
 

@@ -1,10 +1,10 @@
 .participant-content {
-    padding-top: -5.6px;
+    margin-top: -5.6px;
 }
 
 @media (max-width: 768px) {
     .participant-content {
-        padding-top: -4.8px;
+        margin-top: -4.8px;
     }
 }
 
@@ -36,7 +36,20 @@
     flex-shrink: 0;
 }
 
-.user-qq {
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-nickname {
     font-size: 16px;
+    font-weight: bold;
     color: #283043;
+    margin-bottom: 4px;
+}
+
+.user-qq {
+    font-size: 14px;
+    color: #7d7d7d;
 }
