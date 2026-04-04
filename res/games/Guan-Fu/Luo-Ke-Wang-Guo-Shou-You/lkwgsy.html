@@ -253,31 +253,47 @@
 
             // 新增：QQ用户列表动态生成功能
             const generateUserList = () => {
-                // 1. 从userdata.html中提取的用户数据映射
-                // 根据userdata.html表格数据创建QQ号到用户名的映射
-                const userDataMap = {
-                    649313558: "句号",
-                    762786652: "清秋团月",
-                    1029724523: "雾里",
-                    1219760389: "YOLO",
-                    1537016380: "问号",
-                    1590202553: "马嘉祺",
-                    1612779214: "杉峰",
-                    1679835461: "无痕",
-                    1771388279: "春节",
-                    1914308849: "北凉",
-                    2127968971: "诰春",
-                    2236099138: "果农",
-                    2282065753: "CR",
-                    2483953638: "YYZ",
-                    2904323275: "青丝",
-                    3142520437: "混世魔王鹅宝",
-                    3440914298: "奕许",
-                    3484760686: "52",
-                    3500274928: "不忘初心",
-                    3536804341: "哈基雾雨",
-                    3548921724: "望纾",
-                    3615617459: "氪金就好了"
+                // 1. 从userdata.html中获取用户数据
+                const fetchUserData = async () => {
+                    try {
+                        // 使用fetch获取userdata.html
+                        const response = await fetch('/res/userdata/userdata.html');
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const htmlText = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(htmlText, 'text/html');
+
+                        // 查找表格
+                        const table = doc.querySelector('table');
+                        if (!table) {
+                            throw new Error('未找到表格');
+                        }
+
+                        // 提取表格行数据
+                        const rows = table.querySelectorAll('tr');
+                        const userDataMap = {};
+
+                        // 跳过表头行，从第二行开始
+                        for (let i = 1; i < rows.length; i++) {
+                            const cells = rows[i].querySelectorAll('td');
+                            if (cells.length >= 2) {
+                                const username = cells[0].textContent.trim();
+                                const qq = parseInt(cells[1].textContent.trim());
+                                if (!isNaN(qq)) {
+                                    userDataMap[qq] = username;
+                                }
+                            }
+                        }
+
+                        return userDataMap;
+                    } catch (error) {
+                        console.error('获取用户数据失败:', error);
+                        // 返回一个空对象，以便后续处理
+                        return {};
+                    }
                 };
 
                 // 2. 将QQ号定义为数组，便于后续编辑
@@ -295,53 +311,60 @@
                 // 4. 获取列表容器
                 const container = document.getElementById('user-list-container');
 
-                // 5. 创建列表元素
-                const listEl = document.createElement('ul');
-                listEl.className = 'user-list';
+                // 5. 异步获取用户数据并生成列表
+                fetchUserData().then(userDataMap => {
+                    // 创建列表元素
+                    const listEl = document.createElement('ul');
+                    listEl.className = 'user-list';
 
-                // 6. 遍历排序后的数组，动态创建列表项
-                qqNumberArray.forEach(qq => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'user-list-item';
+                    // 遍历排序后的数组，动态创建列表项
+                    qqNumberArray.forEach(qq => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'user-list-item';
 
-                    // 创建头像（使用腾讯公有接口）
-                    const avatar = document.createElement('img');
-                    avatar.className = 'user-avatar';
-                    avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`;
-                    avatar.alt = `QQ头像-${qq}`;
-                    avatar.onerror = function () {
-                        this.src = '/res/icon/default-avatar.png';
-                    };
+                        // 创建头像（使用腾讯公有接口）
+                        const avatar = document.createElement('img');
+                        avatar.className = 'user-avatar';
+                        avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`;
+                        avatar.alt = `QQ头像-${qq}`;
+                        avatar.onerror = function () {
+                            this.src = '/res/icon/default-avatar.png';
+                        };
 
-                    // 创建用户信息容器
-                    const userInfo = document.createElement('div');
-                    userInfo.className = 'user-info';
+                        // 创建用户信息容器
+                        const userInfo = document.createElement('div');
+                        userInfo.className = 'user-info';
 
-                    // 获取用户昵称（从userDataMap中查找）
-                    const nickname = userDataMap[qq] || `用户${qq}`;
+                        // 获取用户昵称（从userDataMap中查找）
+                        const nickname = userDataMap[qq] || `用户${qq}`;
 
-                    // 创建用户昵称显示
-                    const nicknameEl = document.createElement('div');
-                    nicknameEl.className = 'user-nickname';
-                    nicknameEl.textContent = nickname;
+                        // 创建用户昵称显示
+                        const nicknameEl = document.createElement('div');
+                        nicknameEl.className = 'user-nickname';
+                        nicknameEl.textContent = nickname;
 
-                    // 创建QQ号显示
-                    const qqSpan = document.createElement('div');
-                    qqSpan.className = 'user-qq';
-                    qqSpan.textContent = qq;
+                        // 创建QQ号显示
+                        const qqSpan = document.createElement('div');
+                        qqSpan.className = 'user-qq';
+                        qqSpan.textContent = qq;
 
-                    // 组装用户信息
-                    userInfo.appendChild(nicknameEl);
-                    userInfo.appendChild(qqSpan);
+                        // 组装用户信息
+                        userInfo.appendChild(nicknameEl);
+                        userInfo.appendChild(qqSpan);
 
-                    // 组装列表项
-                    listItem.appendChild(avatar);
-                    listItem.appendChild(userInfo);
-                    listEl.appendChild(listItem);
+                        // 组装列表项
+                        listItem.appendChild(avatar);
+                        listItem.appendChild(userInfo);
+                        listEl.appendChild(listItem);
+                    });
+
+                    // 6. 将列表插入到容器中
+                    container.appendChild(listEl);
+                }).catch(error => {
+                    console.error('生成用户列表失败:', error);
+                    // 如果获取失败，显示错误信息
+                    container.innerHTML = '<p>加载用户数据失败，请稍后重试</p>';
                 });
-
-                // 7. 将列表插入到容器中
-                container.appendChild(listEl);
             };
 
             // 调用生成用户列表函数
