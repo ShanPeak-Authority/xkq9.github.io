@@ -1,12 +1,10 @@
 // navigation.js 底部导航切换模块
 // category.js   活动：分类和子分类切换模块
 // search.js     搜索模块
-// sort.js       表格：排序模块
 // login.js      登录模块
 import { initializeNavigation } from './navigation.js';
 import { initializeCategory, activeCategory, activeSubFilter, applySubFilter } from './category.js';
 import { initializeSearch } from './search.js';
-import { initializeSort } from './sort.js';
 import { initializeMinePage } from './login.js';
 
 document.addEventListener('DOMContentLoaded', () => {
