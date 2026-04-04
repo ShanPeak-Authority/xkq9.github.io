@@ -311,7 +311,7 @@
 .game-img {
     width: 50px;
     height: 50px;
-    border-radius: 12.5px;
+    border-radius: 25%;
     margin-right: 15px;
     object-fit: contain;
     vertical-align: top;
@@ -326,8 +326,10 @@
 .game-title {
     font-weight: bold;
     font-size: 16px;
+    /*
     padding-bottom: 5px;
     border-bottom: 0.5px solid #7d7d7d;
+    */
     margin-bottom: 10.2px;
     color: #283043;
 }
