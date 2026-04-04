@@ -286,8 +286,9 @@
 
 .game-item {
     height: auto;
-    background: #f1f1f1;
+    background: #ffffff;
     border-radius: 10px;
+    border: 1px solid #eeeeee;
     display: flex;
     padding: 15px 15px 10.2px;
     margin-bottom: 20px;
