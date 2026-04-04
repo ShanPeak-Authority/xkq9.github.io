@@ -26,11 +26,10 @@
 }
 
 .app-title .app-title-icon {
-    width: 76px;
-    height: 76px;
-    border-radius: 19px;
-    border: 1px solid #dddddd;
-    box-sizing: border-box;
+    width: 75px;
+    height: 75px;
+    border-radius: 25%;
+    border: 1px solid #eeeeee;
     object-fit: cover;
     margin: 0;
 }
@@ -39,7 +38,6 @@
     .app-title .app-title-icon {
         width: 70px;
         height: 70px;
-        border-radius: 17.5px;
     }
 }
 
