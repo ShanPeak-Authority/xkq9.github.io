@@ -318,12 +318,6 @@
     align-self: flex-start;
 }
 
-@media (max-width: 768px) {
-    .game-img {
-        margin-right: 5px;
-    }
-}
-
 .game-info {
     flex: 1;
     vertical-align: top;
