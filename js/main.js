@@ -17,11 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    initializeNavigation();
-    initializeCategory();
-    initializeSearch();
-    initializeMinePage();
-
     // 设置默认显示页面为推荐页
     const recommendContent = document.getElementById('recommendContent');
     if (recommendContent) {
@@ -35,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recommendNav) {
         recommendNav.classList.add('active');
     }
+
+    initializeNavigation();
+    initializeCategory();
+    initializeSearch();
+    initializeMinePage();
 
     // 设置时间问候语
     const greetings = [
