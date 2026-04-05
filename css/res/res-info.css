@@ -274,7 +274,8 @@
 .module-icon {
     width: 30px;
     height: 30px;
-    color: #00cc66;
+    /* color: #00cc66; */
+    color: #a0ffd0;
 }
 
 @media (max-width: 768px) {
