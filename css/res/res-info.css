@@ -228,7 +228,7 @@
 .cyber-module-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 10px;
-    padding: 15px;
+    padding: 30px;
     border: 1px solid rgba(255, 255, 255, 0.07);
     display: flex;
     flex-direction: column;
@@ -237,7 +237,7 @@
 
 @media (max-width: 768px) {
     .cyber-module-card {
-        padding: 10px;
+        padding: 20px;
     }
 }
 
@@ -262,9 +262,16 @@
 }
 
 .module-icon {
-    width: 28px;
-    height: 28px;
-    background: #00cc66;
+    width: 30px;
+    height: 30px;
+    color: #00cc66;
+}
+
+@media (max-width: 768px) {
+    .module-icon {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 .module-name {
