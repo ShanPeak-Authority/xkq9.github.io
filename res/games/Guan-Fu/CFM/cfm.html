@@ -160,14 +160,14 @@
             const downloadBtn = document.querySelector('.download-btn-blue');
             const copyLinkBtn = document.querySelector('.download-btn-green');
 
-            // 实现“游戏官网”按钮点击跳转功能
+            // 实现"游戏官网"按钮点击跳转功能
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', function () {
                     window.open(gameDownloadLink, '_blank');
                 });
             }
 
-            // 实现“复制链接”按钮点击复制功能
+            // 实现"复制链接"按钮点击复制功能
             if (copyLinkBtn) {
                 copyLinkBtn.addEventListener('click', function () {
                     // 使用现代 Clipboard API
@@ -267,8 +267,25 @@
 
             // 水平分类选项卡切换功能
             const tabNav = document.getElementById('tabNav');
+            const tabNavContainer = document.querySelector('.category-nav');
             const tabItems = tabNav.querySelectorAll('.category-nav-item');
             const tabContents = document.querySelectorAll('.module-content');
+
+            // 初始化导航栏边框状态的函数
+            function initNavBorder() {
+                const activeTab = document.querySelector('.category-nav-item.active');
+                if (activeTab && tabNavContainer) {
+                    const targetId = activeTab.getAttribute('data-target');
+                    if (targetId === 'yxxx') {
+                        // 选中"游戏信息"时，隐藏底部边框
+                        tabNavContainer.style.borderBottom = 'none';
+                    } else {
+                        // 选中其他选项卡时，恢复默认边框
+                        tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                    }
+                }
+            }
+
             tabItems.forEach(item => {
                 item.addEventListener('click', function () {
                     const targetId = this.getAttribute('data-target');
@@ -277,6 +294,18 @@
                     tabContents.forEach(content => {
                         content.classList.remove('active');
                     });
+
+                    // 根据选中的选项卡控制导航栏容器的底部边框
+                    if (tabNavContainer) {
+                        if (targetId === 'yxxx') {
+                            // 选中"游戏信息"时，隐藏底部边框
+                            tabNavContainer.style.borderBottom = 'none';
+                        } else {
+                            // 选中其他选项卡时，恢复默认边框
+                            tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                        }
+                    }
+
                     const fullTargetId = 'module-' + targetId;
                     const targetContent = document.getElementById(fullTargetId);
                     if (targetContent) {
@@ -286,6 +315,9 @@
                     }
                 });
             });
+
+            // 页面加载时初始化导航栏边框
+            initNavBorder();
 
             // QQ用户列表动态生成功能
             const generateUserList = () => {
