@@ -139,7 +139,7 @@
 
 .cyber-data-version {
     font-size: 25px;
-    font-weight: 800;
+    font-weight: bold;
     background: linear-gradient(to right, #36d1ff, #5b8cff);
     -webkit-background-clip: text;
     background-clip: text;
@@ -153,39 +153,60 @@
     opacity: 0.9;
 }
 
-/* 区块通用样式 */
+/* 模块通用样式 */
 .cyber-section,
 .cyber-notice {
     margin-bottom: 30px;
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 16px;
+    border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+
+    .cyber-section,
+    .cyber-notice {
+        margin-bottom: 20px;
+    }
 }
 
 .cyber-section-title,
 .cyber-notice-title {
     display: flex;
     align-items: center;
-    padding: 20px 25px;
+    padding: 15px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+
+    .cyber-section-title,
+    .cyber-notice-title {
+        padding: 10px 20px;
+    }
 }
 
 .cyber-title-icon {
     width: 20px;
     height: 20px;
-    margin-right: 12px;
+    margin-right: 15px;
     background: #00ccff;
+}
+
+@media (max-width: 768px) {
+    .cyber-title-icon {
+        margin-right: 10px;
+    }
 }
 
 .cyber-section-title h3,
 .cyber-notice-title h3 {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
     color: #e2e8ff;
     margin: 0;
-    letter-spacing: 1px;
 }
 
 /* 模块网格 */
