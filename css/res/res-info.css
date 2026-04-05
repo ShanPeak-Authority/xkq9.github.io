@@ -505,6 +505,7 @@
     font-size: 12px;
     font-weight: bold;
     color: #7a8ccc;
+    align-self: center;
 }
 
 @media (max-width: 768px) {
