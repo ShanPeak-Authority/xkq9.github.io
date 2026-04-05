@@ -175,7 +175,7 @@
 .cyber-notice-title {
     display: flex;
     align-items: center;
-    padding: 15px 30px;
+    padding: 20px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(0, 0, 0, 0.2);
 }
@@ -184,7 +184,7 @@
 
     .cyber-section-title,
     .cyber-notice-title {
-        padding: 10px 20px;
+        padding: 15px 20px;
     }
 }
 
