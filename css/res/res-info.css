@@ -71,17 +71,24 @@
     }
 }
 
-/* 核心状态面板 */
+/* 最新破解版本 */
 .cyber-status-panel {
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 18px;
+    border-radius: 10px;
+    margin: 0;
     padding: 30px;
     display: flex;
     align-items: center;
     margin-bottom: 30px;
     position: relative;
     border: 1px solid rgba(22, 120, 255, 0.15);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+    .cyber-status-panel {
+        padding: 20px;
+    }
 }
 
 .cyber-status-panel[data-glow="true"] {
