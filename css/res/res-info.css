@@ -197,6 +197,8 @@
 
 @media (max-width: 768px) {
     .cyber-title-icon {
+        width: 18px;
+        height: 18px;
         margin-right: 10px;
     }
 }
@@ -207,6 +209,14 @@
     font-weight: bold;
     color: #e2e8ff;
     margin: 0;
+}
+
+@media (max-width: 768px) {
+
+    .cyber-section-title h3,
+    .cyber-notice-title h3 {
+        font-size: 14px;
+    }
 }
 
 /* 模块网格 */
@@ -276,10 +286,16 @@
 
 .module-name {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     color: #f0f4ff;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .module-name {
+        font-size: 14px;
+    }
 }
 
 .module-status {
