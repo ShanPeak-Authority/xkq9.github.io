@@ -373,22 +373,16 @@
     }
 }
 
-.notice-marker {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 6px;
-    height: 6px;
-    background: #ff9800;
-    border-radius: 50%;
-    box-shadow: 0 0 6px #ff9800;
-}
-
 .notice-content {
     font-size: 14px;
-    line-height: 1.7;
     color: #ffddb3;
     flex: 1;
+}
+
+@media (max-width: 768px) {
+    .notice-content {
+        font-size: 12px;
+    }
 }
 
 /* 迭代日志流 */
