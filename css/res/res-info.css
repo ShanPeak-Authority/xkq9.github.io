@@ -139,7 +139,7 @@
 
 .cyber-data-version {
     font-size: 25px;
-    font-weight: 1000;
+    font-weight: bold;
     background: linear-gradient(to right, #36d1ff, #5b8cff);
     -webkit-background-clip: text;
     background-clip: text;
