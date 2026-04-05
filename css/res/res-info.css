@@ -65,18 +65,10 @@
     overflow: hidden;
 }
 
-.cyber-module::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(0, 204, 255, 0.5),
-            transparent);
-    z-index: 1;
+@media (max-width: 768px) {
+    .cyber-module {
+        padding: 20px;
+    }
 }
 
 /* 核心状态面板 */
