@@ -502,10 +502,11 @@
 }
 
 .log-date {
+    height: 100%;
     font-size: 12px;
     font-weight: bold;
     color: #7a8ccc;
-    align-self: center;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
