@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>游戏详情</title>
     <link rel="stylesheet" href="/css/res/res.css">
-    <link rel="stylesheet" href="/css/res/res-banner.css">
-    <link rel="stylesheet" href="/css/res/res-app.css">
-    <link rel="stylesheet" href="/css/res/res-category.css">
+    <link rel="stylesheet" href="/css/res/res-head.css">
+    <link rel="stylesheet" href="/css/res/res-info.css">
     <link rel="stylesheet" href="/css/res/res-screenshot.css">
-    <link rel="stylesheet" href="/css/res/res-pj.css">
     <link rel="stylesheet" href="/css/res/res-activity.css">
     <link rel="stylesheet" href="/css/res/res-participant.css">
     <link rel="stylesheet" href="/css/res/res-download.css">
@@ -37,7 +35,7 @@
 
     <!-- 游戏详情 -->
     <div class="game-container">
-        <!-- 游戏信息 -->
+        <!-- 游戏简介 -->
         <div class="app">
             <h2 class="app-title">
                 <img class="app-title-icon" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/skzc.png" alt="游戏图标">
@@ -45,46 +43,116 @@
                     时空战场
                     <div class="app-subtitle">
                         <p>游戏版本：同步官服最新版本</p>
-                        <p>资源更新：2026-03-10</p>
                     </div>
                 </div>
             </h2>
         </div>
         <!-- 水平导航栏 -->
         <div class="category-nav" id="tabNav">
-            <div class="category-nav-item active" data-target="yxtj">游戏图集</div>
-            <div class="category-nav-item" data-target="pjsm">破解说明</div>
+            <div class="category-nav-item active" data-target="yxxx">游戏信息</div>
+            <div class="category-nav-item" data-target="yxtj">游戏图集</div>
             <div class="category-nav-item" data-target="dbhd">达标活动</div>
         </div>
 
         <div class="module-container">
+            <!-- 游戏信息 -->
+            <div class="module-content active" id="module-yxxx">
+                <div class="cyber-module">
+                    <!-- 最新破解版本 -->
+                    <div class="cyber-status-panel" data-glow="true">
+                        <div class="cyber-core-icon">
+                            <div class="mask-fill cyber-icon-fill"
+                                style="--icon-url: url('/res/icon/res/version.png');">
+                            </div>
+                        </div>
+                        <div class="cyber-core-data">
+                            <div class="cyber-data-tag">最新破解版本</div>
+                            <div class="cyber-data-version">同步官服最新版本</div>
+                            <div class="cyber-data-build">资源更新于2026-03-10</div>
+                        </div>
+                    </div>
+
+                    <!-- 破解说明 -->
+                    <div class="cyber-section">
+                        <div class="cyber-section-title">
+                            <div class="mask-fill cyber-title-icon"
+                                style="--icon-url: url('/res/icon/res/pj-info.png');">
+                            </div>
+                            <h3>破解说明</h3>
+                        </div>
+                        <div class="cyber-module-grid">
+                            <div class="cyber-module-card">
+                                <div class="module-icon-frame">
+                                    <div class="mask-fill module-icon"
+                                        style="--icon-url: url('/res/icon/res/Nei-Gou-Po-Jie.png');"></div>
+                                </div>
+                                <div class="module-name">内购破解</div>
+                                <div class="module-status">
+                                    <span class="status-led"></span>
+                                    <span class="status-text">已启用</span>
+                                </div>
+                            </div>
+                            <div class="cyber-module-card">
+                                <div class="module-icon-frame">
+                                    <div class="mask-fill module-icon"
+                                        style="--icon-url: url('/res/icon/res/Nei-Zhi-Geng-Yin.png');">
+                                    </div>
+                                </div>
+                                <div class="module-name">同步官服最新版本</div>
+                                <div class="module-status">
+                                    <span class="status-led"></span>
+                                    <span class="status-text">已启用</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 注意事项 -->
+                    <div class="cyber-notice" data-type="warn">
+                        <div class="cyber-notice-title">
+                            <div class="mask-fill cyber-title-icon" style="--icon-url: url('/res/icon/res/warn.png');">
+                            </div>
+                            <h3>注意事项</h3>
+                        </div>
+                        <div class="cyber-notice-list">
+                            <div class="cyber-notice-item">
+                                <div class="notice-content">若游戏无法正常运行，请联系群主进行更新</div>
+                            </div>
+                            <div class="cyber-notice-item">
+                                <div class="notice-content">游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 更新日志 -->
+                    <div class="cyber-section">
+                        <div class="cyber-section-title">
+                            <div class="mask-fill cyber-title-icon"
+                                style="--icon-url: url('/res/icon/res/update.png');"></div>
+                            <h3>更新日志</h3>
+                        </div>
+                        <div class="cyber-log-stream">
+                            <div class="cyber-log-item" data-state="current">
+                                <div class="log-line"></div>
+                                <div class="log-node">
+                                    <div class="log-node-core"></div>
+                                </div>
+                                <div class="log-content">
+                                    <div class="log-version">版本 1.0.0</div>
+                                    <div class="log-desc">2026-03-10<span>丨</span>初始破解版本</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- 游戏图集 -->
-            <div class="module-content active" id="module-yxtj">
+            <div class="module-content" id="module-yxtj">
                 <div class="image-gallery">
                     <img class="img1" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/SrcS/skzc-1.png" alt="游戏截图">
                     <img class="img1" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/SrcS/skzc-2.png" alt="游戏截图">
                     <img class="img1" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/SrcS/skzc-3.png" alt="游戏截图">
                     <img class="img1" src="/res/games/Shuang-Wan-1/Shi-Kong-Zhan-Chang/SrcS/skzc-4.png" alt="游戏截图">
-                </div>
-            </div>
-            <!-- 破解说明 -->
-            <div class="module-content" id="module-pjsm">
-                <div class="pj-container">
-                    <p><strong>游戏版本：</strong>同步官服最新版本</p>
-                    <p><strong>破解内容：</strong></p>
-                    <ul>
-                        <li>内置更新，自动同步至官服最新版本</li>
-                        <li>内购破解</li>
-                    </ul>
-                    <p><strong>注意事项：</strong></p>
-                    <ul>
-                        <li>若游戏无法正常运行，请联系群主进行更新</li>
-                        <li>游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败</li>
-                    </ul>
-                    <p><strong>更新日志：</strong></p>
-                    <ul>
-                        <li>暂无记录</li>
-                    </ul>
                 </div>
             </div>
             <!-- 达标活动 -->
@@ -163,14 +231,14 @@
             const downloadBtn = document.querySelector('.download-btn-blue');
             const copyLinkBtn = document.querySelector('.download-btn-green');
 
-            // 实现“游戏官网”按钮点击跳转功能
+            // 实现"游戏官网"按钮点击跳转功能
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', function () {
                     window.open(gameDownloadLink, '_blank');
                 });
             }
 
-            // 实现“复制链接”按钮点击复制功能
+            // 实现"复制链接"按钮点击复制功能
             if (copyLinkBtn) {
                 copyLinkBtn.addEventListener('click', function () {
                     // 使用现代 Clipboard API
@@ -270,8 +338,25 @@
 
             // 水平分类选项卡切换功能
             const tabNav = document.getElementById('tabNav');
+            const tabNavContainer = document.querySelector('.category-nav');
             const tabItems = tabNav.querySelectorAll('.category-nav-item');
             const tabContents = document.querySelectorAll('.module-content');
+
+            // 初始化导航栏边框状态的函数
+            function initNavBorder() {
+                const activeTab = document.querySelector('.category-nav-item.active');
+                if (activeTab && tabNavContainer) {
+                    const targetId = activeTab.getAttribute('data-target');
+                    if (targetId === 'yxxx') {
+                        // 选中"游戏信息"时，隐藏底部边框
+                        tabNavContainer.style.borderBottom = 'none';
+                    } else {
+                        // 选中其他选项卡时，恢复默认边框
+                        tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                    }
+                }
+            }
+
             tabItems.forEach(item => {
                 item.addEventListener('click', function () {
                     const targetId = this.getAttribute('data-target');
@@ -280,6 +365,18 @@
                     tabContents.forEach(content => {
                         content.classList.remove('active');
                     });
+
+                    // 根据选中的选项卡控制导航栏容器的底部边框
+                    if (tabNavContainer) {
+                        if (targetId === 'yxxx') {
+                            // 选中"游戏信息"时，隐藏底部边框
+                            tabNavContainer.style.borderBottom = 'none';
+                        } else {
+                            // 选中其他选项卡时，恢复默认边框
+                            tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                        }
+                    }
+
                     const fullTargetId = 'module-' + targetId;
                     const targetContent = document.getElementById(fullTargetId);
                     if (targetContent) {
@@ -289,6 +386,9 @@
                     }
                 });
             });
+
+            // 页面加载时初始化导航栏边框
+            initNavBorder();
 
             // QQ用户列表动态生成功能
             const generateUserList = () => {
