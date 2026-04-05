@@ -212,9 +212,17 @@
 /* 模块网格 */
 .cyber-module-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    padding: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px;
+}
+
+@media (max-width: 768px) {
+    .cyber-module-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 20px;
+    }
 }
 
 .cyber-module-card {
