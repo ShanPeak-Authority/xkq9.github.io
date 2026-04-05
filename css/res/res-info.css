@@ -259,7 +259,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border: 1px solid rgba(0, 204, 102, 0.25);
 }
 
@@ -267,7 +267,7 @@
     .module-icon-frame {
         width: 50px;
         height: 50px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }
 
@@ -288,13 +288,14 @@
     font-size: 16px;
     font-weight: bold;
     color: #f0f4ff;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
 @media (max-width: 768px) {
     .module-name {
         font-size: 14px;
+        margin-bottom: 10px;
     }
 }
 
@@ -302,18 +303,18 @@
     display: flex;
     align-items: center;
     background: rgba(0, 204, 102, 0.1);
-    padding: 6px 16px;
-    border-radius: 20px;
+    padding: 5px 15px;
+    border-radius: 30px;
     border: 1px solid rgba(0, 204, 102, 0.3);
 }
 
 .status-led {
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
     background: #00ff88;
     border-radius: 50%;
-    margin-right: 8px;
-    box-shadow: 0 0 8px #00ff88;
+    margin-right: 10px;
+    box-shadow: 0 0 5px #00ff88;
     animation: pulse 2s infinite;
 }
 
@@ -331,9 +332,7 @@
 
 .status-text {
     font-size: 12px;
-    font-weight: 600;
     color: #a0ffd0;
-    letter-spacing: 1px;
 }
 
 /* 系统通告 */
