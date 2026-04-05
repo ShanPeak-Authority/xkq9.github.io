@@ -220,39 +220,45 @@
 @media (max-width: 768px) {
     .cyber-module-grid {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 20px;
         padding: 20px;
     }
 }
 
 .cyber-module-card {
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 14px;
-    padding: 22px;
+    border-radius: 10px;
+    padding: 15px;
     border: 1px solid rgba(255, 255, 255, 0.07);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.cyber-module-card:hover {
-    background: rgba(22, 120, 255, 0.08);
-    border-color: rgba(22, 120, 255, 0.3);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+    .cyber-module-card {
+        padding: 10px;
+    }
 }
 
 .module-icon-frame {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     background: rgba(0, 204, 102, 0.12);
-    border-radius: 16px;
+    border-radius: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     border: 1px solid rgba(0, 204, 102, 0.25);
+}
+
+@media (max-width: 768px) {
+    .module-icon-frame {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
 }
 
 .module-icon {
