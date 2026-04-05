@@ -459,8 +459,8 @@
 }
 
 .log-node {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid #1e2a4a;
@@ -473,8 +473,8 @@
 }
 
 .log-node-core {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
 }
@@ -487,23 +487,39 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
 }
 
 .log-version {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: bold;
     color: #e2e8ff;
+}
+
+@media (max-width: 768px) {
+    .log-version {
+        font-size: 14px;
+    }
 }
 
 .log-date {
     font-size: 12px;
-    font-weight: 600;
+    font-weight: bold;
     color: #7a8ccc;
-    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .log-date {
+        font-size: 10px;
+    }
 }
 
 .log-desc {
-    font-size: 13px;
+    font-size: 12px;
     color: #a3b2e6;
+}
+
+@media (max-width: 768px) {
+    .log-desc {
+        font-size: 10px;
+    }
 }
