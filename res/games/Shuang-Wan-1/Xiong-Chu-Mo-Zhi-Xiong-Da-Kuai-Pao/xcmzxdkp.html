@@ -236,83 +236,84 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- 游戏下载-->
-        <div class="download">
-            <div class="download-btn-container">
-                <button class="download-btn-blue">游戏下载</button>
-                <button class="download-btn-green">复制链接</button>
-            </div>
-            <p class="download-note">无需下载123盘客户端，登录账号后即可下载</p>
+    <!-- 游戏下载-->
+    <div class="download">
+        <div class="download-btn-container">
+            <button class="download-btn-blue">游戏下载</button>
+            <button class="download-btn-green">复制链接</button>
         </div>
+        <p class="download-note">无需下载123盘客户端，登录账号后即可下载</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ========== 配置区域：便于维护的变量定义 ==========
+            // 游戏官网下载链接
+            const gameDownloadLink = 'https://www.123865.com/s/EFJAjv-Q3j5d';
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // ========== 配置区域：便于维护的变量定义 ==========
-                // 游戏官网下载链接
-                const gameDownloadLink = 'https://www.123865.com/s/EFJAjv-Q3j5d';
+            // 已参与活动的QQ号列表
+            const qqNumberArray = [
+            ];
+            // 对数组进行升序排序
+            qqNumberArray.sort((a, b) => a - b);
+            // ========== 配置区域结束 ==========
 
-                // 已参与活动的QQ号列表
-                const qqNumberArray = [
-                ];
-                // 对数组进行升序排序
-                qqNumberArray.sort((a, b) => a - b);
-                // ========== 配置区域结束 ==========
+            // 返回按钮功能
+            const backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function () {
+                    window.history.back();
+                });
+            }
 
-                // 返回按钮功能
-                const backBtn = document.getElementById('backBtn');
-                if (backBtn) {
-                    backBtn.addEventListener('click', function () {
-                        window.history.back();
-                    });
-                }
+            // 获取两个功能按钮
+            const downloadBtn = document.querySelector('.download-btn-blue');
+            const copyLinkBtn = document.querySelector('.download-btn-green');
 
-                // 获取两个功能按钮
-                const downloadBtn = document.querySelector('.download-btn-blue');
-                const copyLinkBtn = document.querySelector('.download-btn-green');
+            // 实现"游戏官网"按钮点击跳转功能
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function () {
+                    window.open(gameDownloadLink, '_blank');
+                });
+            }
 
-                // 实现“游戏官网”按钮点击跳转功能
-                if (downloadBtn) {
-                    downloadBtn.addEventListener('click', function () {
-                        window.open(gameDownloadLink, '_blank');
-                    });
-                }
-
-                // 实现“复制链接”按钮点击复制功能
-                if (copyLinkBtn) {
-                    copyLinkBtn.addEventListener('click', function () {
-                        // 使用现代 Clipboard API
-                        if (navigator.clipboard && window.isSecureContext) {
-                            navigator.clipboard.writeText(gameDownloadLink)
-                                .then(() => {
-                                    showCopySuccessHint('链接已复制到剪贴板', 'success');
-                                })
-                                .catch(err => {
-                                    console.error('复制失败: ', err);
-                                    // 降级方案：使用较旧的 document.execCommand 方法
-                                    fallbackCopyText(gameDownloadLink);
-                                });
-                        } else {
-                            // 在不支持新API或非安全上下文中使用降级方案
-                            fallbackCopyText(gameDownloadLink);
-                        }
-                    });
-                }
-
-                function showCopySuccessHint(message, type = 'success') {
-                    const existingHint = document.querySelector('.copy-hint');
-                    if (existingHint) {
-                        existingHint.remove();
+            // 实现"复制链接"按钮点击复制功能
+            if (copyLinkBtn) {
+                copyLinkBtn.addEventListener('click', function () {
+                    // 使用现代 Clipboard API
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(gameDownloadLink)
+                            .then(() => {
+                                showCopySuccessHint('链接已复制到剪贴板', 'success');
+                            })
+                            .catch(err => {
+                                console.error('复制失败: ', err);
+                                // 降级方案：使用较旧的 document.execCommand 方法
+                                fallbackCopyText(gameDownloadLink);
+                            });
+                    } else {
+                        // 在不支持新API或非安全上下文中使用降级方案
+                        fallbackCopyText(gameDownloadLink);
                     }
+                });
+            }
 
-                    const hint = document.createElement('div');
-                    hint.className = 'copy-hint';
-                    hint.textContent = message;
+            function showCopySuccessHint(message, type = 'success') {
+                const existingHint = document.querySelector('.copy-hint');
+                if (existingHint) {
+                    existingHint.remove();
+                }
 
-                    // 根据类型（成功/失败）设置不同的样式
-                    const bgColor = type === 'success' ? '#4CAF50' : '#ff9800';
+                const hint = document.createElement('div');
+                hint.className = 'copy-hint';
+                hint.textContent = message;
 
-                    hint.style.cssText = `
+                // 根据类型（成功/失败）设置不同的样式
+                const bgColor = type === 'success' ? '#4CAF50' : '#ff9800';
+
+                hint.style.cssText = `
                 position: fixed;
                 top: 20%;
                 left: 50%;
@@ -330,42 +331,42 @@
                 word-break: break-all;
             `;
 
-                    document.body.appendChild(hint);
+                document.body.appendChild(hint);
 
-                    setTimeout(() => {
-                        if (hint.parentNode) {
-                            hint.parentNode.removeChild(hint);
-                        }
-                    }, 2500);
-                }
-
-                // 降级复制方案（兼容旧浏览器）
-                function fallbackCopyText(text) {
-                    const textArea = document.createElement('textarea');
-                    textArea.value = text;
-                    textArea.style.position = 'fixed';
-                    textArea.style.opacity = '0';
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
-
-                    try {
-                        const successful = document.execCommand('copy');
-                        const msg = successful ? '链接已复制' : '链接复制失败';
-                        showCopySuccessHint(msg, successful ? 'success' : 'warning');
-                    } catch (err) {
-                        console.error('降级复制方案也失败了: ', err);
-                        showCopySuccessHint('链接复制失败', 'warning');
+                setTimeout(() => {
+                    if (hint.parentNode) {
+                        hint.parentNode.removeChild(hint);
                     }
+                }, 2500);
+            }
 
-                    document.body.removeChild(textArea);
+            // 降级复制方案（兼容旧浏览器）
+            function fallbackCopyText(text) {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    const msg = successful ? '链接已复制' : '链接复制失败';
+                    showCopySuccessHint(msg, successful ? 'success' : 'warning');
+                } catch (err) {
+                    console.error('降级复制方案也失败了: ', err);
+                    showCopySuccessHint('链接复制失败', 'warning');
                 }
 
-                // 为提示动画添加CSS关键帧
-                if (!document.querySelector('style#hint-animation')) {
-                    const style = document.createElement('style');
-                    style.id = 'hint-animation';
-                    style.textContent = `
+                document.body.removeChild(textArea);
+            }
+
+            // 为提示动画添加CSS关键帧
+            if (!document.querySelector('style#hint-animation')) {
+                const style = document.createElement('style');
+                style.id = 'hint-animation';
+                style.textContent = `
                 @keyframes fadeInOut {
                     0% { opacity: 0; top: 15%; }
                     15% { opacity: 1; top: 20%; }
@@ -373,154 +374,173 @@
                     100% { opacity: 0; top: 25%; }
                 }
             `;
-                    document.head.appendChild(style);
+                document.head.appendChild(style);
+            }
+
+            // 水平分类选项卡切换功能
+            const tabNav = document.getElementById('tabNav');
+            const tabNavContainer = document.querySelector('.category-nav');
+            const tabItems = tabNav.querySelectorAll('.category-nav-item');
+            const tabContents = document.querySelectorAll('.module-content');
+
+            // 初始化导航栏边框状态的函数
+            function initNavBorder() {
+                const activeTab = document.querySelector('.category-nav-item.active');
+                if (activeTab && tabNavContainer) {
+                    const targetId = activeTab.getAttribute('data-target');
+                    if (targetId === 'yxxx') {
+                        // 选中"游戏信息"时，隐藏底部边框
+                        tabNavContainer.style.borderBottom = 'none';
+                    } else {
+                        // 选中其他选项卡时，恢复默认边框
+                        tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                    }
                 }
+            }
 
-                // 水平分类选项卡切换功能
-                const tabNav = document.getElementById('tabNav');
-                const tabNavContainer = document.querySelector('.category-nav');
-                const tabItems = tabNav.querySelectorAll('.category-nav-item');
-                const tabContents = document.querySelectorAll('.module-content');
-                tabItems.forEach(item => {
-                    item.addEventListener('click', function () {
-                        const targetId = this.getAttribute('data-target');
-                        tabItems.forEach(navItem => navItem.classList.remove('active'));
-                        this.classList.add('active');
-                        tabContents.forEach(content => {
-                            content.classList.remove('active');
-                        });
-
-                        // 根据选中的选项卡控制导航栏容器的底部边框
-                        if (tabNavContainer) {
-                            if (targetId === 'yxxx') {
-                                // 选中“游戏信息”时，隐藏底部边框
-                                tabNavContainer.style.borderBottom = 'none';
-                            } else {
-                                // 选中其他选项卡时，恢复默认边框
-                                tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
-                            }
-                        }
-
-                        const fullTargetId = 'module-' + targetId;
-                        const targetContent = document.getElementById(fullTargetId);
-                        if (targetContent) {
-                            setTimeout(() => {
-                                targetContent.classList.add('active');
-                            }, 10);
-                        }
+            tabItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-target');
+                    tabItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
                     });
+
+                    // 根据选中的选项卡控制导航栏容器的底部边框
+                    if (tabNavContainer) {
+                        if (targetId === 'yxxx') {
+                            // 选中"游戏信息"时，隐藏底部边框
+                            tabNavContainer.style.borderBottom = 'none';
+                        } else {
+                            // 选中其他选项卡时，恢复默认边框
+                            tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                        }
+                    }
+
+                    const fullTargetId = 'module-' + targetId;
+                    const targetContent = document.getElementById(fullTargetId);
+                    if (targetContent) {
+                        setTimeout(() => {
+                            targetContent.classList.add('active');
+                        }, 10);
+                    }
                 });
+            });
 
-                // QQ用户列表动态生成功能
-                const generateUserList = () => {
-                    // 1. 从userdata.html中获取用户数据
-                    const fetchUserData = async () => {
-                        try {
-                            // 使用fetch获取userdata.html
-                            const response = await fetch('/res/userdata/userdata.html');
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
+            // 页面加载时初始化导航栏边框
+            initNavBorder();
 
-                            const htmlText = await response.text();
-                            const parser = new DOMParser();
-                            const doc = parser.parseFromString(htmlText, 'text/html');
+            // QQ用户列表动态生成功能
+            const generateUserList = () => {
+                // 1. 从userdata.html中获取用户数据
+                const fetchUserData = async () => {
+                    try {
+                        // 使用fetch获取userdata.html
+                        const response = await fetch('/res/userdata/userdata.html');
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
 
-                            // 查找表格
-                            const table = doc.querySelector('table');
-                            if (!table) {
-                                throw new Error('未找到表格');
-                            }
+                        const htmlText = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(htmlText, 'text/html');
 
-                            // 提取表格行数据
-                            const rows = table.querySelectorAll('tr');
-                            const userDataMap = {};
+                        // 查找表格
+                        const table = doc.querySelector('table');
+                        if (!table) {
+                            throw new Error('未找到表格');
+                        }
 
-                            // 跳过表头行，从第二行开始
-                            for (let i = 1; i < rows.length; i++) {
-                                const cells = rows[i].querySelectorAll('td');
-                                if (cells.length >= 2) {
-                                    const username = cells[0].textContent.trim();
-                                    const qq = parseInt(cells[1].textContent.trim());
-                                    if (!isNaN(qq)) {
-                                        userDataMap[qq] = username;
-                                    }
+                        // 提取表格行数据
+                        const rows = table.querySelectorAll('tr');
+                        const userDataMap = {};
+
+                        // 跳过表头行，从第二行开始
+                        for (let i = 1; i < rows.length; i++) {
+                            const cells = rows[i].querySelectorAll('td');
+                            if (cells.length >= 2) {
+                                const username = cells[0].textContent.trim();
+                                const qq = parseInt(cells[1].textContent.trim());
+                                if (!isNaN(qq)) {
+                                    userDataMap[qq] = username;
                                 }
                             }
-
-                            return userDataMap;
-                        } catch (error) {
-                            console.error('获取用户数据失败:', error);
-                            // 返回一个空对象，以便后续处理
-                            return {};
                         }
-                    };
 
-                    // 2. 注意：qqNumberArray 现已定义在外部配置区域，此处直接使用即可
-
-                    // 3. 获取列表容器
-                    const container = document.getElementById('user-list-container');
-
-                    // 4. 异步获取用户数据并生成列表
-                    fetchUserData().then(userDataMap => {
-                        // 创建列表元素
-                        const listEl = document.createElement('ul');
-                        listEl.className = 'user-list';
-
-                        // 遍历排序后的数组，动态创建列表项
-                        qqNumberArray.forEach(qq => {
-                            const listItem = document.createElement('li');
-                            listItem.className = 'user-list-item';
-
-                            // 创建头像（使用腾讯公有接口）
-                            const avatar = document.createElement('img');
-                            avatar.className = 'user-avatar';
-                            avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`;
-                            avatar.alt = `QQ头像-${qq}`;
-                            avatar.onerror = function () {
-                                this.src = '/res/icon/default-avatar.png';
-                            };
-
-                            // 创建用户信息容器
-                            const userInfo = document.createElement('div');
-                            userInfo.className = 'user-info';
-
-                            // 获取用户昵称（从userDataMap中查找）
-                            const nickname = userDataMap[qq] || `用户${qq}`;
-
-                            // 创建用户昵称显示
-                            const nicknameEl = document.createElement('div');
-                            nicknameEl.className = 'user-nickname';
-                            nicknameEl.textContent = nickname;
-
-                            // 创建QQ号显示
-                            const qqSpan = document.createElement('div');
-                            qqSpan.className = 'user-qq';
-                            qqSpan.textContent = qq;
-
-                            // 组装用户信息
-                            userInfo.appendChild(nicknameEl);
-                            userInfo.appendChild(qqSpan);
-
-                            // 组装列表项
-                            listItem.appendChild(avatar);
-                            listItem.appendChild(userInfo);
-                            listEl.appendChild(listItem);
-                        });
-
-                        // 5. 将列表插入到容器中
-                        container.appendChild(listEl);
-                    }).catch(error => {
-                        console.error('生成用户列表失败:', error);
-                        // 如果获取失败，显示错误信息
-                        container.innerHTML = '<p>加载用户数据失败，请稍后重试</p>';
-                    });
+                        return userDataMap;
+                    } catch (error) {
+                        console.error('获取用户数据失败:', error);
+                        // 返回一个空对象，以便后续处理
+                        return {};
+                    }
                 };
 
-                // 调用生成用户列表函数
-                generateUserList();
-            });
-        </script>
+                // 2. 注意：qqNumberArray 现已定义在外部配置区域，此处直接使用即可
+
+                // 3. 获取列表容器
+                const container = document.getElementById('user-list-container');
+
+                // 4. 异步获取用户数据并生成列表
+                fetchUserData().then(userDataMap => {
+                    // 创建列表元素
+                    const listEl = document.createElement('ul');
+                    listEl.className = 'user-list';
+
+                    // 遍历排序后的数组，动态创建列表项
+                    qqNumberArray.forEach(qq => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'user-list-item';
+
+                        // 创建头像（使用腾讯公有接口）
+                        const avatar = document.createElement('img');
+                        avatar.className = 'user-avatar';
+                        avatar.src = `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=640`;
+                        avatar.alt = `QQ头像-${qq}`;
+                        avatar.onerror = function () {
+                            this.src = '/res/icon/default-avatar.png';
+                        };
+
+                        // 创建用户信息容器
+                        const userInfo = document.createElement('div');
+                        userInfo.className = 'user-info';
+
+                        // 获取用户昵称（从userDataMap中查找）
+                        const nickname = userDataMap[qq] || `用户${qq}`;
+
+                        // 创建用户昵称显示
+                        const nicknameEl = document.createElement('div');
+                        nicknameEl.className = 'user-nickname';
+                        nicknameEl.textContent = nickname;
+
+                        // 创建QQ号显示
+                        const qqSpan = document.createElement('div');
+                        qqSpan.className = 'user-qq';
+                        qqSpan.textContent = qq;
+
+                        // 组装用户信息
+                        userInfo.appendChild(nicknameEl);
+                        userInfo.appendChild(qqSpan);
+
+                        // 组装列表项
+                        listItem.appendChild(avatar);
+                        listItem.appendChild(userInfo);
+                        listEl.appendChild(listItem);
+                    });
+
+                    // 5. 将列表插入到容器中
+                    container.appendChild(listEl);
+                }).catch(error => {
+                    console.error('生成用户列表失败:', error);
+                    // 如果获取失败，显示错误信息
+                    container.innerHTML = '<p>加载用户数据失败，请稍后重试</p>';
+                });
+            };
+
+            // 调用生成用户列表函数
+            generateUserList();
+        });
+    </script>
 </body>
 
 </html>
