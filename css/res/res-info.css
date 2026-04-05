@@ -351,25 +351,25 @@
 }
 
 .cyber-notice-list {
-    padding: 30px 30px 15px;
+    padding: 30px 30px 0;
 }
 
 @media (max-width: 768px) {
     .cyber-notice-list {
-        padding: 20px 20px 10px;
+        padding: 20px 20px 0;
     }
 }
 
 .cyber-notice-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     position: relative;
 }
 
 @media (max-width: 768px) {
     .cyber-notice-item {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 }
 
@@ -385,16 +385,22 @@
     }
 }
 
-/* 迭代日志流 */
+/* 更新日志 */
 .cyber-log-stream {
-    padding: 20px 25px 25px;
+    padding: 30px;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .cyber-log-stream {
+        padding: 20px;
+    }
 }
 
 .cyber-log-stream::before {
     content: '';
     position: absolute;
-    left: 41px;
+    left: 40px;
     top: 0;
     bottom: 0;
     width: 1px;
@@ -405,11 +411,23 @@
             transparent);
 }
 
+@media (max-width: 768px) {
+    .cyber-log-stream::before {
+        left: 29px;
+    }
+}
+
 .cyber-log-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .cyber-log-item {
+        margin-bottom: 20px;
+    }
 }
 
 .cyber-log-item:last-child {
@@ -425,18 +443,13 @@
     color: #00ccff;
 }
 
-.log-line-start,
 .log-line {
-    width: 20px;
+    width: 25px;
     height: 1px;
     background: rgba(0, 204, 255, 0.6);
-    margin-top: 18px;
     margin-right: 10px;
     flex-shrink: 0;
-}
-
-.log-line-start {
-    width: 10px;
+    align-self: center;
 }
 
 .log-node {
