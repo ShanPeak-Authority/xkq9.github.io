@@ -60,98 +60,118 @@
         <div class="module-container">
             <!-- 游戏信息 -->
             <div class="module-content active" id="module-yxxx">
-                <div class="tech-module-container">
-                    <!-- 主版本区块 -->
-                    <div class="tech-data-panel glow">
-                        <div class="tech-icon-wrapper">
-                            <div class="mask-fill tech-main-icon" style="--icon-url: url('/res/icon/cpu.svg');"></div>
+                <div class="cyber-module">
+                    <!-- 核心版本状态 -->
+                    <div class="cyber-status-panel" data-glow="true">
+                        <div class="cyber-core-icon">
+                            <div class="mask-fill cyber-icon-fill" style="--icon-url: url('/res/icon/hexagon.svg');">
+                            </div>
                         </div>
-                        <div class="tech-data-content">
-                            <div class="tech-data-label">CURRENT VERSION</div>
-                            <div class="tech-data-value">v4.5.0</div>
-                            <div class="tech-data-sub">Build 2026.04.04</div>
+                        <div class="cyber-core-data">
+                            <div class="cyber-data-tag">核心版本</div>
+                            <div class="cyber-data-version">4.5.0</div>
+                            <div class="cyber-data-build">构建于 2026.04.04</div>
                         </div>
+                        <div class="cyber-glow-effect"></div>
                     </div>
 
-                    <!-- 破解特性网格 -->
-                    <div class="tech-section">
-                        <div class="tech-section-header">
-                            <div class="mask-fill tech-section-icon" style="--icon-url: url('/res/icon/shield.svg');">
+                    <!-- 模块特性 -->
+                    <div class="cyber-section">
+                        <div class="cyber-section-title">
+                            <div class="mask-fill cyber-title-icon" style="--icon-url: url('/res/icon/layers.svg');">
                             </div>
-                            <h3 class="tech-section-title">MODIFICATION FEATURES</h3>
+                            <h3>破解模块</h3>
                         </div>
-                        <div class="tech-feature-grid">
-                            <div class="tech-feature-card">
-                                <div class="tech-feature-icon-wrapper">
-                                    <div class="mask-fill tech-feature-icon"
-                                        style="--icon-url: url('/res/icon/zap.svg');"></div>
+                        <div class="cyber-module-grid">
+                            <div class="cyber-module-card">
+                                <div class="module-icon-frame">
+                                    <div class="mask-fill module-icon"
+                                        style="--icon-url: url('/res/icon/sparkles.svg');"></div>
                                 </div>
-                                <div class="tech-feature-name">内购破解</div>
-                                <div class="tech-feature-status active">ACTIVE</div>
-                            </div>
-                            <div class="tech-feature-card">
-                                <div class="tech-feature-icon-wrapper">
-                                    <div class="mask-fill tech-feature-icon"
-                                        style="--icon-url: url('/res/icon/slash.svg');"></div>
+                                <div class="module-name">内购破解</div>
+                                <div class="module-status">
+                                    <span class="status-led"></span>
+                                    <span class="status-text">已启用</span>
                                 </div>
-                                <div class="tech-feature-name">禁用自动更新</div>
-                                <div class="tech-feature-status active">ACTIVE</div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- 警告区块 -->
-                    <div class="tech-notice-panel">
-                        <div class="tech-notice-header">
-                            <div class="mask-fill tech-notice-icon"
-                                style="--icon-url: url('/res/icon/alert-circle.svg');"></div>
-                            <h3 class="tech-notice-title">SYSTEM NOTICE</h3>
-                        </div>
-                        <div class="tech-notice-list">
-                            <div class="tech-notice-item">
-                                <div class="tech-notice-marker"></div>
-                                <div class="tech-notice-text">若游戏无法正常运行，请联系群主进行更新</div>
-                            </div>
-                            <div class="tech-notice-item">
-                                <div class="tech-notice-marker"></div>
-                                <div class="tech-notice-text">游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败</div>
+                            <div class="cyber-module-card">
+                                <div class="module-icon-frame">
+                                    <div class="mask-fill module-icon" style="--icon-url: url('/res/icon/block.svg');">
+                                    </div>
+                                </div>
+                                <div class="module-name">屏蔽自动更新</div>
+                                <div class="module-status">
+                                    <span class="status-led"></span>
+                                    <span class="status-text">运行中</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 更新日志时间流 -->
-                    <div class="tech-section">
-                        <div class="tech-section-header">
-                            <div class="mask-fill tech-section-icon"
-                                style="--icon-url: url('/res/icon/refresh-cw.svg');"></div>
-                            <h3 class="tech-section-title">UPDATE LOG</h3>
+                    <!-- 系统通告 -->
+                    <div class="cyber-notice" data-type="warn">
+                        <div class="cyber-notice-title">
+                            <div class="mask-fill cyber-title-icon"
+                                style="--icon-url: url('/res/icon/alert-octagon.svg');"></div>
+                            <h3>系统通告</h3>
                         </div>
-                        <div class="tech-timeline">
-                            <div class="tech-timeline-item current">
-                                <div class="tech-timeline-line-start"></div>
-                                <div class="tech-timeline-dot"></div>
-                                <div class="tech-timeline-content">
-                                    <div class="tech-timeline-date">2026.04.04</div>
-                                    <div class="tech-timeline-version">v4.5.0</div>
-                                    <div class="tech-timeline-desc">稳定性与性能优化</div>
+                        <div class="cyber-notice-list">
+                            <div class="cyber-notice-item">
+                                <div class="notice-marker"></div>
+                                <div class="notice-content">若游戏无法正常运行，请联系群主进行更新</div>
+                            </div>
+                            <div class="cyber-notice-item">
+                                <div class="notice-marker"></div>
+                                <div class="notice-content">游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 迭代日志 -->
+                    <div class="cyber-section">
+                        <div class="cyber-section-title">
+                            <div class="mask-fill cyber-title-icon"
+                                style="--icon-url: url('/res/icon/git-branch.svg');"></div>
+                            <h3>迭代日志</h3>
+                        </div>
+                        <div class="cyber-log-stream">
+                            <div class="cyber-log-item" data-state="current">
+                                <div class="log-line-start"></div>
+                                <div class="log-node">
+                                    <div class="log-node-core"></div>
+                                </div>
+                                <div class="log-content">
+                                    <div class="log-header">
+                                        <div class="log-version">版本 4.5.0</div>
+                                        <div class="log-date">2026.04.04</div>
+                                    </div>
+                                    <div class="log-desc">发布最新稳定版本</div>
                                 </div>
                             </div>
-                            <div class="tech-timeline-item">
-                                <div class="tech-timeline-line"></div>
-                                <div class="tech-timeline-dot"></div>
-                                <div class="tech-timeline-content">
-                                    <div class="tech-timeline-date">2026.03.30</div>
-                                    <div class="tech-timeline-version">v4.5.0</div>
-                                    <div class="tech-timeline-desc">功能同步更新</div>
+                            <div class="cyber-log-item">
+                                <div class="log-line"></div>
+                                <div class="log-node">
+                                    <div class="log-node-core"></div>
+                                </div>
+                                <div class="log-content">
+                                    <div class="log-header">
+                                        <div class="log-version">版本 4.5.0</div>
+                                        <div class="log-date">2026.03.30</div>
+                                    </div>
+                                    <div class="log-desc">功能同步与更新</div>
                                 </div>
                             </div>
-                            <div class="tech-timeline-item">
-                                <div class="tech-timeline-line"></div>
-                                <div class="tech-timeline-dot"></div>
-                                <div class="tech-timeline-content">
-                                    <div class="tech-timeline-date">2026.03.13</div>
-                                    <div class="tech-timeline-version">v4.4.0</div>
-                                    <div class="tech-timeline-desc">初始破解版本发布</div>
+                            <div class="cyber-log-item">
+                                <div class="log-line"></div>
+                                <div class="log-node">
+                                    <div class="log-node-core"></div>
+                                </div>
+                                <div class="log-content">
+                                    <div class="log-header">
+                                        <div class="log-version">版本 4.4.0</div>
+                                        <div class="log-date">2026.03.13</div>
+                                    </div>
+                                    <div class="log-desc">初始破解版本发布</div>
                                 </div>
                             </div>
                         </div>

@@ -54,112 +54,129 @@
     }
 }
 
-/* 科技感模块容器 - 深色基底 */
-.tech-module-container {
+/* 核心容器 - 深空背景与霓虹光 */
+.cyber-module {
     margin: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    background: linear-gradient(145deg, #0f1520, #1a2235);
-    border-radius: 20px;
     padding: 30px;
-    color: #e2e8f7;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* 发光效果 */
-.glow {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(22, 120, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 204, 102, 0.05) 0%, transparent 50%),
+        linear-gradient(165deg, #0c1120 0%, #131a2f 100%);
+    border-radius: 20px;
+    color: #d1d9f3;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(0, 0, 0, 0.3);
     position: relative;
+    overflow: hidden;
 }
 
-.glow::after {
+.cyber-module::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(22, 120, 255, 0.7), rgba(0, 204, 255, 0.4));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 0;
-    pointer-events: none;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 204, 255, 0.5),
+            transparent);
+    z-index: 1;
 }
 
-/* 主数据面板 */
-.tech-data-panel {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 25px;
+/* 核心状态面板 */
+.cyber-status-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    padding: 30px;
     display: flex;
     align-items: center;
-    z-index: 1;
+    margin-bottom: 30px;
     position: relative;
+    border: 1px solid rgba(22, 120, 255, 0.15);
+    backdrop-filter: blur(8px);
 }
 
-.tech-icon-wrapper {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, rgba(22, 120, 255, 0.2), rgba(0, 204, 255, 0.1));
-    border-radius: 16px;
+.cyber-status-panel[data-glow="true"] {
+    box-shadow: 0 0 30px rgba(22, 120, 255, 0.15);
+}
+
+.cyber-core-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(22, 120, 255, 0.2) 0%, rgba(0, 204, 255, 0.1) 100%);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 25px;
     flex-shrink: 0;
+    border: 1px solid rgba(22, 120, 255, 0.3);
 }
 
-.tech-main-icon {
+.cyber-icon-fill {
     width: 40px;
     height: 40px;
-    background: linear-gradient(to right, #00ccff, #1678ff);
+    background: linear-gradient(to bottom right, #36d1ff, #1678ff);
 }
 
-.tech-data-content {
+.cyber-core-data {
     flex: 1;
 }
 
-.tech-data-label {
+.cyber-data-tag {
     font-size: 12px;
-    letter-spacing: 1.5px;
-    color: #94a3c2;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #7a8ccc;
+    margin-bottom: 8px;
     text-transform: uppercase;
-    margin-bottom: 5px;
 }
 
-.tech-data-value {
-    font-size: 36px;
-    font-weight: 700;
-    background: linear-gradient(to right, #00ccff, #1678ff);
+.cyber-data-version {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(to right, #36d1ff, #5b8cff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 5px;
     line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(54, 209, 255, 0.3);
 }
 
-.tech-data-sub {
+.cyber-data-build {
     font-size: 13px;
-    color: #94a3c2;
+    color: #8a9bc9;
+    opacity: 0.9;
 }
 
-/* 区块标题 */
-.tech-section {
-    background: rgba(255, 255, 255, 0.03);
+.cyber-glow-effect {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -30px;
+    bottom: -30px;
+    background: radial-gradient(circle, rgba(22, 120, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* 区块通用样式 */
+.cyber-section,
+.cyber-notice {
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 16px;
-    padding: 0;
-    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
-.tech-section-header {
+.cyber-section-title,
+.cyber-notice-title {
     display: flex;
     align-items: center;
     padding: 20px 25px;
@@ -167,284 +184,305 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.tech-section-icon {
+.cyber-title-icon {
     width: 20px;
     height: 20px;
     margin-right: 12px;
     background: #00ccff;
 }
 
-.tech-section-title {
-    font-size: 14px;
+.cyber-section-title h3,
+.cyber-notice-title h3 {
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 1px;
-    color: #cbd5e9;
+    color: #e2e8ff;
     margin: 0;
-    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* 特性网格 */
-.tech-feature-grid {
+/* 模块网格 */
+.cyber-module-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
     padding: 25px;
 }
 
-.tech-feature-card {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 12px;
-    padding: 20px;
+.cyber-module-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 22px;
     border: 1px solid rgba(255, 255, 255, 0.07);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
-.tech-feature-card:hover {
-    background: rgba(22, 120, 255, 0.1);
+.cyber-module-card:hover {
+    background: rgba(22, 120, 255, 0.08);
     border-color: rgba(22, 120, 255, 0.3);
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.tech-feature-icon-wrapper {
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 204, 102, 0.15);
-    border-radius: 12px;
+.module-icon-frame {
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 204, 102, 0.12);
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0, 204, 102, 0.25);
 }
 
-.tech-feature-icon {
-    width: 24px;
-    height: 24px;
+.module-icon {
+    width: 28px;
+    height: 28px;
     background: #00cc66;
 }
 
-.tech-feature-name {
-    font-size: 15px;
+.module-name {
+    font-size: 16px;
     font-weight: 500;
-    color: #e2e8f7;
-    margin-bottom: 8px;
+    color: #f0f4ff;
+    margin-bottom: 12px;
+    text-align: center;
 }
 
-.tech-feature-status {
-    font-size: 11px;
-    font-weight: 700;
-    color: #00cc66;
-    background: rgba(0, 204, 102, 0.15);
-    padding: 4px 12px;
+.module-status {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 204, 102, 0.1);
+    padding: 6px 16px;
     border-radius: 20px;
+    border: 1px solid rgba(0, 204, 102, 0.3);
+}
+
+.status-led {
+    width: 8px;
+    height: 8px;
+    background: #00ff88;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px #00ff88;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.status-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a0ffd0;
     letter-spacing: 1px;
 }
 
-.tech-feature-status.active {
-    color: #00cc66;
+/* 系统通告 */
+.cyber-notice[data-type="warn"] {
+    border-color: rgba(255, 152, 0, 0.2);
+    background: rgba(255, 152, 0, 0.04);
 }
 
-/* 警告面板 */
-.tech-notice-panel {
-    background: rgba(255, 152, 0, 0.08);
-    border: 1px solid rgba(255, 152, 0, 0.2);
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.tech-notice-header {
-    display: flex;
-    align-items: center;
-    padding: 20px 25px;
-    background: rgba(255, 152, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 152, 0, 0.15);
-}
-
-.tech-notice-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
+.cyber-notice[data-type="warn"] .cyber-title-icon {
     background: #ff9800;
 }
 
-.tech-notice-title {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #ffcc80;
-    margin: 0;
-    text-transform: uppercase;
+.cyber-notice[data-type="warn"] .cyber-notice-title {
+    border-bottom-color: rgba(255, 152, 0, 0.15);
+    background: rgba(255, 152, 0, 0.08);
 }
 
-.tech-notice-list {
-    padding: 20px 25px;
+.cyber-notice-list {
+    padding: 20px 25px 25px;
 }
 
-.tech-notice-item {
+.cyber-notice-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 15px;
-    padding-left: 10px;
+    padding-left: 12px;
+    margin-bottom: 16px;
     position: relative;
 }
 
-.tech-notice-item:last-child {
+.cyber-notice-item:last-child {
     margin-bottom: 0;
 }
 
-.tech-notice-marker {
+.notice-marker {
+    position: absolute;
+    left: 0;
+    top: 10px;
     width: 6px;
     height: 6px;
     background: #ff9800;
     border-radius: 50%;
-    position: absolute;
-    left: 0;
-    top: 8px;
+    box-shadow: 0 0 6px #ff9800;
 }
 
-.tech-notice-text {
+.notice-content {
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #ffddb3;
+    flex: 1;
 }
 
-/* 时间轴 */
-.tech-timeline {
-    padding: 25px;
+/* 迭代日志流 */
+.cyber-log-stream {
+    padding: 20px 25px 25px;
     position: relative;
 }
 
-.tech-timeline::before {
+.cyber-log-stream::before {
     content: '';
     position: absolute;
-    left: 40px;
+    left: 41px;
     top: 0;
     bottom: 0;
     width: 1px;
-    background: linear-gradient(to bottom, rgba(0, 204, 255, 0.4), transparent);
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(0, 204, 255, 0.6) 20%,
+            rgba(0, 204, 255, 0.6) 80%,
+            transparent);
 }
 
-.tech-timeline-item {
+.cyber-log-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
     position: relative;
 }
 
-.tech-timeline-item:last-child {
+.cyber-log-item:last-child {
     margin-bottom: 0;
 }
 
-.tech-timeline-item.current .tech-timeline-date,
-.tech-timeline-item.current .tech-timeline-version {
+.cyber-log-item[data-state="current"] .log-node-core {
+    background: #00ccff;
+    box-shadow: 0 0 15px #00ccff;
+}
+
+.cyber-log-item[data-state="current"] .log-version {
     color: #00ccff;
 }
 
-.tech-timeline-line-start,
-.tech-timeline-line {
+.log-line-start,
+.log-line {
     width: 20px;
     height: 1px;
-    background: rgba(0, 204, 255, 0.4);
-    margin-top: 12px;
+    background: rgba(0, 204, 255, 0.6);
+    margin-top: 18px;
     margin-right: 10px;
     flex-shrink: 0;
 }
 
-.tech-timeline-line-start {
+.log-line-start {
     width: 10px;
 }
 
-.tech-timeline-dot {
-    width: 12px;
-    height: 12px;
+.log-node {
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid #2a3a5f;
-    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #1e2a4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 15px;
+    flex-shrink: 0;
     z-index: 1;
-    position: relative;
-    top: 6px;
 }
 
-.tech-timeline-item.current .tech-timeline-dot {
-    background: #00ccff;
-    border-color: #00ccff;
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
+.log-node-core {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
 }
 
-.tech-timeline-content {
+.log-content {
     flex: 1;
+    padding-bottom: 5px;
 }
 
-.tech-timeline-date {
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.log-version {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e8ff;
+}
+
+.log-date {
     font-size: 12px;
     font-weight: 600;
+    color: #7a8ccc;
     letter-spacing: 1px;
-    color: #94a3c2;
-    margin-bottom: 5px;
 }
 
-.tech-timeline-version {
-    font-size: 18px;
-    font-weight: 700;
-    color: #e2e8f7;
-    margin-bottom: 5px;
-}
-
-.tech-timeline-desc {
+.log-desc {
     font-size: 13px;
-    color: #94a3c2;
+    color: #a3b2e6;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-    .tech-module-container {
+    .cyber-module {
         margin: 15px;
         padding: 20px;
         border-radius: 16px;
-        gap: 20px;
     }
 
-    .tech-data-panel {
-        padding: 20px;
+    .cyber-status-panel {
+        padding: 25px 20px;
         flex-direction: column;
         text-align: center;
     }
 
-    .tech-icon-wrapper {
+    .cyber-core-icon {
         margin-right: 0;
         margin-bottom: 20px;
     }
 
-    .tech-data-value {
-        font-size: 32px;
+    .cyber-data-version {
+        font-size: 36px;
     }
 
-    .tech-feature-grid {
+    .cyber-module-grid {
         grid-template-columns: 1fr;
         padding: 20px;
-        gap: 15px;
+        gap: 16px;
     }
 
-    .tech-section-header,
-    .tech-notice-header {
-        padding: 18px 20px;
+    .cyber-section-title,
+    .cyber-notice-title,
+    .cyber-notice-list,
+    .cyber-log-stream {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .tech-timeline {
-        padding: 20px;
-    }
-
-    .tech-timeline::before {
-        left: 30px;
-    }
-
-    .tech-timeline-line-start,
-    .tech-timeline-line {
-        width: 15px;
+    .cyber-log-stream::before {
+        left: 36px;
     }
 }
