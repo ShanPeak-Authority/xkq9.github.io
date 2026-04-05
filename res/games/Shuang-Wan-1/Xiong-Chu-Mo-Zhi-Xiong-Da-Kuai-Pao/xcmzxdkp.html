@@ -387,6 +387,15 @@
                         tabContents.forEach(content => {
                             content.classList.remove('active');
                         });
+                        if (tabNavContainer) {
+                            if (targetId === 'yxxx') {
+                                // 选中“游戏信息”时，隐藏底部边框
+                                tabNavContainer.style.borderBottom = 'none';
+                            } else {
+                                // 选中其他选项卡时，恢复默认边框
+                                tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
+                            }
+                        }
                         const fullTargetId = 'module-' + targetId;
                         const targetContent = document.getElementById(fullTargetId);
                         if (targetContent) {
