@@ -62,7 +62,8 @@
                     <!-- 核心版本状态 -->
                     <div class="cyber-status-panel" data-glow="true">
                         <div class="cyber-core-icon">
-                            <div class="mask-fill cyber-icon-fill" style="--icon-url: url('/res/icon/res/version.png');">
+                            <div class="mask-fill cyber-icon-fill"
+                                style="--icon-url: url('/res/icon/res/version.png');">
                             </div>
                         </div>
                         <div class="cyber-core-data">
@@ -376,7 +377,9 @@
                 }
 
                 // 水平分类选项卡切换功能
+                // 水平分类选项卡切换功能
                 const tabNav = document.getElementById('tabNav');
+                const tabNavContainer = document.querySelector('.category-nav');
                 const tabItems = tabNav.querySelectorAll('.category-nav-item');
                 const tabContents = document.querySelectorAll('.module-content');
                 tabItems.forEach(item => {
@@ -387,6 +390,8 @@
                         tabContents.forEach(content => {
                             content.classList.remove('active');
                         });
+
+                        // 根据选中的选项卡控制导航栏容器的底部边框
                         if (tabNavContainer) {
                             if (targetId === 'yxxx') {
                                 // 选中“游戏信息”时，隐藏底部边框
@@ -396,6 +401,7 @@
                                 tabNavContainer.style.borderBottom = '0.5px solid #dddddd';
                             }
                         }
+
                         const fullTargetId = 'module-' + targetId;
                         const targetContent = document.getElementById(fullTargetId);
                         if (targetContent) {
