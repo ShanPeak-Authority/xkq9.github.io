@@ -54,201 +54,397 @@
     }
 }
 
-/* 现代信息模块容器 */
-.info-modern-container {
+/* 科技感模块容器 - 深色基底 */
+.tech-module-container {
     margin: 30px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-/* 基础卡片样式 */
-.modern-card {
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #eef2f7;
-    box-shadow: 0 2px 12px rgba(22, 120, 255, 0.04);
-    padding: 20px;
-    transition: all 0.3s ease;
-}
-
-.modern-card:hover {
-    box-shadow: 0 4px 16px rgba(22, 120, 255, 0.08);
-    border-color: #e0e9ff;
-}
-
-/* 高亮卡片 (注意事项) */
-.modern-card.card-highlight {
-    border-left: 4px solid #ff9800;
-    box-shadow: 0 2px 12px rgba(255, 152, 0, 0.06);
-}
-
-/* 卡片标题区域 */
-.modern-card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 18px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #f0f4f9;
-}
-
-.modern-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    background-color: #1678ff;
-    /* 主色 */
-}
-
-.icon-warn {
-    background-color: #ff9800;
-    /* 警告色 */
-}
-
-.modern-card-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #283043;
-    margin: 0;
-}
-
-/* 卡片内容区域 */
-.modern-card-body {
-    color: #4a5568;
-}
-
-/* 键值对行 (版本信息) */
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-}
-
-.info-label {
-    font-size: 14px;
-    color: #7d7d7d;
-}
-
-.info-value {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1678ff;
-    background: rgba(22, 120, 255, 0.08);
-    padding: 4px 12px;
+    gap: 25px;
+    background: linear-gradient(145deg, #0f1520, #1a2235);
     border-radius: 20px;
+    padding: 30px;
+    color: #e2e8f7;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* 功能特性列表 */
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #4a5568;
-    margin-bottom: 12px;
-}
-
-.feature-item:last-child {
-    margin-bottom: 0;
-}
-
-.feature-icon {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    margin-right: 10px;
-    margin-top: 2px;
-    background-color: #00cc66;
-    /* 成功色 */
-}
-
-/* 时间轴样式 */
-.timeline {
+/* 发光效果 */
+.glow {
     position: relative;
-    padding-left: 10px;
 }
 
-.timeline::before {
+.glow::after {
     content: '';
     position: absolute;
-    left: 3px;
     top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, rgba(22, 120, 255, 0.2), rgba(22, 120, 255, 0.05));
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(22, 120, 255, 0.7), rgba(0, 204, 255, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.timeline-item {
+/* 主数据面板 */
+.tech-data-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
     display: flex;
-    margin-bottom: 20px;
+    align-items: center;
+    z-index: 1;
     position: relative;
 }
 
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.timeline-marker {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #1678ff;
-    border: 3px solid white;
-    box-shadow: 0 0 0 1px #e0e9ff;
+.tech-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, rgba(22, 120, 255, 0.2), rgba(0, 204, 255, 0.1));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
     flex-shrink: 0;
-    margin-right: 16px;
-    margin-top: 4px;
-    z-index: 1;
 }
 
-.timeline-content {
+.tech-main-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to right, #00ccff, #1678ff);
+}
+
+.tech-data-content {
     flex: 1;
 }
 
-.timeline-date {
-    font-size: 13px;
-    font-weight: 600;
-    color: #64748b;
-    margin-bottom: 4px;
+.tech-data-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #94a3c2;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
-.timeline-desc {
+.tech-data-value {
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(to right, #00ccff, #1678ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.tech-data-sub {
+    font-size: 13px;
+    color: #94a3c2;
+}
+
+/* 区块标题 */
+.tech-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tech-section-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tech-section-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    background: #00ccff;
+}
+
+.tech-section-title {
     font-size: 14px;
-    color: #283043;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #cbd5e9;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* 特性网格 */
+.tech-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 25px;
+}
+
+.tech-feature-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tech-feature-card:hover {
+    background: rgba(22, 120, 255, 0.1);
+    border-color: rgba(22, 120, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.tech-feature-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 204, 102, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.tech-feature-icon {
+    width: 24px;
+    height: 24px;
+    background: #00cc66;
+}
+
+.tech-feature-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e2e8f7;
+    margin-bottom: 8px;
+}
+
+.tech-feature-status {
+    font-size: 11px;
+    font-weight: 700;
+    color: #00cc66;
+    background: rgba(0, 204, 102, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+.tech-feature-status.active {
+    color: #00cc66;
+}
+
+/* 警告面板 */
+.tech-notice-panel {
+    background: rgba(255, 152, 0, 0.08);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.tech-notice-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    background: rgba(255, 152, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 152, 0, 0.15);
+}
+
+.tech-notice-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    background: #ff9800;
+}
+
+.tech-notice-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffcc80;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.tech-notice-list {
+    padding: 20px 25px;
+}
+
+.tech-notice-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.tech-notice-item:last-child {
+    margin-bottom: 0;
+}
+
+.tech-notice-marker {
+    width: 6px;
+    height: 6px;
+    background: #ff9800;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+.tech-notice-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ffddb3;
+}
+
+/* 时间轴 */
+.tech-timeline {
+    padding: 25px;
+    position: relative;
+}
+
+.tech-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(0, 204, 255, 0.4), transparent);
+}
+
+.tech-timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.tech-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.tech-timeline-item.current .tech-timeline-date,
+.tech-timeline-item.current .tech-timeline-version {
+    color: #00ccff;
+}
+
+.tech-timeline-line-start,
+.tech-timeline-line {
+    width: 20px;
+    height: 1px;
+    background: rgba(0, 204, 255, 0.4);
+    margin-top: 12px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.tech-timeline-line-start {
+    width: 10px;
+}
+
+.tech-timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #2a3a5f;
+    flex-shrink: 0;
+    margin-right: 15px;
+    z-index: 1;
+    position: relative;
+    top: 6px;
+}
+
+.tech-timeline-item.current .tech-timeline-dot {
+    background: #00ccff;
+    border-color: #00ccff;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.7);
+}
+
+.tech-timeline-content {
+    flex: 1;
+}
+
+.tech-timeline-date {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #94a3c2;
+    margin-bottom: 5px;
+}
+
+.tech-timeline-version {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e2e8f7;
+    margin-bottom: 5px;
+}
+
+.tech-timeline-desc {
+    font-size: 13px;
+    color: #94a3c2;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-    .info-modern-container {
-        margin: 20px;
-        gap: 16px;
+    .tech-module-container {
+        margin: 15px;
+        padding: 20px;
+        border-radius: 16px;
+        gap: 20px;
     }
 
-    .modern-card {
-        padding: 16px;
+    .tech-data-panel {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .modern-card-header {
-        margin-bottom: 16px;
+    .tech-icon-wrapper {
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 
-    .modern-card-title {
-        font-size: 15px;
+    .tech-data-value {
+        font-size: 32px;
     }
 
-    .info-value {
-        font-size: 14px;
+    .tech-feature-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 15px;
     }
 
-    .feature-item,
-    .timeline-desc {
-        font-size: 13px;
+    .tech-section-header,
+    .tech-notice-header {
+        padding: 18px 20px;
+    }
+
+    .tech-timeline {
+        padding: 20px;
+    }
+
+    .tech-timeline::before {
+        left: 30px;
+    }
+
+    .tech-timeline-line-start,
+    .tech-timeline-line {
+        width: 15px;
     }
 }

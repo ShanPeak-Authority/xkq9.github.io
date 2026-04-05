@@ -59,91 +59,99 @@
 
         <div class="module-container">
             <!-- 游戏信息 -->
-            <div class="module-content active" id="module-yxxx">
-                <div class="info-modern-container">
-                    <!-- 游戏版本卡片 -->
-                    <div class="modern-card">
-                        <div class="modern-card-header">
-                            <div class="mask-fill modern-icon" style="--icon-url: url('/res/icon/tag.svg');"></div>
-                            <h3 class="modern-card-title">版本信息</h3>
+            <div class="module-content" id="module-yxxx">
+                <div class="tech-module-container">
+                    <!-- 主版本区块 -->
+                    <div class="tech-data-panel glow">
+                        <div class="tech-icon-wrapper">
+                            <div class="mask-fill tech-main-icon" style="--icon-url: url('/res/icon/cpu.svg');"></div>
                         </div>
-                        <div class="modern-card-body">
-                            <div class="info-row">
-                                <span class="info-label">当前版本</span>
-                                <span class="info-value">4.5.0</span>
+                        <div class="tech-data-content">
+                            <div class="tech-data-label">CURRENT VERSION</div>
+                            <div class="tech-data-value">v4.5.0</div>
+                            <div class="tech-data-sub">Build 2026.04.04</div>
+                        </div>
+                    </div>
+
+                    <!-- 破解特性网格 -->
+                    <div class="tech-section">
+                        <div class="tech-section-header">
+                            <div class="mask-fill tech-section-icon" style="--icon-url: url('/res/icon/shield.svg');">
+                            </div>
+                            <h3 class="tech-section-title">MODIFICATION FEATURES</h3>
+                        </div>
+                        <div class="tech-feature-grid">
+                            <div class="tech-feature-card">
+                                <div class="tech-feature-icon-wrapper">
+                                    <div class="mask-fill tech-feature-icon"
+                                        style="--icon-url: url('/res/icon/zap.svg');"></div>
+                                </div>
+                                <div class="tech-feature-name">内购破解</div>
+                                <div class="tech-feature-status active">ACTIVE</div>
+                            </div>
+                            <div class="tech-feature-card">
+                                <div class="tech-feature-icon-wrapper">
+                                    <div class="mask-fill tech-feature-icon"
+                                        style="--icon-url: url('/res/icon/slash.svg');"></div>
+                                </div>
+                                <div class="tech-feature-name">禁用自动更新</div>
+                                <div class="tech-feature-status active">ACTIVE</div>
                             </div>
                         </div>
                     </div>
-                    <!-- 破解内容卡片 -->
-                    <div class="modern-card">
-                        <div class="modern-card-header">
-                            <div class="mask-fill modern-icon" style="--icon-url: url('/res/icon/shield-check.svg');">
+
+                    <!-- 警告区块 -->
+                    <div class="tech-notice-panel">
+                        <div class="tech-notice-header">
+                            <div class="mask-fill tech-notice-icon"
+                                style="--icon-url: url('/res/icon/alert-circle.svg');"></div>
+                            <h3 class="tech-notice-title">SYSTEM NOTICE</h3>
+                        </div>
+                        <div class="tech-notice-list">
+                            <div class="tech-notice-item">
+                                <div class="tech-notice-marker"></div>
+                                <div class="tech-notice-text">若游戏无法正常运行，请联系群主进行更新</div>
                             </div>
-                            <h3 class="modern-card-title">破解内容</h3>
-                        </div>
-                        <div class="modern-card-body">
-                            <ul class="feature-list">
-                                <li class="feature-item">
-                                    <div class="mask-fill feature-icon"
-                                        style="--icon-url: url('/res/icon/check-circle.svg');"></div>
-                                    内购破解
-                                </li>
-                                <li class="feature-item">
-                                    <div class="mask-fill feature-icon"
-                                        style="--icon-url: url('/res/icon/check-circle.svg');"></div>
-                                    禁用第三方应用自动更新
-                                </li>
-                            </ul>
+                            <div class="tech-notice-item">
+                                <div class="tech-notice-marker"></div>
+                                <div class="tech-notice-text">游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败</div>
+                            </div>
                         </div>
                     </div>
-                    <!-- 注意事项卡片 (强调) -->
-                    <div class="modern-card card-highlight">
-                        <div class="modern-card-header">
-                            <div class="mask-fill modern-icon icon-warn"
-                                style="--icon-url: url('/res/icon/alert-triangle.svg');"></div>
-                            <h3 class="modern-card-title">注意事项</h3>
+
+                    <!-- 更新日志时间流 -->
+                    <div class="tech-section">
+                        <div class="tech-section-header">
+                            <div class="mask-fill tech-section-icon"
+                                style="--icon-url: url('/res/icon/refresh-cw.svg');"></div>
+                            <h3 class="tech-section-title">UPDATE LOG</h3>
                         </div>
-                        <div class="modern-card-body">
-                            <ul class="feature-list">
-                                <li class="feature-item">
-                                    <div class="mask-fill feature-icon icon-warn"
-                                        style="--icon-url: url('/res/icon/minus-circle.svg');"></div>
-                                    若游戏无法正常运行，请联系群主进行更新
-                                </li>
-                                <li class="feature-item">
-                                    <div class="mask-fill feature-icon icon-warn"
-                                        style="--icon-url: url('/res/icon/minus-circle.svg');"></div>
-                                    游戏更新后，请先卸载已有版本后再进行安装，否则有一定概率更新失败
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- 更新日志卡片 (时间轴) -->
-                    <div class="modern-card">
-                        <div class="modern-card-header">
-                            <div class="mask-fill modern-icon" style="--icon-url: url('/res/icon/clock.svg');"></div>
-                            <h3 class="modern-card-title">更新日志</h3>
-                        </div>
-                        <div class="modern-card-body timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-date text-blue">2026.04.04</div>
-                                    <div class="timeline-desc">更新至 4.5.0 版本</div>
+                        <div class="tech-timeline">
+                            <div class="tech-timeline-item current">
+                                <div class="tech-timeline-line-start"></div>
+                                <div class="tech-timeline-dot"></div>
+                                <div class="tech-timeline-content">
+                                    <div class="tech-timeline-date">2026.04.04</div>
+                                    <div class="tech-timeline-version">v4.5.0</div>
+                                    <div class="tech-timeline-desc">稳定性与性能优化</div>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-date text-blue">2026.03.30</div>
-                                    <div class="timeline-desc">更新至 4.5.0 版本</div>
+                            <div class="tech-timeline-item">
+                                <div class="tech-timeline-line"></div>
+                                <div class="tech-timeline-dot"></div>
+                                <div class="tech-timeline-content">
+                                    <div class="tech-timeline-date">2026.03.30</div>
+                                    <div class="tech-timeline-version">v4.5.0</div>
+                                    <div class="tech-timeline-desc">功能同步更新</div>
                                 </div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-date">2026.03.13</div>
-                                    <div class="timeline-desc">更新至 4.4.0 版本</div>
+                            <div class="tech-timeline-item">
+                                <div class="tech-timeline-line"></div>
+                                <div class="tech-timeline-dot"></div>
+                                <div class="tech-timeline-content">
+                                    <div class="tech-timeline-date">2026.03.13</div>
+                                    <div class="tech-timeline-version">v4.4.0</div>
+                                    <div class="tech-timeline-desc">初始破解版本发布</div>
                                 </div>
                             </div>
                         </div>
