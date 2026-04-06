@@ -39,6 +39,7 @@
 /* 适用：顶部无文字，横屏截图 */
 .pj-container .img1 {
     width: calc((100vw - 60px)*0.5);
+    border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 5.6px;
