@@ -123,94 +123,109 @@ body {
     display: none;
 }
 
-/* 方案一：极简质感风 - 与网站现有风格完美融合 */
+/* 方案二：精致卡片风 - 更像高端应用商店卡片 */
 .game-item[data-searchable*="奥奇传说：手游"] {
-    background: #ffffff;
-    border: 1px solid rgba(22, 120, 255, 0.15);
-    border-left: 4px solid #1678ff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    padding: 20px 20px 16px;
-    margin-bottom: 20px;
-    transition: all 0.2s ease;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafd 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+}
+
+/* 卡片顶部装饰性条纹 */
+.game-item[data-searchable*="奥奇传说：手游"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #1678ff, #3399ff, #1678ff);
+    border-radius: 16px 16px 0 0;
+    opacity: 0.8;
 }
 
 /* 悬停效果 */
 .game-item[data-searchable*="奥奇传说：手游"]:hover {
-    border-color: rgba(22, 120, 255, 0.3);
-    box-shadow: 0 4px 16px rgba(22, 120, 255, 0.08);
-    transform: translateY(-1px);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(22, 120, 255, 0.12);
+    border-color: #c2d9ff;
 }
 
-/* 图标增强 */
+/* 图标样式 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    border: 1px solid #f1f1f1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
 }
 
-.game-item[data-searchable*="奥奇传说：手游"]:hover .game-img {
-    transform: scale(1.05);
-}
-
-/* 标题美化 */
+/* 标题样式 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: #283043;
     border-bottom: none;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
-    position: relative;
-    letter-spacing: 0.2px;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
 }
 
-/* 标题下的蓝色细线 */
-.game-item[data-searchable*="奥奇传说：手游"] .game-title::after {
+/* 标题装饰 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-title::before {
     content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
     background: #1678ff;
-    border-radius: 1px;
+    border-radius: 50%;
+    margin-right: 12px;
+    box-shadow: 0 0 0 4px rgba(22, 120, 255, 0.1);
 }
 
-/* 描述区域优化 */
+/* 描述样式 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-description {
     color: #4a5568;
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.7;
+    padding-left: 20px;
+    /* 与图标对齐 */
+    position: relative;
 }
 
-/* 描述行间距优化 */
+/* 描述行装饰 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-description p {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    padding: 2px 0;
+    align-items: center;
+    padding: 6px 0;
+    position: relative;
 }
 
-/* 标签样式 */
-.game-item[data-searchable*="奥奇传说：手游"] .game-description p strong {
-    color: #283043;
-    font-weight: 600;
-    min-width: 70px;
+/* 行前小点 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-description p::before {
+    content: '•';
+    color: #1678ff;
+    position: absolute;
+    left: -20px;
+    font-size: 16px;
+    opacity: 0.6;
 }
 
-/* 奖励数值突出 */
+/* 奖励数值 */
 .game-item[data-searchable*="奥奇传说：手游"] .text-bronze {
     color: #b87333;
-    font-weight: 600;
-    background: rgba(184, 115, 51, 0.05);
-    padding: 2px 6px;
-    border-radius: 4px;
-    border: 1px solid rgba(184, 115, 51, 0.1);
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(184, 115, 51, 0.05));
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(184, 115, 51, 0.15);
 }
