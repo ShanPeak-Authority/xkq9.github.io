@@ -353,8 +353,8 @@
 }
 
 .game-pj-card {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     background: #7d7d7d;
     border-radius: 25%;
     display: flex;
@@ -365,8 +365,8 @@
 
 @media (max-width: 768px) {
     .game-pj-card {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
     }
 }
 
