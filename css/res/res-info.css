@@ -1,6 +1,6 @@
 .pj-container {
     font-size: 14px;
-    color: #283043;
+    color: #f0f4ff;
     line-height: 1.8;
     margin: 24.4px 30px 5.6px;
 }
@@ -33,7 +33,7 @@
 }
 
 .pj-container li {
-    color: #7d7d7d;
+    color: #a3b2e6;
 }
 
 /* 适用：顶部无文字，横屏截图 */
