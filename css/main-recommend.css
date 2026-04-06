@@ -360,13 +360,14 @@
     align-items: center;
     justify-content: center;
     margin-right: 5px;
-    border: 0.5px solid #7d7d7d;
+    border: 1px solid #7d7d7d;
 }
 
 @media (max-width: 768px) {
     .game-pj-card {
         width: 12px;
         height: 12px;
+        border: 0.5px solid #7d7d7d;
     }
 }
 
