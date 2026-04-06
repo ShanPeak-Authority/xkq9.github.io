@@ -349,6 +349,21 @@
     }
 }
 
+.game-pj-card {
+    width: 20px;
+    height: 20px;
+    background: #f1f1f1;
+    border-radius: 25%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    border: 1px solid #7d7d7d;
+}
+
+.game-pj-icon {
+    width: 10px;
+    height: 10px;
+}
 
 .game-description {
     color: #7d7d7d;
