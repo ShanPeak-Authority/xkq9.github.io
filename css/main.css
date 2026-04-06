@@ -123,82 +123,158 @@ body {
     display: none;
 }
 
-/* 页面：我的-铜钱表头 */
-#sort-copper:hover {
-    background: rgba(22, 120, 255, 0.28);
-    cursor: pointer;
-}
-
-/* 针对“奥奇传说：手游”的高级感美化方案 */
+/* 奥奇传说：手游 - 高级感美化方案（版本2） */
 .game-item[data-searchable*="奥奇传说：手游"] {
-    background: linear-gradient(135deg, #283043 0%, #1a2238 100%); /* 深色渐变背景 */
-    border: 1px solid rgba(22, 120, 255, 0.3); /* 细边框 */
-    border-radius: 12px; /* 圆角 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* 外阴影 + 内高光 */
-    padding: 20px; /* 增加内边距 */
-    margin-bottom: 25px; /* 增加底部间距 */
-    transition: all 0.3s ease; /* 平滑过渡效果 */
-    position: relative; /* 为可能的装饰性元素定位 */
-    color: #ffffff; /* 主文字颜色改为白色 */
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #1678ff;
+    /* 左侧蓝色强调线 */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(22, 120, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
 /* 悬停效果 */
 .game-item[data-searchable*="奥奇传说：手游"]:hover {
-    transform: translateY(-2px); /* 轻微上浮 */
-    box-shadow: 0 8px 25px rgba(22, 120, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    border-color: rgba(22, 120, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(22, 120, 255, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    border-color: #c2d9ff;
+}
+
+/* 添加微妙的顶部光泽效果 */
+.game-item[data-searchable*="奥奇传说：手游"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1678ff, #4dabf7, #1678ff);
+    opacity: 0.8;
+    border-radius: 12px 12px 0 0;
 }
 
 /* 游戏图标美化 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-img {
-    width: 60px; /* 稍微增大 */
+    width: 60px;
     height: 60px;
-    border-radius: 15px; /* 图标圆角 */
-    border: 2px solid rgba(255, 255, 255, 0.1); /* 添加细边框 */
-    padding: 3px; /* 内边距使图片看起来更精致 */
-    background-color: #ffffff; /* 白色背景使图标更突出 */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(22, 120, 255, 0.1);
+    object-fit: cover;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.game-item[data-searchable*="奥奇传说：手游"]:hover .game-img {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(22, 120, 255, 0.15), 0 0 0 1px rgba(22, 120, 255, 0.2);
 }
 
 /* 游戏标题美化 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-title {
     font-size: 18px;
-    font-weight: 700; /* 更粗的字体 */
-    color: #ffffff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* 更淡的分隔线 */
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    letter-spacing: 0.3px; /* 字间距 */
+    font-weight: 700;
+    color: #283043;
+    border-bottom: none;
+    /* 移除原有下划线 */
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-/* 游戏描述美化 */
+/* 标题前的装饰小点 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #1678ff;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 0 3px rgba(22, 120, 255, 0.1);
+}
+
+/* 游戏描述区域美化 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-description {
-    color: #b0b2bf; /* 浅灰色文字，提高可读性 */
+    color: #4a5568;
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-/* 描述段落间距 */
+/* 描述段落美化 */
 .game-item[data-searchable*="奥奇传说：手游"] .game-description p {
     margin-bottom: 8px;
     display: flex;
-    justify-content: space-between; /* 使标签和内容分开对齐 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    position: relative;
 }
 
-/* 奖励文本强化 */
-.game-item[data-searchable*="奥奇传说：手游"] .text-bronze {
-    color: #ffb347; /* 更亮眼的铜色 */
-    font-weight: 600;
-}
-
-/* 可选：添加一个微妙的顶部光泽条 */
-.game-item[data-searchable*="奥奇传说：手游"]::before {
+/* 添加微弱的行间分隔线 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-description p:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 20%;
-    width: 60%;
+    bottom: -4px;
+    left: 0;
+    right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    border-radius: 50%;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+}
+
+/* 标签样式优化 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-description p strong {
+    color: #283043;
+    font-weight: 600;
+    font-size: 12px;
+    min-width: 80px;
+    /* 保持标签对齐 */
+}
+
+/* 奖励数值特殊样式 */
+.game-item[data-searchable*="奥奇传说：手游"] .text-bronze {
+    color: #b87333;
+    font-weight: 600;
+    background: rgba(184, 115, 51, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* 更新日期特殊样式 */
+.game-item[data-searchable*="奥奇传说：手游"] .game-description p:last-child {
+    color: #718096;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.game-item[data-searchable*="奥奇传说：手游"] .game-description p:last-child::after {
+    display: none;
+    /* 最后一行不加分隔线 */
+}
+
+/* 移动端适配优化 */
+@media (max-width: 768px) {
+    .game-item[data-searchable*="奥奇传说：手游"] {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .game-item[data-searchable*="奥奇传说：手游"] .game-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .game-item[data-searchable*="奥奇传说：手游"] .game-title {
+        font-size: 16px;
+    }
 }
