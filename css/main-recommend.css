@@ -355,11 +355,11 @@
 .game-pj-card {
     width: 16px;
     height: 16px;
-    background: #7d7d7d;
     border-radius: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #7d7d7d;
     margin-right: 5px;
 }
 
@@ -367,13 +367,14 @@
     .game-pj-card {
         width: 14px;
         height: 14px;
+        border-bottom: 0.5px solid #7d7d7d;
     }
 }
 
 .game-pj-icon {
     width: 70%;
     height: 70%;
-    color: #ffffff;
+    color: #7d7d7d;
 }
 
 .game-description {
