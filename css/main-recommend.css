@@ -360,9 +360,16 @@
     border: 1px solid #7d7d7d;
 }
 
+@media (max-width: 768px) {
+    .game-pj-card {
+        width: 12px;
+        height: 12px;
+    }
+}
+
 .game-pj-icon {
-    width: 10px;
-    height: 10px;
+    width: 75%;
+    height: 75%;
 }
 
 .game-description {
