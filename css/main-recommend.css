@@ -328,23 +328,26 @@
     font-size: 16px;
     padding-bottom: 5px;
     border-bottom: 1px solid #cdcdcd;
-    margin-bottom: 5px;
+    margin-bottom: 10.2px;
     color: #283043;
 }
 
 @media (max-width: 768px) {
     .game-title {
         font-size: 14px;
+        margin-bottom: 11px;
     }
 }
 
 .game-pj {
     display: flex;
+    margin-top: -5.2px;
     margin-bottom: 10.2px;
 }
 
 @media (max-width: 768px) {
     .game-pj {
+        margin-bottom: -6px;
         margin-bottom: 11px;
     }
 }
