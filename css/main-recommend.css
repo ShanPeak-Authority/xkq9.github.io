@@ -203,19 +203,37 @@
     gap: 20px;
     overflow-x: auto;
     overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
+/* Webkit浏览器滚动条样式 */
 .sub-tabs-container::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
+    height: 6px;
+}
+
+.sub-tabs-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.sub-tabs-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.sub-tabs-container::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }
 
 @media (max-width: 768px) {
     .sub-tabs-container {
-        gap: 15px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .sub-tabs-container::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
     }
 }
 
