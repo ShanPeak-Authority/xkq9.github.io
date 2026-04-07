@@ -366,6 +366,7 @@
 }
 
 .game-pj-icon {
+    flex-shrink: 0;
     width: 14px;
     height: 14px;
     color: #7d7d7d;
