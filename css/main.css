@@ -2,39 +2,40 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    flex-shrink: 0;
 }
 
 body {
-    height: 100vh;
-    background: #ffffff;
-    color: #283043;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    color: #283043;
 }
 
 .section-title {
+    margin-bottom: 30px;
     font-size: 25px;
     font-weight: bold;
     color: #283043;
-    margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
     .section-title {
-        font-size: 20px;
         margin-bottom: 20px;
+        font-size: 20px;
     }
 }
 
 /* 页面：推荐 */
 .recommend-container {
+    display: flex;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     margin: 0 0 69px;
     overflow-y: hidden;
-    display: flex;
 }
 
 @media (max-width: 768px) {
@@ -53,12 +54,12 @@ body {
 
 /* 页面：兑换 */
 .exchange-container {
+    display: none;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     padding: 30px 30px 69px;
     overflow-y: auto;
-    display: none;
 }
 
 @media (max-width: 768px) {
@@ -77,12 +78,12 @@ body {
 
 /* 页面：公告 */
 .notice-container {
+    display: none;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     padding: 30px 30px 69px;
     overflow-y: auto;
-    display: none;
 }
 
 @media (max-width: 768px) {
@@ -101,13 +102,13 @@ body {
 
 /* 页面：我的 */
 .mine-container {
+    display: none;
     flex: 1;
     flex-direction: column;
     min-height: 0;
     padding: 30px 30px 69px;
     overflow-y: auto;
     background: #eeeeee;
-    display: none;
 }
 
 @media (max-width: 768px) {
