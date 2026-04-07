@@ -16,8 +16,8 @@
 
 /* 适用：竖屏截图 */
 .image-gallery .img1 {
-    width: calc((100vw - 45px - 30px)/3.5);
     flex-shrink: 0;
+    width: calc((100vw - 45px - 30px)/3.5);
     margin: 0;
 }
 
@@ -29,8 +29,8 @@
 
 /* 适用：横屏截图 */
 .image-gallery .img2 {
-    width: calc((100vw - 15px - 30px)/1.75);
     flex-shrink: 0;
+    width: calc((100vw - 15px - 30px)/1.75);
     margin: 0;
 }
 

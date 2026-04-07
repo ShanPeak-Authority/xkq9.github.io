@@ -5,18 +5,18 @@
 }
 
 body {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* 游戏详情 */
 .game-container {
     width: 100%;
-    background: #ffffff;
-    overflow-y: auto;
     box-sizing: border-box;
     padding-bottom: 89.5px;
+    background: #ffffff;
+    overflow-y: auto;
 }
 
 @media (max-width: 768px) {

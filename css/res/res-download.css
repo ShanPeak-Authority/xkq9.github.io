@@ -3,16 +3,16 @@
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    height: 89.5px;
-    padding: 0 20px;
-    background: #ffffff;
-    border-top: 0.5px solid #dddddd;
-    box-sizing: border-box;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    height: 89.5px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-top: 0.5px solid #dddddd;
+    background: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -36,12 +36,12 @@
 .download-btn-blue {
     flex: 2;
     height: 40px;
-    background: #1678ff;
-    color: #ffffff;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
+    color: #ffffff;
+    background: #1678ff;
     cursor: pointer;
 }
 
@@ -58,12 +58,12 @@
 .download-btn-green {
     flex: 1;
     height: 40px;
-    background: #00cc66;
-    color: #ffffff;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bold;
+    color: #ffffff;
+    background: #00cc66;
     cursor: pointer;
 }
 
@@ -79,10 +79,10 @@
 
 .download-note {
     text-align: left;
-    font-size: 14px;
-    color: #7d7d7d;
     margin: 0;
     padding: 5px 0 0;
+    font-size: 14px;
+    color: #7d7d7d;
 }
 
 @media (max-width: 768px) {
