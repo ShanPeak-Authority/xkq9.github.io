@@ -2,10 +2,12 @@
 // category.js   活动：分类和子分类切换模块
 // search.js     搜索模块
 // login.js      登录模块
+// scrollbar.js  推荐页横向分类的滚动条检测模块
 import { initializeNavigation } from './navigation.js';
 import { initializeCategory, activeCategory, activeSubFilter, applySubFilter } from './category.js';
 import { initializeSearch } from './search.js';
 import { initializeMinePage } from './login.js';
+import { setupScrollbarDetection } from './scrollbar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 隐藏所有页面容器，避免同时显示多个页面
@@ -35,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeCategory();
     initializeSearch();
     initializeMinePage();
+
+    // 设置滚动条检测
+    setupScrollbarDetection();
 
     // 设置时间问候语
     const greetings = [

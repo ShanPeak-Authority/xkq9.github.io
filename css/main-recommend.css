@@ -214,6 +214,10 @@
 /* 为支持悬停的设备（桌面/非触摸）显示滚动条 */
 @media (hover: hover) {
     .sub-tabs-container {
+        padding-bottom: 0;
+    }
+
+    .sub-tabs-container.has-scrollbar {
         padding-bottom: 5px;
     }
 
