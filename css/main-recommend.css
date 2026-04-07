@@ -222,13 +222,13 @@
     }
 
     .sub-tabs-container::-webkit-scrollbar-track {
-        background: #f1f1f1;
         border-radius: 2.5px;
+        background: #f1f1f1;
     }
 
     .sub-tabs-container::-webkit-scrollbar-thumb {
-        background: rgba(125, 125, 125, 0.2);
         border-radius: 2.5px;
+        background: rgba(125, 125, 125, 0.2);
     }
 
     .sub-tabs-container::-webkit-scrollbar-thumb:hover {
