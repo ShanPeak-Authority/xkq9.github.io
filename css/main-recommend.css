@@ -202,7 +202,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 20px;
-    padding-top: 5px;
+    padding-bottom: 5px;
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -231,7 +231,7 @@
 /* 为不支持悬停的设备（移动/触摸）隐藏滚动条 */
 @media (hover: none) {
     .sub-tabs-container {
-        padding-top: 0;
+        padding-bottom: 0;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
