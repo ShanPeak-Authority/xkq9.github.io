@@ -334,15 +334,50 @@
     }
 }
 
-.game-pj {
+.game-tags {
     display: flex;
     margin-top: -5.2px;
     margin-bottom: 10.2px;
 }
 
 @media (max-width: 768px) {
-    .game-pj {
+    .game-tags {
         margin-bottom: 11px;
+    }
+}
+
+.game-device-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    margin: 0 5px 0 0;
+    padding: 0;
+    border: 1px solid #1678ff;
+    border-radius: 25%;
+}
+
+@media (max-width: 768px) {
+    .game-device-card {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.game-device-icon {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    color: #1678ff;
+}
+
+@media (max-width: 768px) {
+    .game-device-icon {
+        width: 10px;
+        height: 10px;
     }
 }
 
