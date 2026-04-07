@@ -202,6 +202,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 20px;
+    padding-top: 5px;
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -210,7 +211,6 @@
 @media (hover: hover) {
     .sub-tabs-container::-webkit-scrollbar {
         height: 5px;
-        padding-top: 5px;
     }
 
     .sub-tabs-container::-webkit-scrollbar-track {
@@ -231,6 +231,7 @@
 /* 为不支持悬停的设备（移动/触摸）隐藏滚动条 */
 @media (hover: none) {
     .sub-tabs-container {
+        padding-top: 0;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
