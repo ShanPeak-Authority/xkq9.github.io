@@ -367,8 +367,8 @@
 }
 
 .game-pj-icon {
-    width: 19px;
-    height: 19px;
+    width: 15px;
+    height: 15px;
     margin: 0;
     padding: 0;
     color: #7d7d7d;
@@ -376,8 +376,8 @@
 
 @media (max-width: 768px) {
     .game-pj-icon {
-        width: 14px;
-        height: 14px;
+        width: 10px;
+        height: 10px;
     }
 }
 
