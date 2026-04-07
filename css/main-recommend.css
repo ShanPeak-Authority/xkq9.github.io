@@ -210,7 +210,7 @@
 @media (hover: hover) {
     .sub-tabs-container::-webkit-scrollbar {
         height: 5px;
-        margin-top: 5px;
+        padding-top: 5px;
     }
 
     .sub-tabs-container::-webkit-scrollbar-track {
@@ -224,7 +224,7 @@
     }
 
     .sub-tabs-container::-webkit-scrollbar-thumb:hover {
-        background: #a1a1a1;
+        background: rgba(125, 125, 125, 0.2);
     }
 }
 
