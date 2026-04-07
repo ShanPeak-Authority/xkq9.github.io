@@ -197,7 +197,6 @@
     }
 }
 
-/* 横向分类 - 容器 (原有样式保留) */
 .sub-tabs-container {
     display: flex;
     flex-wrap: nowrap;
