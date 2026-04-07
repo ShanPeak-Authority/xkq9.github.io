@@ -207,17 +207,18 @@
 
 /* Webkit浏览器滚动条样式 */
 .sub-tabs-container::-webkit-scrollbar {
-    height: 6px;
+    height: 5px;
+    margin-top: 5px;
 }
 
 .sub-tabs-container::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 3px;
+    border-radius: 2.5px;
 }
 
 .sub-tabs-container::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 3px;
+    background: #7d7d7d;
+    border-radius: 2.5px;
 }
 
 .sub-tabs-container::-webkit-scrollbar-thumb:hover {
