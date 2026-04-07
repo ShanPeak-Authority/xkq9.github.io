@@ -1,9 +1,9 @@
 .card {
-    background: rgba(22, 120, 255, 0.07);
     padding: 20px 20px 5.6px;
     margin-bottom: 30px;
     border-radius: 10px;
     overflow: hidden;
+    background: rgba(22, 120, 255, 0.07);
 }
 
 @media (max-width: 768px) {
@@ -14,15 +14,14 @@
 }
 
 .card-title {
-    font-size: 20px;
-    font-weight: bold;
+    position: relative;
     margin-bottom: 20px;
-    /* 10px间距 + 5px边框宽度 */
     padding-left: 15px;
     padding-bottom: 20px;
-    color: #283043;
     border-bottom: 0.5px solid #dddddd;
-    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    color: #283043;
 }
 
 @media (max-width: 768px) {
@@ -34,30 +33,28 @@
 }
 
 .card-title::before {
-    width: 5px;
-    /* 关键：总高度减去底部内边距，使高度等于文字内容区 */
-    height: calc(100% - 20px);
-    content: "";
     position: absolute;
     top: 0;
     left: 0;
+    width: 5px;
+    height: calc(100% - 20px);
+    content: "";
+    box-sizing: border-box;
     background: #1678ff;
     border-radius: 5px;
-    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
     .card-title::before {
-        /* 关键：总高度减去底部内边距，使高度等于文字内容区 */
         height: calc(100% - 15px);
     }
 }
 
 .card-content {
+    margin-top: -5.6px;
     font-size: 14px;
     color: #283043;
     line-height: 1.8;
-    margin-top: -5.6px;
 }
 
 @media (max-width: 768px) {

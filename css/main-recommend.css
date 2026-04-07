@@ -3,14 +3,15 @@
     position: sticky;
     top: 0;
     z-index: 500;
-    height: 61px;
-    background: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 5px solid #eeeeee;
-    box-sizing: border-box;
+    width: 100%;
+    height: 61px;
     padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 5px solid #eeeeee;
+    background: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -22,13 +23,13 @@
 
 .search-results-count {
     max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     font-size: 16px;
     color: #283043;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0;
-    padding: 0;
 }
 
 @media (max-width: 768px) {
@@ -42,14 +43,14 @@
 }
 
 .search-clear {
-    background: #1678ff;
-    color: #ffffff;
     border: none;
     padding: 5px 20px;
     border-radius: 30px;
+    background: #1678ff;
     font-size: 14px;
-    white-space: nowrap;
+    color: #ffffff;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
@@ -65,20 +66,20 @@
 
 /* 内容 */
 .category-container {
-    height: 100%;
     display: flex;
-    background: #ffffff;
+    height: 100%;
     overflow: auto;
+    background: #ffffff;
 }
 
 /* 左侧：纵向分类 */
 .category-sidebar {
+    display: block;
     width: 200px;
     height: 100%;
     align-self: stretch;
-    background: #ffffff;
     border-right: 1px solid #eeeeee;
-    /* 独立滚动 */
+    background: #ffffff;
     overflow-y: auto;
 }
 
@@ -89,17 +90,17 @@
 }
 
 .category-item {
+    padding: 20px;
+    border-left: 5px solid transparent;
     font-size: 16px;
     color: #283043;
-    border-left: 5px solid transparent;
-    padding: 20px;
     cursor: pointer;
 }
 
 @media (max-width: 768px) {
     .category-item {
-        font-size: 14px;
         padding: 15px;
+        font-size: 14px;
     }
 }
 
@@ -108,17 +109,16 @@
 }
 
 .category-item.active {
-    background: rgba(22, 120, 255, 0.07);
-    color: #1678ff;
     border-left: 5px solid #1678ff;
+    background: rgba(22, 120, 255, 0.07);
     font-weight: bold;
+    color: #1678ff;
 }
 
 /* 右侧：正文 */
 .category-content {
     flex: 1;
     padding: 20px 20px 0;
-    /* 独立滚动 */
     overflow-y: auto;
 }
 
@@ -130,11 +130,11 @@
 
 /* 板块介绍 */
 .category-card {
-    background: rgba(22, 120, 255, 0.07);
-    border-radius: 10px;
-    overflow: hidden;
     padding: 20px 20px 5.6px;
     margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(22, 120, 255, 0.07);
 }
 
 @media (max-width: 768px) {
@@ -145,16 +145,16 @@
 }
 
 .category-card-content {
+    margin-top: -5.6px;
     font-size: 14px;
     color: #283043;
     line-height: 1.8;
-    margin-top: -5.6px;
 }
 
 @media (max-width: 768px) {
     .category-card-content {
-        font-size: 12px;
         margin-top: -4.8px;
+        font-size: 12px;
     }
 }
 
@@ -199,22 +199,18 @@
 
 .sub-tabs-container {
     display: flex;
-    gap: 20px;
     flex-wrap: nowrap;
+    gap: 20px;
     overflow-x: auto;
     overflow-y: hidden;
-    /* 隐藏滚动条 */
-    /* Firefox */
     scrollbar-width: none;
-    /* Internet Explorer 和 Edge */
     -ms-overflow-style: none;
+}
 
-    /* 移动端Webkit浏览器 */
-    &::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-    }
+.sub-tabs-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -225,12 +221,11 @@
 
 .sub-tag {
     padding: 10px 20px;
-    background: #f1f1f1;
     border-radius: 30px;
+    background: #f1f1f1;
     font-size: 14px;
-    cursor: pointer;
     color: #283043;
-    /* 禁用换行 */
+    cursor: pointer;
     white-space: nowrap;
 }
 
@@ -266,8 +261,8 @@
 
 .sub-tag.active {
     background: #1678ff;
-    color: #ffffff;
     font-weight: bold;
+    color: #ffffff;
 }
 
 /* 游戏列表 */
@@ -285,12 +280,12 @@
 }
 
 .game-item {
-    height: auto;
-    background: #f1f1f1;
-    border-radius: 10px;
     display: flex;
+    height: auto;
     padding: 15px 15px 10.2px;
     margin-bottom: 20px;
+    border-radius: 10px;
+    background: #f1f1f1;
 }
 
 @media (max-width: 768px) {
@@ -311,8 +306,8 @@
 .game-img {
     width: 50px;
     height: 50px;
-    border-radius: 25%;
     margin-right: 15px;
+    border-radius: 25%;
     object-fit: contain;
     vertical-align: top;
     align-self: flex-start;
@@ -324,18 +319,18 @@
 }
 
 .game-title {
-    font-weight: bold;
-    font-size: 16px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #cdcdcd;
     margin-bottom: 10.2px;
+    border-bottom: 1px solid #cdcdcd;
+    font-size: 16px;
+    font-weight: bold;
     color: #283043;
 }
 
 @media (max-width: 768px) {
     .game-title {
-        font-size: 14px;
         margin-bottom: 11px;
+        font-size: 14px;
     }
 }
 
@@ -347,21 +342,20 @@
 
 @media (max-width: 768px) {
     .game-pj {
-        margin-bottom: -6px;
         margin-bottom: 11px;
     }
 }
 
 .game-pj-card {
-    width: 22px;
-    height: 22px;
-    border-radius: 25%;
-    border: 1px solid #7d7d7d;
-    margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+    border: 1px solid #7d7d7d;
+    border-radius: 25%;
 }
 
 @media (max-width: 768px) {
@@ -385,8 +379,8 @@
 }
 
 .game-description {
-    color: #7d7d7d;
     font-size: 12px;
+    color: #7d7d7d;
     line-height: 1.8;
 }
 
@@ -398,9 +392,9 @@
 
 /* 无匹配结果提示 */
 .no-results {
-    text-align: center;
-    padding: 40px 20px 60px;
     display: none;
+    padding: 40px 20px 60px;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -412,16 +406,16 @@
 .no-results-icon {
     width: 60px;
     height: 60px;
-    color: #7d7d7d;
     margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
+    color: #7d7d7d;
 }
 
 .no-results h3 {
+    padding-bottom: 5px;
     font-size: 16px;
     color: #7d7d7d;
-    padding-bottom: 5px;
 }
 
 @media (max-width: 768px) {

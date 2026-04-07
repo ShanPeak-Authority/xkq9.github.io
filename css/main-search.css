@@ -4,20 +4,20 @@
 }
 
 .search-box {
-    padding: 10px;
-    background: #f1f1f1;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    align-items: center;
-    overflow: hidden;
     display: flex;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: #f1f1f1;
 }
 
 @media (max-width: 768px) {
     .search-box {
         padding: 8px;
-        border-radius: 5px;
         border: 1.5px solid transparent;
+        border-radius: 5px;
     }
 }
 
@@ -27,10 +27,12 @@
 }
 
 .search-box input {
-    border: none;
-    background: transparent;
     flex: 1;
+    padding: 0;
+    margin: 0;
+    border: none;
     outline: none;
+    background: transparent;
     font-size: 14px;
     color: #283043;
 }
@@ -50,13 +52,13 @@
 }
 
 #searchButton {
-    background: none;
-    border: none;
-    outline: none;
     padding: 0;
     margin: 0;
-    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
     color: inherit;
+    cursor: pointer;
 }
 
 /* 悬浮卡片 */
@@ -65,19 +67,20 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: #ffffff;
-    border-radius: 10px;
-    border: 2px solid #1678ff;
-    margin-top: 5px;
     z-index: 2000;
-    overflow-y: auto;
     display: none;
+    margin-top: 5px;
+    padding: 0;
+    overflow-y: auto;
+    border: 2px solid #1678ff;
+    border-radius: 10px;
+    background: #ffffff;
 }
 
 @media (max-width: 768px) {
     .search-suggestion {
-        border-radius: 5px;
         border: 1.5px solid #1678ff;
+        border-radius: 5px;
     }
 }
 
@@ -101,10 +104,10 @@
 }
 
 .search-suggestion-game {
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
     cursor: pointer;
-    align-items: center;
-    display: flex;
 }
 
 @media (max-width: 768px) {
@@ -120,10 +123,10 @@
 .search-suggestion-game-icon {
     width: 50px;
     height: 50px;
-    border-radius: 12.5px;
     margin-right: 10px;
-    object-fit: contain;
     vertical-align: middle;
+    border-radius: 12.5px;
+    object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -139,9 +142,9 @@
 }
 
 .search-suggestion-game-title {
+    margin-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
     color: #283043;
 }
 
@@ -162,24 +165,24 @@
 }
 
 .search-history-title {
-    font-size: 16px;
-    color: #283043;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #283043;
 }
 
 @media (max-width: 768px) {
     .search-history-title {
-        font-size: 14px;
         margin-bottom: 15px;
+        font-size: 14px;
     }
 }
 
 .search-history-clear {
+    font-size: 14px;
     color: #1678ff;
     cursor: pointer;
-    font-size: 14px;
 }
 
 .search-history-items {
@@ -195,11 +198,11 @@
 }
 
 .search-history-item {
-    background: #f1f1f1;
-    color: #1678ff;
     padding: 10px 20px;
     border-radius: 30px;
+    background: #f1f1f1;
     font-size: 14px;
+    color: #1678ff;
     cursor: pointer;
 }
 
@@ -216,35 +219,35 @@
 
 /* 搜索：关键词高亮 */
 .highlight {
-    background: #ffe8e8;
-    color: #E63946;
-    font-weight: bold;
     padding: 0 2px;
     border-radius: 2px;
+    background: #ffe8e8;
+    font-weight: bold;
+    color: #E63946;
 }
 
 /* 搜索：无结果弹窗 */
 .modal {
     position: fixed;
-    z-index: 10000;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
     width: 80%;
-    padding: 14.4px 20px 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
     max-width: 300px;
+    padding: 14.4px 20px 20px;
     text-align: center;
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 .modal-content p {
@@ -256,12 +259,12 @@
 
 #noResultConfirm {
     width: 100%;
-    background: #1678ff;
-    color: #ffffff;
-    border: none;
     padding: 10px 20px;
+    border: none;
     border-radius: 30px;
+    background: #1678ff;
     font-size: 14px;
+    color: #ffffff;
     cursor: pointer;
 }
 
