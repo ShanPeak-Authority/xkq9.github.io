@@ -197,6 +197,7 @@
     }
 }
 
+/* 横向分类 - 容器 (原有样式保留) */
 .sub-tabs-container {
     display: flex;
     flex-wrap: nowrap;
@@ -205,27 +206,30 @@
     overflow-y: hidden;
 }
 
-/* Webkit浏览器滚动条样式 */
-.sub-tabs-container::-webkit-scrollbar {
-    height: 5px;
-    margin-top: 5px;
+/* 为支持悬停的设备（桌面/非触摸）显示滚动条 */
+@media (hover: hover) {
+    .sub-tabs-container::-webkit-scrollbar {
+        height: 5px;
+        margin-top: 5px;
+    }
+
+    .sub-tabs-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 2.5px;
+    }
+
+    .sub-tabs-container::-webkit-scrollbar-thumb {
+        background: #7d7d7d;
+        border-radius: 2.5px;
+    }
+
+    .sub-tabs-container::-webkit-scrollbar-thumb:hover {
+        background: #a1a1a1;
+    }
 }
 
-.sub-tabs-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 2.5px;
-}
-
-.sub-tabs-container::-webkit-scrollbar-thumb {
-    background: #7d7d7d;
-    border-radius: 2.5px;
-}
-
-.sub-tabs-container::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
-}
-
-@media (max-width: 768px) {
+/* 为不支持悬停的设备（移动/触摸）隐藏滚动条 */
+@media (hover: none) {
     .sub-tabs-container {
         scrollbar-width: none;
         -ms-overflow-style: none;
