@@ -353,7 +353,8 @@
     flex-shrink: 0;
     width: 25px;
     height: 25px;
-    margin-right: 5px;
+    margin: 0 5px 0 0;
+    padding: 0;
     border: 1px solid #7d7d7d;
     border-radius: 25%;
 }
@@ -368,6 +369,8 @@
 .game-pj-icon {
     width: 19px;
     height: 19px;
+    margin: 0;
+    padding: 0;
     color: #7d7d7d;
 }
 
