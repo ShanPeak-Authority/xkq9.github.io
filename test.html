@@ -1,9 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏详情</title>
+    <link rel="stylesheet" href="/css/res/res.css">
+    <link rel="stylesheet" href="/css/res/res-banner.css">
+    <link rel="stylesheet" href="/css/res/res-app.css">
+    <link rel="stylesheet" href="/css/res/res-category.css">
+    <link rel="stylesheet" href="/css/res/res-screenshot.css">
+    <link rel="stylesheet" href="/css/res/res-pj.css">
+    <link rel="stylesheet" href="/css/res/res-activity.css">
+    <link rel="stylesheet" href="/css/res/res-download.css">
+    <link rel="stylesheet" href="/css/func/func-mask.css">
+    <link rel="stylesheet" href="/css/func/func-table.css">
+    <link rel="stylesheet" href="/css/func/func-text.css">
+</head>
+
+<body>
+    <!-- 顶部Banner -->
+    <header class="banner">
+        <!-- 左侧：返回键 -->
+        <div class="banner-left">
+            <button class="banner-left-back" id="backBtn">
+                <div class="mask-fill banner-left-back-icon" style="--icon-url: url('/res/icon/back.png')">
+                </div>
+            </button>
+        </div>
+        <!-- 中间：标题 -->
+        <div class="banner-title">游戏详情</div>
+        <!-- 右侧：空白占位 -->
+        <div class="banner-right"></div>
+    </header>
+
+    <!-- 游戏详情 -->
+    <div class="game-container">
+        <!-- 游戏信息 -->
+        <div class="app">
+            <h2 class="app-title">
+                <img class="app-title-icon" src="/res/games/Shuang-Wan-2/Bai-Lian-Ying-Xiong/blyx.png" alt="游戏图标">
+                <div class="app-text">
+                    百炼英雄
+                    <div class="app-subtitle">
+                        <p>开通包站权限更快达标</p>
+                    </div>
+                </div>
+            </h2>
+        </div>
+        <!-- 水平导航栏 -->
+        <div class="category-nav" id="tabNav">
+            <div class="category-nav-item active" data-target="yxjs">游戏介绍</div>
+            <div class="category-nav-item" data-target="dbhd">达标活动</div>
+        </div>
+
+        <div class="module-container">
+            <!-- 游戏介绍 -->
+            <div class="module-content active" id="module-yxjs">
+                <div class="pj-container">
+                    <p><strong>游戏来源：</strong></p>
+                    <ul>
+                        <li>本游戏来自于平台：<span class="text-blue">http://sslt.93gongy.xyz:88/</span></li>
+                    </ul>
+                    <p><strong>快速达标：</strong></p>
+                    <ul>
+                        <li>开通GM包站权限（普通）可享受以下特权：<br>-- 无条件开通平台上所有带有“包站免费”标签的游戏后台，充值和道具随便发<br>-- 更快完成本板块的游戏达标活动</li>
+                        <li>GM包站权限（普通）购买：20元/永久，联系群主开通</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 达标活动 -->
+            <div class="module-content" id="module-dbhd">
+                <div class="activity-section">
+                    <!-- 要求及奖励 -->
+                    <div class="activity-card">
+                        <h2 class="activity-card-title">要求及奖励</h2>
+                        <div class="activity-card-content">
+                            <p><strong>说明：</strong></p>
+                            <ul>
+                                <li>长期有效，不定期重置领奖状态</li>
+                                <li>每人在每个活动周期内最多可领取1次达标奖励，请联系群主进行领奖</li>
+                                <li>若游戏停止运营，本活动将自动终止</li>
+                            </ul>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>要求</th>
+                                        <th>奖励</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>VIP达到15级</td>
+                                        <td><span class="text-bronze">铜钱*1万</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 已参与用户 -->
+                    <div class="activity-card">
+                        <h2 class="activity-card-title">已参与用户</h2>
+                        <div class="activity-card-content">
+                            <p><strong>说明：</strong></p>
+                            <ul>
+                                <li>用户数据实时更新</li>
+                            </ul>
+                        </div>
+                        <div class="table-container">
+                            <table id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>用户名</th>
+                                        <th>QQ号</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏下载-->
+    <div class="download">
+        <div class="download-btn-container">
+            <button class="download-btn-blue">在线玩</button>
+            <button class="download-btn-green">复制链接</button>
+        </div>
+        <p class="download-note">直达包站平台游戏详情页</p>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 定义游戏下载链接变量
-            const gameDownloadLink = 'https://www.123865.com/s/EFJAjv-V3j5d';
+            const gameDownloadLink = '';
 
             // 返回按钮功能
             const backBtn = document.getElementById('backBtn');
