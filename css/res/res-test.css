@@ -1,0 +1,991 @@
+/* 黑客主题全局样式 - Cyberpunk Theme */
+/* 应用于：xcmzxdkp.html */
+
+/* 基础重置与全局变量 */
+:root {
+    --hacker-bg-primary: #0a0a0f;
+    --hacker-bg-secondary: #111122;
+    --hacker-bg-card: rgba(10, 20, 40, 0.7);
+    --hacker-border: rgba(0, 255, 255, 0.3);
+    --hacker-glow: rgba(0, 255, 255, 0.6);
+    --hacker-glow-strong: rgba(0, 255, 255, 0.9);
+    --hacker-accent-cyan: #0ff;
+    --hacker-accent-magenta: #f0f;
+    --hacker-accent-green: #0f0;
+    --hacker-text-primary: #e0e0ff;
+    --hacker-text-secondary: #a0a0ff;
+    --hacker-text-dim: #8888cc;
+    --hacker-danger: #ff3366;
+    --hacker-success: #00ff99;
+    --hacker-warning: #ffcc00;
+}
+
+body {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0, 100, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, var(--hacker-bg-primary) 0%, var(--hacker-bg-secondary) 100%);
+    color: var(--hacker-text-primary);
+    font-family: 'Courier New', 'SF Mono', Monaco, monospace;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 黑客风格扫描线效果 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(transparent 50%,
+            rgba(0, 255, 255, 0.03) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+    animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 20px;
+    }
+}
+
+/* 网格背景 */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.1;
+}
+
+/* ==================== 顶部Banner ==================== */
+.banner {
+    background: rgba(10, 15, 30, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hacker-border);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1000;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta),
+            transparent);
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.banner-title {
+    color: var(--hacker-accent-cyan) !important;
+    text-shadow:
+        0 0 10px rgba(0, 255, 255, 0.7),
+        0 0 20px rgba(0, 255, 255, 0.3);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+.banner-left-back-icon {
+    color: var(--hacker-accent-cyan) !important;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+    transition: all 0.3s ease;
+}
+
+.banner-left-back-icon:hover {
+    color: var(--hacker-accent-magenta) !important;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.8));
+    transform: translateX(-2px);
+}
+
+/* ==================== 游戏简介区域 ==================== */
+.app {
+    background: rgba(15, 20, 40, 0.7) !important;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg,
+            transparent,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta),
+            transparent) 1;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.app::after {
+    content: ">> SYSTEM ONLINE";
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.8em;
+    color: var(--hacker-accent-green);
+    opacity: 0.6;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+.app-title {
+    color: var(--hacker-text-primary) !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.app-title .app-title-icon {
+    border: 2px solid var(--hacker-border) !important;
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(0, 255, 255, 0.1);
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+}
+
+.app-title .app-title-icon:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.app-subtitle {
+    color: var(--hacker-text-dim) !important;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+/* ==================== 导航栏 ==================== */
+.category-nav {
+    background: rgba(20, 25, 50, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hacker-border) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.category-nav-item {
+    color: var(--hacker-text-dim) !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.category-nav-item:hover {
+    color: var(--hacker-accent-cyan) !important;
+    background: rgba(0, 255, 255, 0.1) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.category-nav-item.active {
+    color: var(--hacker-accent-cyan) !important;
+    background: transparent !important;
+    border-bottom: 2px solid var(--hacker-accent-cyan) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+}
+
+.category-nav-item.active::before {
+    content: ">";
+    position: absolute;
+    left: 10px;
+    color: var(--hacker-accent-green);
+    opacity: 0.8;
+    animation: blink 1.5s infinite;
+}
+
+.category-nav-item.active::after {
+    content: "<";
+    position: absolute;
+    right: 10px;
+    color: var(--hacker-accent-green);
+    opacity: 0.8;
+    animation: blink 1.5s infinite reverse;
+}
+
+/* ==================== 主内容区域 ==================== */
+.game-container {
+    background: transparent !important;
+}
+
+.cyber-module {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 100, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+        linear-gradient(165deg, #0a0e1a 0%, #10162b 100%) !important;
+    border: 1px solid var(--hacker-border) !important;
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.05);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-module::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta),
+            transparent);
+    animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ==================== 状态面板 ==================== */
+.cyber-status-panel {
+    background: rgba(10, 20, 40, 0.6) !important;
+    border: 1px solid var(--hacker-border) !important;
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-status-panel[data-glow="true"] {
+    box-shadow:
+        0 0 35px rgba(0, 255, 255, 0.3),
+        0 0 60px rgba(0, 100, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.1) !important;
+    animation: panelGlow 4s ease-in-out infinite;
+}
+
+@keyframes panelGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 35px rgba(0, 255, 255, 0.3),
+            0 0 60px rgba(0, 100, 255, 0.2),
+            inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 45px rgba(0, 255, 255, 0.4),
+            0 0 80px rgba(0, 100, 255, 0.3),
+            inset 0 0 25px rgba(0, 255, 255, 0.15);
+    }
+}
+
+.cyber-core-icon {
+    border: 2px solid var(--hacker-accent-cyan) !important;
+    background: linear-gradient(135deg,
+            rgba(0, 255, 255, 0.2) 0%,
+            rgba(0, 100, 255, 0.1) 100%) !important;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+.cyber-icon-fill {
+    background: linear-gradient(to bottom right,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta)) !important;
+}
+
+.cyber-data-tag {
+    color: var(--hacker-accent-green) !important;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cyber-data-version {
+    background: linear-gradient(to right,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta)) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow:
+        0 0 20px rgba(0, 255, 255, 0.5),
+        0 0 40px rgba(255, 0, 255, 0.3);
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.cyber-data-build {
+    color: var(--hacker-text-dim) !important;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* ==================== 模块卡片 ==================== */
+.cyber-section,
+.cyber-notice {
+    background: rgba(15, 20, 40, 0.6) !important;
+    border: 1px solid var(--hacker-border) !important;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.1),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-section-title,
+.cyber-notice-title {
+    background: rgba(0, 20, 40, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important;
+    position: relative;
+}
+
+.cyber-section-title h3,
+.cyber-notice-title h3 {
+    color: var(--hacker-accent-cyan) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.cyber-title-icon {
+    background: var(--hacker-accent-cyan) !important;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+}
+
+/* 破解模块网格 */
+.cyber-module-card {
+    background: rgba(20, 25, 50, 0.5) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-module-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--hacker-accent-cyan) !important;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+.cyber-module-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta),
+            transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cyber-module-card:hover::before {
+    opacity: 1;
+    animation: borderGlow 2s ease-in-out infinite;
+}
+
+.module-icon-frame {
+    border: 1px solid rgba(0, 255, 255, 0.3) !important;
+    background: rgba(0, 255, 255, 0.1) !important;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.module-icon {
+    color: var(--hacker-accent-green) !important;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5));
+}
+
+.module-name {
+    color: var(--hacker-text-primary) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.module-status {
+    border: 1px solid rgba(0, 255, 136, 0.3) !important;
+    background: rgba(0, 255, 136, 0.1) !important;
+    border-radius: 20px;
+    padding: 6px 15px;
+}
+
+.status-led {
+    background: var(--hacker-accent-green) !important;
+    box-shadow:
+        0 0 8px rgba(0, 255, 136, 0.8),
+        0 0 15px rgba(0, 255, 136, 0.4) !important;
+    animation: ledPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow:
+            0 0 8px rgba(0, 255, 136, 0.8),
+            0 0 15px rgba(0, 255, 136, 0.4);
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow:
+            0 0 12px rgba(0, 255, 136, 1),
+            0 0 25px rgba(0, 255, 136, 0.6);
+    }
+}
+
+.status-text {
+    color: var(--hacker-accent-green) !important;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+    font-weight: 600;
+}
+
+/* 注意事项警告样式 */
+.cyber-notice[data-type="warn"] {
+    border-color: rgba(255, 204, 0, 0.3) !important;
+    background: rgba(255, 204, 0, 0.05) !important;
+    box-shadow:
+        0 0 20px rgba(255, 204, 0, 0.1),
+        inset 0 0 15px rgba(255, 204, 0, 0.05);
+}
+
+.cyber-notice[data-type="warn"] .cyber-title-icon {
+    background: var(--hacker-warning) !important;
+    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.8));
+}
+
+.cyber-notice[data-type="warn"] .cyber-notice-title {
+    border-bottom-color: rgba(255, 204, 0, 0.3) !important;
+    background: rgba(255, 204, 0, 0.08) !important;
+}
+
+.notice-content {
+    color: #ffdd99 !important;
+    text-shadow: 0 0 3px rgba(255, 221, 153, 0.3);
+}
+
+/* 更新日志时间线 */
+.cyber-log-stream::before {
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--hacker-accent-cyan) 20%,
+            var(--hacker-accent-cyan) 80%,
+            transparent) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.log-node {
+    border: 2px solid rgba(0, 255, 255, 0.5) !important;
+    background: rgba(0, 20, 40, 0.8) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.cyber-log-item[data-state="current"] .log-node-core {
+    background: var(--hacker-accent-cyan) !important;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.8),
+        0 0 40px rgba(0, 255, 255, 0.4) !important;
+    animation: nodePulse 2s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.8),
+            0 0 40px rgba(0, 255, 255, 0.4);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 1),
+            0 0 60px rgba(0, 255, 255, 0.6);
+    }
+}
+
+.cyber-log-item[data-state="current"] .log-version {
+    color: var(--hacker-accent-cyan) !important;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.log-version {
+    color: var(--hacker-text-primary) !important;
+    font-weight: 600;
+}
+
+.log-desc {
+    color: var(--hacker-text-dim) !important;
+    font-family: 'Courier New', monospace;
+}
+
+/* ==================== 游戏截图区域 ==================== */
+.image-gallery {
+    background: rgba(15, 20, 40, 0.7) !important;
+    border-radius: 12px;
+    padding: 20px !important;
+    margin: 20px 30px !important;
+    border: 1px solid var(--hacker-border);
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.1),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+.image-gallery .img1 {
+    border: 2px solid rgba(0, 255, 255, 0.3) !important;
+    border-radius: 8px;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-gallery .img1:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--hacker-accent-cyan) !important;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 100, 255, 0.2);
+    z-index: 10;
+}
+
+.image-gallery .img1::after {
+    content: "VIEW";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--hacker-accent-cyan);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.image-gallery .img1:hover::after {
+    opacity: 1;
+}
+
+/* ==================== 活动卡片区域 ==================== */
+.activity-section {
+    margin: 20px 30px 0 !important;
+}
+
+.activity-card {
+    background: rgba(20, 25, 50, 0.7) !important;
+    border: 1px solid var(--hacker-border) !important;
+    border-radius: 12px;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.1),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.activity-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta));
+    border-radius: 5px 0 0 5px;
+}
+
+.activity-card-title {
+    color: var(--hacker-accent-cyan) !important;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.activity-card-title::before {
+    background: var(--hacker-accent-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.activity-card-content {
+    color: var(--hacker-text-primary) !important;
+}
+
+.activity-card-content p,
+.activity-card-content li {
+    color: var(--hacker-text-dim) !important;
+}
+
+/* 表格样式 */
+.table-container {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--hacker-border);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+table {
+    background: rgba(10, 15, 30, 0.8) !important;
+    border: 1px solid var(--hacker-border) !important;
+}
+
+thead th {
+    background: rgba(0, 30, 60, 0.9) !important;
+    color: var(--hacker-accent-cyan) !important;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    border: 1px solid var(--hacker-border) !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    color: var(--hacker-text-primary) !important;
+    border: 1px solid rgba(0, 255, 255, 0.2) !important;
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover td {
+    background: rgba(0, 255, 255, 0.1) !important;
+    color: var(--hacker-accent-cyan) !important;
+}
+
+.text-gold {
+    color: #ffd700 !important;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    font-weight: bold;
+}
+
+.text-bronze {
+    color: #cd7f32 !important;
+    text-shadow: 0 0 8px rgba(205, 127, 50, 0.5);
+    font-weight: bold;
+}
+
+/* 用户列表 */
+.participant-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.participant-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.participant-content::-webkit-scrollbar-track {
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.participant-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta));
+    border-radius: 3px;
+}
+
+.user-list-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.user-list-item:hover {
+    background: rgba(0, 255, 255, 0.05);
+    transform: translateX(5px);
+    border-radius: 5px;
+}
+
+.user-avatar {
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.user-list-item:hover .user-avatar {
+    border-color: var(--hacker-accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.user-nickname {
+    color: var(--hacker-text-primary) !important;
+    font-weight: 600;
+}
+
+.user-qq {
+    color: var(--hacker-text-dim) !important;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+/* ==================== 下载区域 ==================== */
+.download {
+    background: rgba(10, 15, 30, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--hacker-border) !important;
+    box-shadow:
+        0 -5px 20px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 255, 255, 0.2);
+    position: relative;
+    z-index: 1000;
+}
+
+.download::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta),
+            transparent);
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+.download-btn-blue {
+    background: linear-gradient(135deg,
+            #0066ff,
+            #00ccff) !important;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow:
+        0 5px 15px rgba(0, 102, 255, 0.4),
+        0 0 20px rgba(0, 102, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-btn-blue::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: 0.5s;
+}
+
+.download-btn-blue:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 25px rgba(0, 102, 255, 0.6),
+        0 0 30px rgba(0, 102, 255, 0.4);
+}
+
+.download-btn-blue:hover::before {
+    left: 100%;
+}
+
+.download-btn-green {
+    background: linear-gradient(135deg,
+            #00cc66,
+            #00ff99) !important;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow:
+        0 5px 15px rgba(0, 204, 102, 0.4),
+        0 0 20px rgba(0, 204, 102, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-btn-green::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: 0.5s;
+}
+
+.download-btn-green:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 25px rgba(0, 204, 102, 0.6),
+        0 0 30px rgba(0, 204, 102, 0.4);
+}
+
+.download-btn-green:hover::before {
+    left: 100%;
+}
+
+.download-note {
+    color: var(--hacker-text-dim) !important;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+}
+
+/* ==================== 响应式调整 ==================== */
+@media (max-width: 768px) {
+    .cyber-data-version {
+        font-size: 1.8em;
+    }
+
+    .image-gallery {
+        margin: 15px 20px !important;
+        padding: 15px !important;
+    }
+
+    .activity-section {
+        margin: 15px 20px 0 !important;
+    }
+
+    .activity-card-title {
+        font-size: 1.1em;
+    }
+
+    .category-nav-item {
+        font-size: 0.85em;
+        padding: 8px 0;
+    }
+}
+
+/* 全局滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,
+            var(--hacker-accent-cyan),
+            var(--hacker-accent-magenta));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom,
+            var(--hacker-accent-magenta),
+            var(--hacker-accent-cyan));
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* 文本选择样式 */
+::selection {
+    background: rgba(0, 255, 255, 0.3);
+    color: white;
+}
+
+/* 输入框和按钮的焦点状态 */
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--hacker-accent-cyan);
+    outline-offset: 2px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
